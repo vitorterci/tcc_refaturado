@@ -506,3 +506,27 @@ body.sidebar-fechada .hamburger-btn {
     min-height: 88px;
   }
 }
+
+/* ─── CONFLITO COM O SWITCH CLÁSSICO ───────────────────────────────────────
+ * sidebar.css define dimensões genéricas (56/44/64px) para qualquer
+ * .atalho-tema-global. O estilo clássico possui dimensões próprias em
+ * atalho-tema-classico.css (130/110/165px) e deve prevalecer.
+ * Esta exceção fica no final porque global.css importa sidebar.css por último.
+ * Não altera Pac-Man, Game Boy ou outros estilos.
+ */
+.barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
+  width: var(--classico-largura);
+  height: var(--classico-altura);
+  min-width: 0;
+  max-width: var(--classico-largura);
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1025px) {
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
+    width: var(--classico-largura);
+    height: var(--classico-altura);
+    min-width: var(--classico-largura);
+    max-width: var(--classico-largura);
+  }
+}
