@@ -158,9 +158,6 @@
   width: 13px;
   height: 13px;
 }
-.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-  transform: translateX(var(--classico-deslocamento));
-}
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
   font-size: 9px;
 }
@@ -173,9 +170,6 @@
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
   width: 19px;
   height: 19px;
-}
-.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-  transform: translateX(var(--classico-deslocamento));
 }
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
   font-size: 11px;
@@ -219,6 +213,9 @@
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
     width: var(--classico-largura);
     height: var(--classico-altura);
+    padding: 0;
+    border: 0;
+    box-shadow: none;
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-lado {
@@ -236,7 +233,7 @@
     left: 13px;
     transform: none;
     transition: none;
-    border: none;
+    border: 0;
     box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
   }
 
