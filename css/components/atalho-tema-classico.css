@@ -242,7 +242,7 @@
  */
 @media (min-width: 1025px) {
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
-    --classico-largura: 52px;
+    --classico-largura: 32px;
     --classico-altura: 32px;
     --classico-slider: 26px;
     width: var(--classico-largura);
@@ -251,22 +251,27 @@
     max-width: var(--classico-largura);
     margin: auto auto 16px;
     align-self: center;
-  }
-
-  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
-    width: var(--classico-largura);
-    height: var(--classico-altura);
-    padding: 0;
-    border: 0;
-    box-shadow: none;
-  }
-
-  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-lado {
-    display: none;
-  }
-
-  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+    padding: 3px;
+    box-sizing: border-box;
+    background: transparent;
     border: none;
+    overflow: visible;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-lado,
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+    display: none;
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
@@ -276,7 +281,7 @@
     left: 50%;
     transform: translateX(-50%);
     transition: none;
-    border: 0;
+    border: none;
     box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
   }
 
