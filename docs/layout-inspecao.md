@@ -5,7 +5,7 @@ A página `pages/Apresentação.html` corresponde ao screenshot enviado. A rende
 O screenshot do usuário mostra o hero principal em escala muito pequena, com título, descrição e botões comprimidos no canto superior. A correção deve preservar a identidade visual escura, remover a dependência de quebras manuais de linha, garantir uma grade hero responsiva e evitar que a splash screen permaneça durante a navegação.
 ## Causa raiz
 
-A página referenciava `../assets/css/Apresentação.css`, mas o arquivo real se chama `assets/css/apresentação.css`. Em Linux, a diferença entre `A` e `a` causa 404; com o CSS específico ausente, os logos da página ficaram sem dimensionamento e o hero não recebeu seu layout.
+A página referenciava `../css/Apresentação.css`, mas o arquivo real se chama `assets/css/apresentação.css`. Em Linux, a diferença entre `A` e `a` causa 404; com o CSS específico ausente, os logos da página ficaram sem dimensionamento e o hero não recebeu seu layout.
 
 ## Correções aplicadas
 
