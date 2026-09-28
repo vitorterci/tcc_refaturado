@@ -30,64 +30,62 @@
         { nome: 'Eggman',     arquivo: 'eggman.gif' },
         { nome: 'Game Boy',   arquivo: 'gameboy.gif' },
         { nome: 'Moeda',      arquivo: 'moeda.gif' },
-        { nome: 'Video Games', arquivo: 'tarturuga.gif' }
+        { nome: 'Video Games', arquivo: 'Video Games...gif' }
     ];
-// ─── CONFIGURAÇÃO INDIVIDUAL POR ESTILO/PERSONAGEM ────────────────────────
-// Cada entrada ajusta a área visual interna da imagem na sidebar.
-// - `escala`: multiplicador sobre a área base (1 = padrão).
-// - `ajusteX`: deslocamento horizontal em % do próprio ícone.
-// - `ajusteY`: deslocamento vertical em % do próprio ícone.
-// - `proporcao`: proporção alvo dentro do container (width/height).
-//   Quando informada, o CSS usa `aspect-ratio` para preservar a arte.
-// O container do botão NUNCA muda de tamanho — só a imagem interna.
-const CONFIG_ICONES = {
-    // Pac-Man é largo e baixo: precisa de mais largura e menos altura.
-    pacman: {
-    escala: 5.0,
-    ajusteX: 0,
-    ajusteY: 0,
-    proporcao: '4 / 1'
-}, // Game Boy é alto e estreito: precisa de mais altura e menos largura.
-    gameboy: { escala: 1.20, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1.4' },
-    // Sonic é quadrado: escala padrão.
-    sonic:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
-    // Mario é quadrado: escala padrão.
-    mario:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
-    // Eggman é ligeiramente largo: pequena compensação.
-    eggman:  { escala: 1.05, ajusteX: 0, ajusteY: 0, proporcao: '1.3 / 1' },
-    // Moeda é quadrada.
-    moeda:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
-    // Pixel Bloc é quadrado.
-    'pixel-bloc': { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
-    // Video Games é largo: compensa largura.
-    'video-games': { escala: 1.15, ajusteX: 0, ajusteY: 0, proporcao: '1.6 / 1' },
-    // Fallback para qualquer ícone não mapeado.
-    _default: { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' }
-};
 
-// Mapeia o nome do arquivo real para a chave em CONFIG_ICONES.
-const chaveConfigPorArquivo = (arquivo) => {
-    const nome = String(arquivo || '').toLowerCase();
-    if (nome === 'claro.gif' || nome === 'escuro.gif') return 'pacman';
-    if (nome === 'gameboy.gif')   return 'gameboy';
-    if (nome === 'sonic.gif')     return 'sonic';
-    if (nome === 'mario.gif')     return 'mario';
-    if (nome === 'eggman.gif')    return 'eggman';
-    if (nome === 'moeda.gif')     return 'moeda';
-    if (nome === 'pixel bloc.png') return 'pixel-bloc';
-    if (nome === 'video games...gif') return 'video-games';
-    return '_default';
-};
+    // ─── CONFIGURAÇÃO INDIVIDUAL POR ESTILO/PERSONAGEM ────────────────────
+    // Cada entrada ajusta a área visual interna da imagem.
+    // - `escala`: multiplicador sobre a área base (1 = padrão).
+    // - `ajusteX`: deslocamento horizontal em % do próprio ícone.
+    // - `ajusteY`: deslocamento vertical em % do próprio ícone.
+    // - `proporcao`: proporção alvo dentro do container (width/height).
+    //
+    // IMPORTANTE: fora da sidebar, Pac-Man e Game Boy continuam usando
+    // escala=1 com proporção. Dentro da sidebar, uma regra CSS específica
+    // faz o botão ocupar 100% da largura útil (ver atalho-tema.css).
+    const CONFIG_ICONES = {
+        // Pac-Man é largo e baixo: proporção horizontal preservada.
+        pacman:  { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '4 / 1' },
+        // Game Boy é alto e estreito: proporção vertical preservada.
+        gameboy: { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1.4' },
+        // Sonic é quadrado: escala padrão.
+        sonic:   { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+        // Mario é quadrado: escala padrão.
+        mario:   { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+        // Eggman é ligeiramente largo.
+        eggman:  { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1.3 / 1' },
+        // Moeda é quadrada.
+        moeda:   { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+        // Pixel Bloc é quadrado.
+        'pixel-bloc':  { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+        // Video Games é largo.
+        'video-games': { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1.6 / 1' },
+        // Fallback para qualquer ícone não mapeado.
+        _default: { escala: 1, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' }
+    };
 
-const obterConfigIcone = (arquivo) => {
-    const chave = chaveConfigPorArquivo(arquivo);
-    return CONFIG_ICONES[chave] || CONFIG_ICONES._default;
-};
+    // Mapeia o nome do arquivo real para a chave em CONFIG_ICONES.
+    const chaveConfigPorArquivo = (arquivo) => {
+        const nome = String(arquivo || '').toLowerCase();
+        if (nome === 'claro.gif' || nome === 'escuro.gif') return 'pacman';
+        if (nome === 'gameboy.gif')   return 'gameboy';
+        if (nome === 'sonic.gif')     return 'sonic';
+        if (nome === 'mario.gif')     return 'mario';
+        if (nome === 'eggman.gif')    return 'eggman';
+        if (nome === 'moeda.gif')     return 'moeda';
+        if (nome === 'pixel bloc.png') return 'pixel-bloc';
+        if (nome === 'tarturuga.gif') return 'tarturuga';
+        return '_default';
+    };
+
+    const obterConfigIcone = (arquivo) => {
+        const chave = chaveConfigPorArquivo(arquivo);
+        return CONFIG_ICONES[chave] || CONFIG_ICONES._default;
+    };
+
     const script = document.currentScript;
 
     // Retorna a URL base da RAIZ do projeto.
-    // Usa meta[name="base-path"] quando disponível; caso contrário calcula
-    // a profundidade da página atual (index, /pages/, /pages/admin/).
     const obterBaseRaiz = () => {
         const baseMeta = document.querySelector('meta[name="base-path"]');
         if (baseMeta && baseMeta.content.trim()) {
@@ -113,8 +111,7 @@ const obterConfigIcone = (arquivo) => {
     };
     const cristalMagico = urlIconeTema('moeda.gif');
 
-    // Normaliza o nome do ícone salvo: precisa ser um arquivo simples
-    // (sem barras), não pode ser um ícone de estado do tema.
+    // Normaliza o nome do ícone salvo.
     const normalizarIcone = (valor) => {
         const nome = String(valor || '').trim();
         if (!nome) return ICONE_PADRAO;
@@ -142,12 +139,11 @@ const obterConfigIcone = (arquivo) => {
         }
         return document.documentElement.classList.contains('tema-escuro') ? 'escuro' : 'claro';
     };
-    // Comportamento sempre CLARO ↔ ESCURO (modo Sistema não é mais opção do atalho).
+    // Comportamento sempre CLARO ↔ ESCURO.
     const proximoTema = (tema) => (tema === 'escuro' ? 'claro' : 'escuro');
 
     const conteudoEstilo = (estilo, tema, icone) => {
         if (estilo === 'gif') {
-            // Pac-Man: troca entre claro.gif e escuro.gif conforme o tema.
             return `<img class="atalho-tema-gif" src="${gifs[tema]}" alt="" draggable="false">`;
         }
         if (estilo === 'circular') {
@@ -160,16 +156,33 @@ const obterConfigIcone = (arquivo) => {
             return '<span class="atalho-tema-minimalista" aria-hidden="true"></span>';
         }
         if (estilo === 'imagem') {
-            // Personagem fixo escolhido pelo usuário — NÃO muda com o tema.
             return `<img class="atalho-tema-imagem" src="${urlIconeTema(icone)}" alt="" draggable="false">`;
         }
-        if (estilo === 'padrao-classico') {
-            // Switch/pílula horizontal com sol e lua, sem imagem externa.
+      if (estilo === 'padrao-classico') {
             return `
-                <span class="atalho-tema-classico-trilha" aria-hidden="true">
-                    <span class="atalho-tema-classico-icone atalho-tema-classico-sol">☀</span>
-                    <span class="atalho-tema-classico-icone atalho-tema-classico-lua">☾</span>
-                    <span class="atalho-tema-classico-botao"></span>
+                <span class="neon-toggle-trilha" aria-hidden="true">
+                    <span class="neon-toggle-lado neon-toggle-claro">
+                        <span class="neon-toggle-texto">DAY MODE</span>
+                    </span>
+                    <span class="neon-toggle-lado neon-toggle-escuro">
+                        <span class="neon-toggle-texto">NIGHT MODE</span>
+                    </span>
+                    <span class="neon-toggle-slider">
+                        <svg class="neon-toggle-icone icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <line x1="12" y1="2" x2="12" y2="4"></line>
+                            <line x1="12" y1="20" x2="12" y2="22"></line>
+                            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                            <line x1="2" y1="12" x2="4" y2="12"></line>
+                            <line x1="20" y1="12" x2="22" y2="12"></line>
+                            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+                            <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+                        </svg>
+                        <svg class="neon-toggle-icone icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
                 </span>`;
         }
         return `<img class="atalho-tema-cristal-img" src="${cristalMagico}" alt="" draggable="false">`;
@@ -193,39 +206,41 @@ const obterConfigIcone = (arquivo) => {
         });
         return botao;
     };
- const atualizarBotao = (botao) => {
-    const config = configuracao();
-    const tema = temaAtual();
-    const proximo = proximoTema(tema);
-    const estilos = ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem', 'padrao-classico'];
-    botao.classList.remove('atalho-tema-cristal', ...estilos.map(item => `atalho-tema-estilo-${item}`));
-    if (config.estilo === 'cristal-magico') botao.classList.add('atalho-tema-cristal');
-    botao.classList.add(`atalho-tema-estilo-${config.estilo}`);
-    botao.dataset.estilo = config.estilo;
-    botao.dataset.posicao = config.posicao;
-    botao.dataset.tamanho = config.tamanho;
-    botao.dataset.icone = config.icone;
-    botao.dataset.temaAtual = localStorage.getItem('pref_tema') === 'sistema' ? 'sistema' : tema;
-    botao.dataset.temaEfetivo = tema;
-    botao.setAttribute('aria-pressed', tema === 'escuro' ? 'true' : 'false');
-    const acao = `modo ${proximo}`;
-    botao.setAttribute('aria-label', `Alternar para ${acao}`);
-    botao.setAttribute('title', `Alternar tema — ${acao}`);
+    const atualizarBotao = (botao) => {
+        const config = configuracao();
+        const tema = temaAtual();
+        const proximo = proximoTema(tema);
+        const estilos = ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem', 'padrao-classico'];
+        botao.classList.remove('atalho-tema-cristal', ...estilos.map(item => `atalho-tema-estilo-${item}`));
+        if (config.estilo === 'cristal-magico') botao.classList.add('atalho-tema-cristal');
+        botao.classList.add(`atalho-tema-estilo-${config.estilo}`);
+        botao.dataset.estilo = config.estilo;
+        botao.dataset.posicao = config.posicao;
+        botao.dataset.tamanho = config.tamanho;
+        botao.dataset.icone = config.icone;
+        botao.dataset.temaAtual = localStorage.getItem('pref_tema') === 'sistema' ? 'sistema' : tema;
+        botao.dataset.temaEfetivo = tema;
+        botao.setAttribute('aria-pressed', tema === 'escuro' ? 'true' : 'false');
+        const acao = `modo ${proximo}`;
+        botao.setAttribute('aria-label', `Alternar para ${acao}`);
+        botao.setAttribute('title', `Alternar tema — ${acao}`);
 
-    // ── Compensação individual por estilo/personagem ──
-    // Define CSS custom properties no botão para o CSS consumir.
-    const arquivoAtual = config.estilo === 'gif'
-        ? (tema === 'escuro' ? 'escuro.gif' : 'claro.gif')
-        : config.icone;
-    const cfg = obterConfigIcone(arquivoAtual);
-    botao.style.setProperty('--atalho-icon-escala',   cfg.escala);
-    botao.style.setProperty('--atalho-icon-ajuste-x', `${cfg.ajusteX}%`);
-    botao.style.setProperty('--atalho-icon-ajuste-y', `${cfg.ajusteY}%`);
-    botao.style.setProperty('--atalho-icon-proporcao', cfg.proporcao);
+        // Arquivo real sendo exibido — usado pelo CSS para regras específicas.
+        const arquivoAtual = config.estilo === 'gif'
+            ? (tema === 'escuro' ? 'escuro.gif' : 'claro.gif')
+            : config.icone;
+        botao.dataset.arquivo = arquivoAtual;
 
-    const conteudo = conteudoEstilo(config.estilo, tema, config.icone);
-    if (botao.innerHTML !== conteudo) botao.innerHTML = conteudo;
-};
+        // Compensação individual por estilo/personagem (fora da sidebar).
+        const cfg = obterConfigIcone(arquivoAtual);
+        botao.style.setProperty('--atalho-icon-escala',    cfg.escala);
+        botao.style.setProperty('--atalho-icon-ajuste-x',  `${cfg.ajusteX}%`);
+        botao.style.setProperty('--atalho-icon-ajuste-y',  `${cfg.ajusteY}%`);
+        botao.style.setProperty('--atalho-icon-proporcao', cfg.proporcao);
+
+        const conteudo = conteudoEstilo(config.estilo, tema, config.icone);
+        if (botao.innerHTML !== conteudo) botao.innerHTML = conteudo;
+    };
     const sincronizar = () => {
         const config = configuracao();
         let botao = document.getElementById('atalhoTemaGlobal');
@@ -243,7 +258,7 @@ const obterConfigIcone = (arquivo) => {
         return document.querySelector('.barra-lateral') || document.body;
     };
 
-    // API pública para a página de configuração definir o ícone escolhido.
+    // API pública.
     const definirIcone = (nomeArquivo) => {
         const nome = normalizarIcone(nomeArquivo);
         localStorage.setItem(chaves.icone, nome);
@@ -269,6 +284,8 @@ const obterConfigIcone = (arquivo) => {
         filtrarIconesDisponiveis,
         listarPersonagens,
         urlIconeTema,
+        obterConfigIcone,
+        CONFIG_ICONES,
         ICONE_PADRAO,
         ICONES_ESTADO_TEMA,
         PERSONAGENS
