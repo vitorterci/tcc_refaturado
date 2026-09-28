@@ -227,16 +227,42 @@
     width: 26px;
     height: 26px;
     top: 3px;
-    left: 3px;
+    left: 13px;
+    transform: none;
+    transition: none;
   }
 
-  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-    transform: translateX(20px);
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider,
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-slider {
+    transform: none;
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
     width: 13px;
     height: 13px;
+    transition: none;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .icone-sol,
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .icone-lua {
+    transform: scale(1);
+    transition: opacity 0s, color 0s;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-sol {
+    opacity: 1;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-lua {
+    opacity: 0;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-sol {
+    opacity: 0;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-lua {
+    opacity: 1;
   }
 }
 
