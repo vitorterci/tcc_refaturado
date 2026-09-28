@@ -356,3 +356,35 @@
     transform: translateX(-50%);
   }
 }
+
+/* ─── AJUSTE TIPOGRÁFICO P/M/G ──────────────────────────────────────────── */
+/* O texto continua fora do slider, centralizado verticalmente e sem corte. */
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  transform: translateY(0.5px);
+}
+
+.atalho-tema-global[data-tamanho="medio"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.35px;
+  transform: translateY(0.5px);
+}
+
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.45px;
+  transform: translateY(0.5px);
+}
+
+@media (max-width: 480px) {
+  .atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+    display: none;
+  }
+}
