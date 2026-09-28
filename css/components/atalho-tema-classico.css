@@ -46,19 +46,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65%;
+  width: 50%;
+  min-width: 0;
+  box-sizing: border-box;
   z-index: 1;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.atalho-tema-estilo-padrao-classico .neon-toggle-claro  { left: 0;  padding-left: 10px; }
-.atalho-tema-estilo-padrao-classico .neon-toggle-escuro { right: 0; padding-right: 10px; }
+.atalho-tema-estilo-padrao-classico .neon-toggle-claro  { left: 0; }
+.atalho-tema-estilo-padrao-classico .neon-toggle-escuro { right: 0; }
 
 .atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  flex: 0 0 auto;
   font-family: inherit;
   font-size: 10px;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -70,6 +77,7 @@
   left: 3px;
   width: var(--classico-slider);
   height: var(--classico-slider);
+  box-sizing: border-box;
   border-radius: 50%;
   z-index: 2;
   display: flex;
@@ -159,7 +167,16 @@
   height: 13px;
 }
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
-  font-size: 9px;
+  display: none;
+}
+
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+  justify-content: center;
+}
+
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
@@ -230,8 +247,8 @@
     width: var(--classico-slider);
     height: var(--classico-slider);
     top: 3px;
-    left: 13px;
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
     transition: none;
     border: 0;
     box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
@@ -239,7 +256,7 @@
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider,
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-slider {
-    transform: none;
+    transform: translateX(-50%);
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
