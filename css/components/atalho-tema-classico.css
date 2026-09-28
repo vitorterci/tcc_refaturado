@@ -9,8 +9,13 @@
  */
 
 .atalho-tema-global.atalho-tema-estilo-padrao-classico {
-  width: 130px;
-  height: 38px;
+  --classico-largura: 130px;
+  --classico-altura: 38px;
+  --classico-slider: 32px;
+  --classico-inset: 3px;
+  --classico-deslocamento: calc(var(--classico-largura) - var(--classico-slider) - (var(--classico-inset) * 2));
+  width: var(--classico-largura);
+  height: var(--classico-altura);
   padding: 0;
   border: none;
   background: transparent;
@@ -63,8 +68,8 @@
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 32px;
-  height: 32px;
+  width: var(--classico-slider);
+  height: var(--classico-slider);
   border-radius: 50%;
   z-index: 2;
   display: flex;
@@ -99,7 +104,7 @@
   transform: translateX(6px);
 }
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-  transform: translateX(92px);
+  transform: translateX(var(--classico-deslocamento));
   background: #ffffff;
   border: 1.5px solid var(--cor-primaria, #ff0055);
   box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
@@ -145,38 +150,32 @@
 }
 
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico {
-  width: 110px;
-  height: 32px;
-}
-.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
-  width: 26px;
-  height: 26px;
+  --classico-largura: 110px;
+  --classico-altura: 32px;
+  --classico-slider: 26px;
 }
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
   width: 13px;
   height: 13px;
 }
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-  transform: translateX(78px);
+  transform: translateX(var(--classico-deslocamento));
 }
 .atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
   font-size: 9px;
 }
 
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
-  width: 150px;
-  height: 44px;
-}
-.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
-  width: 38px;
-  height: 38px;
+  --classico-largura: 150px;
+  --classico-altura: 44px;
+  --classico-slider: 38px;
 }
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
   width: 19px;
   height: 19px;
 }
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
-  transform: translateX(106px);
+  transform: translateX(var(--classico-deslocamento));
 }
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
   font-size: 11px;
@@ -188,8 +187,8 @@
 }
 
 .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"][data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
-  width: 150px;
-  height: 44px;
+  width: var(--classico-largura);
+  height: var(--classico-altura);
 }
 
 /* ─── SIDEBAR FECHADA: COMPACTAÇÃO DO SWITCH CLÁSSICO ───────────────────── */
@@ -206,17 +205,20 @@
  */
 @media (min-width: 1025px) {
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
-    width: 52px;
-    height: 32px;
-    min-width: 52px;
-    max-width: 52px;
+    --classico-largura: 52px;
+    --classico-altura: 32px;
+    --classico-slider: 26px;
+    width: var(--classico-largura);
+    height: var(--classico-altura);
+    min-width: var(--classico-largura);
+    max-width: var(--classico-largura);
     margin: auto auto 16px;
     align-self: center;
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
-    width: 52px;
-    height: 32px;
+    width: var(--classico-largura);
+    height: var(--classico-altura);
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-lado {
@@ -224,12 +226,14 @@
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
-    width: 26px;
-    height: 26px;
+    width: var(--classico-slider);
+    height: var(--classico-slider);
     top: 3px;
     left: 13px;
     transform: none;
     transition: none;
+    border: none;
+    box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider,
