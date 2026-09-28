@@ -225,6 +225,10 @@
     display: none;
   }
 
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+    border: none;
+  }
+
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
     width: var(--classico-slider);
     height: var(--classico-slider);
