@@ -192,6 +192,54 @@
   height: 44px;
 }
 
+/* ─── SIDEBAR FECHADA: COMPACTAÇÃO DO SWITCH CLÁSSICO ───────────────────── */
+/*
+ * A sidebar recolhida usa a largura reduzida (--sidebar-collapsed).
+ * O switch clássico não pode manter os 130px/150px nesse estado,
+ * pois a sidebar possui overflow-x controlado pelo layout.
+ *
+ * Em vez de cortar o componente, ele passa para um modo compacto:
+ * - cabe integralmente na sidebar;
+ * - mantém a alternância claro/escuro;
+ * - oculta somente os textos DAY/NIGHT;
+ * - não altera Pac-Man/Game Boy nem outros estilos.
+ */
+@media (min-width: 1025px) {
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
+    width: 52px;
+    height: 32px;
+    min-width: 52px;
+    max-width: 52px;
+    margin: auto auto 16px;
+    align-self: center;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+    width: 52px;
+    height: 32px;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-lado {
+    display: none;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+    width: 26px;
+    height: 26px;
+    top: 3px;
+    left: 3px;
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
+    transform: translateX(20px);
+  }
+
+  body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
+    width: 13px;
+    height: 13px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .atalho-tema-estilo-padrao-classico .neon-toggle-trilha,
   .atalho-tema-estilo-padrao-classico .neon-toggle-lado,
