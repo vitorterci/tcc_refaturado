@@ -9,25 +9,20 @@
         estilo: 'pref_atalho_tema',
         posicao: 'pref_atalho_tema_posicao',
         tamanho: 'pref_atalho_tema_tamanho',
-        comportamento: 'pref_atalho_tema_comportamento',
         icone: 'pref_icone_tema'
     };
     const opcoes = {
-        estilo: ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem'],
+        estilo: ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem', 'padrao-classico'],
         posicao: ['superior-direito', 'inferior-direito', 'inferior-esquerdo', 'barra-lateral-inferior'],
-        tamanho: ['pequeno', 'medio', 'grande'],
-        comportamento: ['claro-escuro', 'claro-escuro-sistema']
+        tamanho: ['pequeno', 'medio', 'grande']
     };
 
     // Ícones de estado do tema — usados pelo estilo "gif" (Pac-Man).
-    // NÃO são opções de personagem no menu.
     const ICONES_ESTADO_TEMA = ['claro.gif', 'escuro.gif'];
-    // Ícone padrão do estilo "imagem".
     const ICONE_PADRAO = 'pixel bloc.png';
 
-    // Catálogo de personagens disponíveis em assets/img/tema/.
+    // Catálogo de personagens disponíveis em img/tema/.
     // Exclui claro.gif e escuro.gif (Pac-Man usa o estilo "gif").
-    // Ordem: nome exibido → arquivo real.
     const PERSONAGENS = [
         { nome: 'Pixel Bloc', arquivo: 'pixel bloc.png' },
         { nome: 'Sonic',      arquivo: 'sonic.gif' },
@@ -35,30 +30,88 @@
         { nome: 'Eggman',     arquivo: 'eggman.gif' },
         { nome: 'Game Boy',   arquivo: 'gameboy.gif' },
         { nome: 'Moeda',      arquivo: 'moeda.gif' },
-        { nome: 'Video Games', arquivo: 'Video Games...gif' }
+        { nome: 'Video Games', arquivo: 'tarturuga.gif' }
     ];
+// ─── CONFIGURAÇÃO INDIVIDUAL POR ESTILO/PERSONAGEM ────────────────────────
+// Cada entrada ajusta a área visual interna da imagem na sidebar.
+// - `escala`: multiplicador sobre a área base (1 = padrão).
+// - `ajusteX`: deslocamento horizontal em % do próprio ícone.
+// - `ajusteY`: deslocamento vertical em % do próprio ícone.
+// - `proporcao`: proporção alvo dentro do container (width/height).
+//   Quando informada, o CSS usa `aspect-ratio` para preservar a arte.
+// O container do botão NUNCA muda de tamanho — só a imagem interna.
+const CONFIG_ICONES = {
+    // Pac-Man é largo e baixo: precisa de mais largura e menos altura.
+    pacman: {
+    escala: 5.0,
+    ajusteX: 0,
+    ajusteY: 0,
+    proporcao: '4 / 1'
+}, // Game Boy é alto e estreito: precisa de mais altura e menos largura.
+    gameboy: { escala: 1.20, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1.4' },
+    // Sonic é quadrado: escala padrão.
+    sonic:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+    // Mario é quadrado: escala padrão.
+    mario:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+    // Eggman é ligeiramente largo: pequena compensação.
+    eggman:  { escala: 1.05, ajusteX: 0, ajusteY: 0, proporcao: '1.3 / 1' },
+    // Moeda é quadrada.
+    moeda:   { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+    // Pixel Bloc é quadrado.
+    'pixel-bloc': { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' },
+    // Video Games é largo: compensa largura.
+    'video-games': { escala: 1.15, ajusteX: 0, ajusteY: 0, proporcao: '1.6 / 1' },
+    // Fallback para qualquer ícone não mapeado.
+    _default: { escala: 1.00, ajusteX: 0, ajusteY: 0, proporcao: '1 / 1' }
+};
 
+// Mapeia o nome do arquivo real para a chave em CONFIG_ICONES.
+const chaveConfigPorArquivo = (arquivo) => {
+    const nome = String(arquivo || '').toLowerCase();
+    if (nome === 'claro.gif' || nome === 'escuro.gif') return 'pacman';
+    if (nome === 'gameboy.gif')   return 'gameboy';
+    if (nome === 'sonic.gif')     return 'sonic';
+    if (nome === 'mario.gif')     return 'mario';
+    if (nome === 'eggman.gif')    return 'eggman';
+    if (nome === 'moeda.gif')     return 'moeda';
+    if (nome === 'pixel bloc.png') return 'pixel-bloc';
+    if (nome === 'video games...gif') return 'video-games';
+    return '_default';
+};
+
+const obterConfigIcone = (arquivo) => {
+    const chave = chaveConfigPorArquivo(arquivo);
+    return CONFIG_ICONES[chave] || CONFIG_ICONES._default;
+};
     const script = document.currentScript;
-    const obterBaseAssets = () => {
-        const baseMeta = document.querySelector('meta[name="base-path"]');
-        if (baseMeta?.content.trim()) return new URL(baseMeta.content.trim(), document.baseURI);
-        if (baseMeta && window.location.pathname.includes('/pages/')) return new URL('../', document.baseURI);
-        if (baseMeta) return new URL('./', document.baseURI);
-        return new URL('../../../', script?.src || document.baseURI);
-    };
-    const baseAssets = obterBaseAssets();
-    const gifs = {
-        claro: new URL('assets/img/tema/claro.gif', baseAssets).href,
-        escuro: new URL('assets/img/tema/escuro.gif', baseAssets).href
-    };
-    const cristalMagico = new URL('assets/img/tema/moeda.gif', baseAssets).href;
 
-    // Monta a URL absoluta de uma imagem em assets/img/tema/.
+    // Retorna a URL base da RAIZ do projeto.
+    // Usa meta[name="base-path"] quando disponível; caso contrário calcula
+    // a profundidade da página atual (index, /pages/, /pages/admin/).
+    const obterBaseRaiz = () => {
+        const baseMeta = document.querySelector('meta[name="base-path"]');
+        if (baseMeta && baseMeta.content.trim()) {
+            return new URL(baseMeta.content.trim(), document.baseURI);
+        }
+        const caminho = window.location.pathname;
+        if (caminho.includes('/pages/admin/')) return new URL('../../', document.baseURI);
+        if (caminho.includes('/pages/'))       return new URL('../', document.baseURI);
+        return new URL('./', document.baseURI);
+    };
+    const baseRaiz = obterBaseRaiz();
+
+    // Monta a URL absoluta de uma imagem em img/tema/.
     const urlIconeTema = (nomeArquivo) => {
         const nome = String(nomeArquivo || '').trim();
-        if (!nome) return new URL(`assets/img/tema/${ICONE_PADRAO}`, baseAssets).href;
-        return new URL(`assets/img/tema/${nome}`, baseAssets).href;
+        const arquivo = nome || ICONE_PADRAO;
+        return new URL(`img/tema/${arquivo}`, baseRaiz).href;
     };
+
+    const gifs = {
+        claro:  urlIconeTema('claro.gif'),
+        escuro: urlIconeTema('escuro.gif')
+    };
+    const cristalMagico = urlIconeTema('moeda.gif');
 
     // Normaliza o nome do ícone salvo: precisa ser um arquivo simples
     // (sem barras), não pode ser um ícone de estado do tema.
@@ -79,7 +132,6 @@
         estilo: ler('estilo', 'gif'),
         posicao: ler('posicao', 'superior-direito'),
         tamanho: ler('tamanho', 'medio'),
-        comportamento: ler('comportamento', 'claro-escuro'),
         icone: normalizarIcone(localStorage.getItem(chaves.icone))
     });
     const temaAtual = () => {
@@ -90,14 +142,8 @@
         }
         return document.documentElement.classList.contains('tema-escuro') ? 'escuro' : 'claro';
     };
-    const proximoTema = (tema, comportamento) => {
-        if (comportamento === 'claro-escuro-sistema') {
-            const salvo = localStorage.getItem('pref_tema');
-            const atual = salvo === 'claro' || salvo === 'escuro' || salvo === 'sistema' ? salvo : tema;
-            return atual === 'claro' ? 'escuro' : atual === 'escuro' ? 'sistema' : 'claro';
-        }
-        return tema === 'escuro' ? 'claro' : 'escuro';
-    };
+    // Comportamento sempre CLARO ↔ ESCURO (modo Sistema não é mais opção do atalho).
+    const proximoTema = (tema) => (tema === 'escuro' ? 'claro' : 'escuro');
 
     const conteudoEstilo = (estilo, tema, icone) => {
         if (estilo === 'gif') {
@@ -117,85 +163,80 @@
             // Personagem fixo escolhido pelo usuário — NÃO muda com o tema.
             return `<img class="atalho-tema-imagem" src="${urlIconeTema(icone)}" alt="" draggable="false">`;
         }
+        if (estilo === 'padrao-classico') {
+            // Switch/pílula horizontal com sol e lua, sem imagem externa.
+            return `
+                <span class="atalho-tema-classico-trilha" aria-hidden="true">
+                    <span class="atalho-tema-classico-icone atalho-tema-classico-sol">☀</span>
+                    <span class="atalho-tema-classico-icone atalho-tema-classico-lua">☾</span>
+                    <span class="atalho-tema-classico-botao"></span>
+                </span>`;
+        }
         return `<img class="atalho-tema-cristal-img" src="${cristalMagico}" alt="" draggable="false">`;
     };
-    const criarBotao = (previa = false) => {
+    const criarBotao = () => {
         const botao = document.createElement('button');
         botao.type = 'button';
         botao.className = 'atalho-tema atalho-tema-global';
-        if (previa) {
-            botao.setAttribute('data-atalho-tema-preview', '');
-            botao.setAttribute('aria-hidden', 'true');
-            botao.tabIndex = -1;
-        } else {
-            botao.id = 'atalhoTemaGlobal';
-            botao.setAttribute('data-atalho-tema-global', '');
-            botao.addEventListener('click', () => {
-                const config = configuracao();
-                if (!window.Preferencias || typeof window.Preferencias.aplicarTema !== 'function') return;
-                const tema = temaAtual();
-                const proximo = proximoTema(tema, config.comportamento);
-                botao.classList.remove('cristal-ativando');
-                void botao.offsetWidth;
-                botao.classList.add('cristal-ativando');
-                window.Preferencias.aplicarTema(proximo);
-                sincronizar();
-            });
-        }
+        botao.id = 'atalhoTemaGlobal';
+        botao.setAttribute('data-atalho-tema-global', '');
+        botao.addEventListener('click', () => {
+            const config = configuracao();
+            if (!window.Preferencias || typeof window.Preferencias.aplicarTema !== 'function') return;
+            const tema = temaAtual();
+            const proximo = proximoTema(tema);
+            botao.classList.remove('cristal-ativando');
+            void botao.offsetWidth;
+            botao.classList.add('cristal-ativando');
+            window.Preferencias.aplicarTema(proximo);
+            sincronizar();
+        });
         return botao;
     };
-    const atualizarBotao = (botao, previa = false) => {
-        const config = configuracao();
-        const tema = temaAtual();
-        const proximo = proximoTema(tema, config.comportamento);
-        const estilos = ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem'];
-        botao.classList.remove('atalho-tema-cristal', ...estilos.map(item => `atalho-tema-estilo-${item}`));
-        if (config.estilo === 'cristal-magico') botao.classList.add('atalho-tema-cristal');
-        botao.classList.add(`atalho-tema-estilo-${config.estilo}`);
-        botao.dataset.estilo = config.estilo;
-        botao.dataset.posicao = config.posicao;
-        botao.dataset.tamanho = config.tamanho;
-        botao.dataset.comportamento = config.comportamento;
-        botao.dataset.icone = config.icone;
-        botao.dataset.temaAtual = localStorage.getItem('pref_tema') === 'sistema' ? 'sistema' : tema;
-        botao.dataset.temaEfetivo = tema;
-        botao.setAttribute('aria-pressed', tema === 'escuro' ? 'true' : 'false');
-        if (!previa) {
-            const acao = proximo === 'sistema' ? 'modo do sistema' : `modo ${proximo}`;
-            botao.setAttribute('aria-label', `Alternar para ${acao}`);
-            botao.setAttribute('title', `Alternar tema — ${acao}`);
-        }
-        const conteudo = conteudoEstilo(config.estilo, tema, config.icone);
-        if (botao.innerHTML !== conteudo) botao.innerHTML = conteudo;
-        if (previa && botao.parentElement) {
-            botao.parentElement.dataset.posicao = config.posicao;
-            botao.parentElement.dataset.ativo = String(config.ativo);
-            botao.parentElement.setAttribute('aria-label', `Prévia: ${config.estilo}, ${config.posicao}, tamanho ${config.tamanho}, atalho ${config.ativo ? 'ativado' : 'desativado'}`);
-        }
-    };
+ const atualizarBotao = (botao) => {
+    const config = configuracao();
+    const tema = temaAtual();
+    const proximo = proximoTema(tema);
+    const estilos = ['cristal-magico', 'circular', 'sol-lua', 'gif', 'minimalista', 'imagem', 'padrao-classico'];
+    botao.classList.remove('atalho-tema-cristal', ...estilos.map(item => `atalho-tema-estilo-${item}`));
+    if (config.estilo === 'cristal-magico') botao.classList.add('atalho-tema-cristal');
+    botao.classList.add(`atalho-tema-estilo-${config.estilo}`);
+    botao.dataset.estilo = config.estilo;
+    botao.dataset.posicao = config.posicao;
+    botao.dataset.tamanho = config.tamanho;
+    botao.dataset.icone = config.icone;
+    botao.dataset.temaAtual = localStorage.getItem('pref_tema') === 'sistema' ? 'sistema' : tema;
+    botao.dataset.temaEfetivo = tema;
+    botao.setAttribute('aria-pressed', tema === 'escuro' ? 'true' : 'false');
+    const acao = `modo ${proximo}`;
+    botao.setAttribute('aria-label', `Alternar para ${acao}`);
+    botao.setAttribute('title', `Alternar tema — ${acao}`);
+
+    // ── Compensação individual por estilo/personagem ──
+    // Define CSS custom properties no botão para o CSS consumir.
+    const arquivoAtual = config.estilo === 'gif'
+        ? (tema === 'escuro' ? 'escuro.gif' : 'claro.gif')
+        : config.icone;
+    const cfg = obterConfigIcone(arquivoAtual);
+    botao.style.setProperty('--atalho-icon-escala',   cfg.escala);
+    botao.style.setProperty('--atalho-icon-ajuste-x', `${cfg.ajusteX}%`);
+    botao.style.setProperty('--atalho-icon-ajuste-y', `${cfg.ajusteY}%`);
+    botao.style.setProperty('--atalho-icon-proporcao', cfg.proporcao);
+
+    const conteudo = conteudoEstilo(config.estilo, tema, config.icone);
+    if (botao.innerHTML !== conteudo) botao.innerHTML = conteudo;
+};
     const sincronizar = () => {
         const config = configuracao();
         let botao = document.getElementById('atalhoTemaGlobal');
         if (!config.ativo) {
             botao?.remove();
         } else {
-            if (!botao) {
-                botao = criarBotao();
-            }
+            if (!botao) botao = criarBotao();
             const destino = obterDestino(config);
             if (botao.parentElement !== destino) destino.appendChild(botao);
             atualizarBotao(botao);
         }
-        document.querySelectorAll('[data-atalho-tema-preview]').forEach(botaoPreview => atualizarBotao(botaoPreview, true));
-    };
-    const criarPreview = (container) => {
-        if (!container) return;
-        let preview = container.querySelector('[data-atalho-tema-preview]');
-        if (!preview) {
-            preview = criarBotao(true);
-            container.appendChild(preview);
-        }
-        atualizarBotao(preview, true);
     };
     const obterDestino = config => {
         if (config.posicao !== 'barra-lateral-inferior') return document.body;
@@ -203,7 +244,6 @@
     };
 
     // API pública para a página de configuração definir o ícone escolhido.
-    // Uso: window.AtalhoTema.definirIcone('sonic.gif')
     const definirIcone = (nomeArquivo) => {
         const nome = normalizarIcone(nomeArquivo);
         localStorage.setItem(chaves.icone, nome);
@@ -212,7 +252,6 @@
     };
     const obterIcone = () => configuracao().icone;
 
-    // Lista de ícones disponíveis (nomes de arquivo), exceto claro.gif/escuro.gif.
     const filtrarIconesDisponiveis = (nomes) => {
         if (!Array.isArray(nomes)) return [];
         return nomes
@@ -221,12 +260,10 @@
             .filter(nome => !ICONES_ESTADO_TEMA.includes(nome.toLowerCase()));
     };
 
-    // Lista de personagens do catálogo (nome exibido + arquivo real).
     const listarPersonagens = () => PERSONAGENS.map(p => ({ ...p }));
 
     window.AtalhoTema = {
         sincronizar,
-        criarPreview,
         definirIcone,
         obterIcone,
         filtrarIconesDisponiveis,

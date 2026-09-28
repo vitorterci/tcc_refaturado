@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="base-path" content="../" />
     <title>Game Search — Configurações</title>
-    <link rel="stylesheet" href="../assets/css/global.css" />
-    <link rel="stylesheet" href="../assets/css/PixelBlast.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/PixelBlast.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -1269,7 +1269,7 @@
       <aside class="barra-lateral" id="sidebarDrawer">
         <div class="sidebar-logo">
           <a href="../index.html" aria-label="Ir para a página inicial">
-            <img src="../assets/img/logo2.png" alt="Game Search"
+            <img src="../img/logo2.png" alt="Game Search"
           /></a>
         </div>
 
@@ -1468,7 +1468,7 @@
                 </div>
                 <div class="avatar-container">
                   <img
-                    src="../assets/img/logo.png"
+                    src="../img/logo.png"
                     alt="Foto de perfil"
                     class="avatar-grande"
                     id="fotoPerfil"
@@ -1866,55 +1866,46 @@
                 </div>
               </div>
 
-              <div class="atalho-tema-config" aria-labelledby="atalhoTemaTitulo">
-                <div class="aparencia-bloco-heading">
-                  <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"><i class="fas fa-toggle-on"></i></span>
-                  <div>
-                    <span class="opcao-titulo" id="atalhoTemaTitulo">Atalho de tema</span>
-                    <span class="opcao-descricao">Personalize o acesso rápido ao tema em todas as páginas.</span>
-                  </div>
-                  <label class="atalho-tema-toggle" for="atalhoTemaAtivo">
-                    <input id="atalhoTemaAtivo" type="checkbox" />
-                    <span>Ativado</span>
-                  </label>
-                </div>
-                <div class="atalho-tema-config-grid">
-                  <label>Estilo
-                    <select id="atalhoTemaEstilo">
-                      <option value="cristal-magico">Cristal Mágico</option>
-                      <option value="circular">Circular</option>
-                      <option value="sol-lua">Sol/Lua</option>
-                      <option value="gif">GIF</option>
-                      <option value="minimalista">Minimalista</option>
-                    </select>
-                  </label>
-                  <label>Posição
-                    <select id="atalhoTemaPosicao">
-                      <option value="superior-direito">Superior direito</option>
-                      <option value="inferior-direito">Inferior direito</option>
-                      <option value="inferior-esquerdo">Inferior esquerdo</option>
-                      <option value="barra-lateral-inferior">Barra lateral — inferior</option>
-                    </select>
-                  </label>
-                  <label>Tamanho
-                    <select id="atalhoTemaTamanho">
-                      <option value="pequeno">Pequeno</option>
-                      <option value="medio">Médio</option>
-                      <option value="grande">Grande</option>
-                    </select>
-                  </label>
-                  <label>Comportamento
-                    <select id="atalhoTemaComportamento">
-                      <option value="claro-escuro">Claro ↔ Escuro</option>
-                      <option value="claro-escuro-sistema">Claro → Escuro → Sistema</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="atalho-tema-previa">
-                  <span class="atalho-tema-previa-titulo">Pré-visualização em tempo real</span>
-                  <div class="atalho-tema-preview-stage" id="atalhoTemaPreview"></div>
-                </div>
-              </div>
+<div class="atalho-tema-config" aria-labelledby="atalhoTemaTitulo">
+  <div class="aparencia-bloco-heading">
+    <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"><i class="fas fa-toggle-on"></i></span>
+    <div>
+      <span class="opcao-titulo" id="atalhoTemaTitulo">Atalho de tema</span>
+      <span class="opcao-descricao">Personalize o acesso rápido ao tema em todas as páginas.</span>
+    </div>
+    <label class="atalho-tema-toggle" for="atalhoTemaAtivo">
+      <input id="atalhoTemaAtivo" type="checkbox" />
+      <span>Ativado</span>
+    </label>
+  </div>
+  <div class="atalho-tema-config-grid">
+    <label>Estilo
+      <select id="atalhoTemaEstilo">
+        <option value="cristal-magico">Cristal Mágico</option>
+        <option value="circular">Circular</option>
+        <option value="sol-lua">Sol/Lua</option>
+        <option value="gif">GIF</option>
+        <option value="minimalista">Minimalista</option>
+        <option value="padrao-classico">Padrão/Clássico</option>
+      </select>
+    </label>
+    <label>Posição
+      <select id="atalhoTemaPosicao">
+        <option value="superior-direito">Superior direito</option>
+        <option value="inferior-direito">Inferior direito</option>
+        <option value="inferior-esquerdo">Inferior esquerdo</option>
+        <option value="barra-lateral-inferior">Barra lateral — inferior</option>
+      </select>
+    </label>
+    <label>Tamanho
+      <select id="atalhoTemaTamanho">
+        <option value="pequeno">Pequeno</option>
+        <option value="medio">Médio</option>
+        <option value="grande">Grande</option>
+      </select>
+    </label>
+  </div>
+</div>
             </div>
           </div>
 
@@ -2274,9 +2265,9 @@
       <i class="fas fa-bars"></i>
     </button>
 
-    <script src="../assets/js/global.js"></script>
-    <script src="../assets/js/navegacao/sidebar.js"></script>
-    <script src="../assets/js/navegacao/navegacao.js"></script>
+    <script src="../js/global.js"></script>
+    <script src="../js/navegacao/sidebar.js"></script>
+    <script src="../js/navegacao/navegacao.js"></script>
     <script>
       // ── CONFIGURAÇÕES DA PÁGINA ────────────────────────────────────────────
 
@@ -2598,7 +2589,7 @@
         if (elements.fotoPerfil) {
           elements.fotoPerfil.src = usuario.foto_perfil
             ? `../${usuario.foto_perfil}?v=${Date.now()}`
-            : "../assets/img/logo.png";
+            : "../img/logo.png";
         }
 
         // Nome
@@ -3094,125 +3085,123 @@
       });
     </script>
 
-   <script>
-  // Preferências do atalho global de tema — persistidas apenas no dispositivo.
-  document.addEventListener("DOMContentLoaded", () => {
-    const controles = {
-      ativo: document.getElementById("atalhoTemaAtivo"),
-      estilo: document.getElementById("atalhoTemaEstilo"),
-      posicao: document.getElementById("atalhoTemaPosicao"),
-      tamanho: document.getElementById("atalhoTemaTamanho"),
-      comportamento: document.getElementById("atalhoTemaComportamento"),
-    };
-    const chaves = {
-      ativo: "pref_atalho_tema_ativo",
-      estilo: "pref_atalho_tema",
-      posicao: "pref_atalho_tema_posicao",
-      tamanho: "pref_atalho_tema_tamanho",
-      comportamento: "pref_atalho_tema_comportamento",
-      icone: "pref_icone_tema",
-    };
-    const padroes = {
-      estilo: "gif",
-      posicao: "superior-direito",
-      tamanho: "medio",
-      comportamento: "claro-escuro",
-    };
+<script>
+// Preferências do atalho global de tema — persistidas apenas no dispositivo.
+document.addEventListener("DOMContentLoaded", () => {
+  const controles = {
+    ativo: document.getElementById("atalhoTemaAtivo"),
+    estilo: document.getElementById("atalhoTemaEstilo"),
+    posicao: document.getElementById("atalhoTemaPosicao"),
+    tamanho: document.getElementById("atalhoTemaTamanho"),
+  };
+  const chaves = {
+    ativo: "pref_atalho_tema_ativo",
+    estilo: "pref_atalho_tema",
+    posicao: "pref_atalho_tema_posicao",
+    tamanho: "pref_atalho_tema_tamanho",
+    icone: "pref_icone_tema",
+  };
+  const padroes = {
+    estilo: "gif",
+    posicao: "superior-direito",
+    tamanho: "medio",
+  };
 
-    // ── Reconstrói o <select> de Estilo ───────────────────────────────────
-    // Opção 1: Pac-Man (estilo "gif" — troca claro/escuro).
-    // Opções 2..N: personagens do catálogo (estilo "imagem" + pref_icone_tema).
-    const reconstruirMenuEstilo = () => {
-      const select = controles.estilo;
-      if (!select || !window.AtalhoTema) return;
+  // Reconstrói o <select> de Estilo:
+  // Opção 1: Pac-Man (estilo "gif" — troca claro/escuro).
+  // Opção 2: Padrão/Clássico (switch pílula sem imagem).
+  // Opções 3..N: personagens do catálogo (estilo "imagem" + pref_icone_tema).
+  const reconstruirMenuEstilo = () => {
+    const select = controles.estilo;
+    if (!select || !window.AtalhoTema) return;
 
-      const personagens = window.AtalhoTema.listarPersonagens();
-      const iconeAtual = window.AtalhoTema.obterIcone();
-      const estiloAtualSalvo = localStorage.getItem(chaves.estilo);
+    const personagens = window.AtalhoTema.listarPersonagens();
+    const iconeAtual = window.AtalhoTema.obterIcone();
+    const estiloAtualSalvo = localStorage.getItem(chaves.estilo);
 
-      // Limpa todas as opções antigas.
-      select.innerHTML = "";
+    select.innerHTML = "";
 
-      // Opção Pac-Man → value "gif".
-      const optPacMan = document.createElement("option");
-      optPacMan.value = "gif";
-      optPacMan.textContent = "Pac-Man (claro/escuro)";
-      select.appendChild(optPacMan);
+    const optPacMan = document.createElement("option");
+    optPacMan.value = "gif";
+    optPacMan.textContent = "Pac-Man (claro/escuro)";
+    select.appendChild(optPacMan);
 
-      // Opções de personagens → value "imagem:<arquivo>".
-      personagens.forEach((p) => {
-        const opt = document.createElement("option");
-        opt.value = `imagem:${p.arquivo}`;
-        opt.textContent = p.nome;
-        select.appendChild(opt);
-      });
+    const optClassico = document.createElement("option");
+    optClassico.value = "padrao-classico";
+    optClassico.textContent = "Padrão/Clássico";
+    select.appendChild(optClassico);
 
-      // Determina qual opção marcar como selecionada.
-      let valorSelecionado;
-      if (estiloAtualSalvo === "imagem") {
-        valorSelecionado = `imagem:${iconeAtual}`;
-        if (![...select.options].some((o) => o.value === valorSelecionado)) {
-          valorSelecionado = "gif";
-        }
-      } else {
+    personagens.forEach((p) => {
+      const opt = document.createElement("option");
+      opt.value = `imagem:${p.arquivo}`;
+      opt.textContent = p.nome;
+      select.appendChild(opt);
+    });
+
+    let valorSelecionado;
+    if (estiloAtualSalvo === "imagem") {
+      valorSelecionado = `imagem:${iconeAtual}`;
+      if (![...select.options].some((o) => o.value === valorSelecionado)) {
         valorSelecionado = "gif";
       }
-      select.value = valorSelecionado;
-    };
+    } else if (estiloAtualSalvo === "padrao-classico") {
+      valorSelecionado = "padrao-classico";
+    } else {
+      valorSelecionado = "gif";
+    }
+    select.value = valorSelecionado;
+  };
 
-    // ── Estado inicial ────────────────────────────────────────────────────
-    controles.ativo.checked = localStorage.getItem(chaves.ativo) !== "false";
-    const textoEstadoAtalho = controles.ativo.parentElement.querySelector("span");
-    const atualizarTextoEstado = () => {
-      textoEstadoAtalho.textContent = controles.ativo.checked ? "Ativado" : "Desativado";
-    };
+  // ── Estado inicial ────────────────────────────────────────────────────
+  controles.ativo.checked = localStorage.getItem(chaves.ativo) !== "false";
+  const textoEstadoAtalho = controles.ativo.parentElement.querySelector("span");
+  const atualizarTextoEstado = () => {
+    textoEstadoAtalho.textContent = controles.ativo.checked ? "Ativado" : "Desativado";
+  };
+  atualizarTextoEstado();
+
+  ["posicao", "tamanho"].forEach((campo) => {
+    const salvo = localStorage.getItem(chaves[campo]) || padroes[campo];
+    if ([...controles[campo].options].some((opcao) => opcao.value === salvo)) {
+      controles[campo].value = salvo;
+    }
+  });
+
+  reconstruirMenuEstilo();
+
+  // ── Salvamento ────────────────────────────────────────────────────────
+  const salvarAtalho = () => {
+    localStorage.setItem(chaves.ativo, String(controles.ativo.checked));
     atualizarTextoEstado();
 
-    // Posição, Tamanho, Comportamento (não mudam).
-    ["posicao", "tamanho", "comportamento"].forEach((campo) => {
-      const salvo = localStorage.getItem(chaves[campo]) || padroes[campo];
-      if ([...controles[campo].options].some((opcao) => opcao.value === salvo)) {
-        controles[campo].value = salvo;
-      }
+    const valorEstilo = controles.estilo.value;
+    if (valorEstilo === "gif") {
+      localStorage.setItem(chaves.estilo, "gif");
+    } else if (valorEstilo === "padrao-classico") {
+      localStorage.setItem(chaves.estilo, "padrao-classico");
+    } else if (valorEstilo.startsWith("imagem:")) {
+      const arquivo = valorEstilo.slice("imagem:".length);
+      localStorage.setItem(chaves.estilo, "imagem");
+      localStorage.setItem(chaves.icone, arquivo);
+    }
+
+    ["posicao", "tamanho"].forEach((campo) => {
+      localStorage.setItem(chaves[campo], controles[campo].value);
     });
 
-    // Reconstrói o menu de Estilo com Pac-Man + personagens.
-    reconstruirMenuEstilo();
+    window.AtalhoTema?.sincronizar();
+  };
 
-    window.AtalhoTema?.criarPreview(document.getElementById("atalhoTemaPreview"));
+  Object.values(controles).forEach((controle) => {
+    controle.addEventListener("change", salvarAtalho);
+  });
 
-    // ── Salvamento ────────────────────────────────────────────────────────
-    const salvarAtalho = () => {
-      localStorage.setItem(chaves.ativo, String(controles.ativo.checked));
-      atualizarTextoEstado();
-
-      // Estilo: "gif" (Pac-Man) OU "imagem:<arquivo>" (personagem).
-      const valorEstilo = controles.estilo.value;
-      if (valorEstilo === "gif") {
-        localStorage.setItem(chaves.estilo, "gif");
-      } else if (valorEstilo.startsWith("imagem:")) {
-        const arquivo = valorEstilo.slice("imagem:".length);
-        localStorage.setItem(chaves.estilo, "imagem");
-        localStorage.setItem(chaves.icone, arquivo);
-      }
-
-      ["posicao", "tamanho", "comportamento"].forEach((campo) => {
-        localStorage.setItem(chaves[campo], controles[campo].value);
-      });
-
-      window.AtalhoTema?.sincronizar();
-    };
-
-    Object.values(controles).forEach((controle) => {
-      controle.addEventListener("change", salvarAtalho);
-    });
-
-    salvarAtalho();
-  }, { once: true });
+  salvarAtalho();
+}, { once: true });
 </script>
     <!-- PixelBlast Background Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="../assets/js/PixelBlast.js"></script>
+    <script src="../js/PixelBlast.js"></script>
     <script src="assets/js/pages/usuario.js"></script>
    
   </body>

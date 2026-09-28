@@ -12,9 +12,9 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Search — Painel Admin</title>
-    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../assets/css/PixelBlast.css">
+    <link rel="stylesheet" href="../../css/PixelBlast.css">
     <style>
         .dashboard-stats,
         .admin-grid {
@@ -230,7 +230,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
         <aside class="barra-lateral" id="sidebarDrawer">
              <div class="sidebar-logo">
                 <a href="../../index.html" aria-label="Ir para a página inicial">
-                <img src="../../assets/img/logo2.png" alt="Game Search"></a>
+                <img src="../../img/logo2.png" alt="Game Search"></a>
             </div>
             <div class="sidebar-secao">
                 <h3 class="sidebar-titulo">Administração</h3>
@@ -366,11 +366,11 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
         <i class="fas fa-bars"></i>
     </button>
     
-    <script src="../../assets/js/global.js"></script>
-    <script src="../../assets/js/navegacao/sidebar.js"></script>
-    <script src="../../assets/js/navegacao/navegacao.js"></script>
+    <script src="../../js/global.js"></script>
+    <script src="../../js/navegacao/sidebar.js"></script>
+    <script src="../../js/navegacao/navegacao.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="../../assets/js/PixelBlast.js"></script>
+    <script src="../../js/PixelBlast.js"></script>
 
 </body>
 </html>

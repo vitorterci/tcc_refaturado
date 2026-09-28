@@ -570,7 +570,7 @@ if ($acao === 'upload_photo') {
     $tipos = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/gif' => 'gif', 'image/webp' => 'webp'];
     if (!isset($tipos[$mime])) responder(['success' => false, 'message' => 'Tipo de imagem não permitido. Use JPG, PNG, GIF ou WEBP.'], 422);
 
-    $diretorio = dirname(__DIR__, 2) . '/assets/uploads/perfil';
+    $diretorio = dirname(__DIR__, 2) . '/uploads/perfil';
     if (!is_dir($diretorio) && !mkdir($diretorio, 0755, true)) responder(['success' => false, 'message' => 'Não foi possível preparar o armazenamento da imagem.'], 500);
     $nomeArquivo = 'usuario_' . $usuarioId . '_' . bin2hex(random_bytes(12)) . '.' . $tipos[$mime];
     $destino = $diretorio . '/' . $nomeArquivo;

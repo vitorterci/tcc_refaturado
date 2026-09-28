@@ -9,8 +9,8 @@
 
 <title>Game Search — Perfil</title>
 
-<link rel="stylesheet" href="../assets/css/global.css">
-<link rel="stylesheet" href="../assets/css/PixelBlast.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/PixelBlast.css">
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -544,7 +544,7 @@ background: var(--cor-card, var(--cor-lateral));        border: 1px solid var(--
 <!-- SIDEBAR -->
 <aside class="barra-lateral" id="sidebarDrawer">
     <div class="sidebar-logo"><a href="../index.html" ></a>
-                <img src="../assets/img/logo2.png" alt="Game Search"></a>
+                <img src="../img/logo2.png" alt="Game Search"></a>
             </div>
     <!-- Navegação Principal -->
     <div class="sidebar-secao">
@@ -1076,11 +1076,11 @@ background: var(--cor-card, var(--cor-lateral));        border: 1px solid var(--
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="../assets/js/PixelBlast.js"></script>
-<script src="../assets/js/global.js"></script>
-    <script src="../assets/js/navegacao/sidebar.js"></script>
-    <script src="../assets/js/navegacao/navegacao.js"></script>
-<script src="../assets/js/dado_user.js"></script>
+<script src="../js/PixelBlast.js"></script>
+<script src="../js/global.js"></script>
+    <script src="../js/navegacao/sidebar.js"></script>
+    <script src="../js/navegacao/navegacao.js"></script>
+<script src="../js/dado_user.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', async function () {
@@ -1158,11 +1158,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
         elementos.meusJogosLista.innerHTML = jogos.map(jogo => {
-            const imagem = jogo.img ? `../${String(jogo.img).replace(/^\/+/, '')}` : '../assets/img/naoencontrada.png';
+            const imagem = jogo.img ? `../${String(jogo.img).replace(/^\/+/, '')}` : '../img/naoencontrada.png';
             const statusTexto = statusMeusJogos[jogo.status] || 'Possuo';
             const opcoes = Object.entries(statusMeusJogos).map(([valor, texto]) => `<option value="${valor}"${jogo.status === valor ? ' selected' : ''}>${texto}</option>`).join('');
             return `<article class="meu-jogo-card" data-jogo-id="${Number(jogo.jogo_id)}">
-                <img src="${escaparHTML(imagem)}" alt="Capa de ${escaparHTML(jogo.nome)}" onerror="this.onerror=null;this.src='../assets/img/naoencontrada.png';">
+                <img src="${escaparHTML(imagem)}" alt="Capa de ${escaparHTML(jogo.nome)}" onerror="this.onerror=null;this.src='../img/naoencontrada.png';">
                 <div class="meu-jogo-info">
                     <span class="meu-jogo-status-badge status-${escaparHTML(jogo.status || 'possuo')}"><i class="fas fa-circle" aria-hidden="true"></i> ${statusTexto}</span>
                     <strong class="meu-jogo-titulo">${escaparHTML(jogo.nome)}</strong>
@@ -1207,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         const itens = await Promise.all(lista.map(async jogo => ({ jogo, oferta: await obterOfertaLista(jogo.slug) })));
         elementos.minhaListaConteudo.innerHTML = itens.map(({ jogo, oferta }) => {
-            const imagem = jogo.img ? `../${String(jogo.img).replace(/^\/+/, '')}` : '../assets/img/naoencontrada.png';
+            const imagem = jogo.img ? `../${String(jogo.img).replace(/^\/+/, '')}` : '../img/naoencontrada.png';
             const alvo = jogo.preco_alvo === null ? '' : String(jogo.preco_alvo);
             const desconto = jogo.desconto_minimo === null ? '' : String(jogo.desconto_minimo);
             const link = oferta?.url || '#';
@@ -1215,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 ? `<div class="meu-jogo-oferta"><span class="minha-lista-preco-label">Menor preço</span><strong class="minha-lista-preco">${moedaLista(oferta.preco)}</strong><span class="minha-lista-loja">${escaparHTML(oferta.loja || 'Loja')}</span>${Number(oferta.desconto || 0) > 0 ? `<span class="minha-lista-desconto">${Number(oferta.desconto)}% OFF</span>` : ''}${Number(oferta.preco_antigo || 0) > Number(oferta.preco || 0) ? `<span class="minha-lista-preco-anterior">antes ${moedaLista(oferta.preco_antigo)}</span>` : ''}</div><a class="btn-comprar" href="${escaparHTML(link)}" target="_blank" rel="noopener noreferrer">Ver oferta <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
                 : '<div class="meu-jogo-oferta"><span class="minha-lista-sem-oferta">Nenhuma oferta disponível no momento.</span></div>';
             return `<article class="meu-jogo-card minha-lista-card" data-jogo-id="${Number(jogo.jogo_id)}">
-                <img src="${escaparHTML(imagem)}" alt="Capa de ${escaparHTML(jogo.nome)}" onerror="this.onerror=null;this.src='../assets/img/naoencontrada.png';">
+                <img src="${escaparHTML(imagem)}" alt="Capa de ${escaparHTML(jogo.nome)}" onerror="this.onerror=null;this.src='../img/naoencontrada.png';">
                 <div class="meu-jogo-info"><div class="minha-lista-detalhes"><span class="minha-lista-secao">Informações do jogo</span><strong class="minha-lista-titulo">${escaparHTML(jogo.nome)}</strong>${dadosOferta}</div>
                     <div class="minha-lista-acompanhamento"><span class="minha-lista-secao">Acompanhamento</span>
                     <label class="meu-jogo-config">Preço-alvo <input class="lista-preco-alvo" type="number" min="0" step="0.01" value="${escaparHTML(alvo)}" placeholder="Opcional"></label>

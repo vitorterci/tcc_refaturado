@@ -512,7 +512,7 @@ function montarResposta(array $jogo, array $precos): array
 |--------------------------------------------------------------------------
 */
 
-$acao = strtolower(valorGet('acao'));
+$acao = strtolower(valorGet('acao')) ?: 'buscar';
 
 $id = valorGet('id');
 $slug = valorGet('slug');
