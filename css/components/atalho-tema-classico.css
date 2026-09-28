@@ -1,0 +1,202 @@
+/* ─── ESTILO PADRÃO/CLÁSSICO — SWITCH DAY/NIGHT ──────────────────────────── */
+/*
+ * Arquivo dedicado ao estilo Padrão/Clássico.
+ * Isolado para não interferir em Pac-Man, Game Boy nem nos demais estilos.
+ *
+ * NÃO usa !important.
+ * NÃO altera overflow da .barra-lateral.
+ * NÃO força margin/posição — apenas o visual interno do switch.
+ */
+
+.atalho-tema-global.atalho-tema-estilo-padrao-classico {
+  width: 130px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  isolation: isolate;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-lado {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-claro  { left: 0;  padding-left: 10px; }
+.atalho-tema-estilo-padrao-classico .neon-toggle-escuro { right: 0; padding-right: 10px; }
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.atalho-tema-estilo-padrao-classico .neon-toggle-icone {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.25s ease, transform 0.3s ease, color 0.25s ease;
+}
+
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-trilha {
+  background: #f0f2f5;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-claro {
+  opacity: 1;
+  transform: translateX(0);
+  color: #1a1a26;
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-escuro {
+  opacity: 0;
+  transform: translateX(6px);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
+  transform: translateX(92px);
+  background: #ffffff;
+  border: 1.5px solid var(--cor-primaria, #ff0055);
+  box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-sol {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  color: var(--cor-primaria, #ff0055);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-lua {
+  opacity: 0;
+  transform: scale(0.5) rotate(-45deg);
+}
+
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-trilha {
+  background: #12121a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-escuro {
+  opacity: 1;
+  transform: translateX(0);
+  color: #ffffff;
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-claro {
+  opacity: 0;
+  transform: translateX(-6px);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-slider {
+  transform: translateX(0);
+  background: #1a1a26;
+  border: 1.5px solid var(--cor-primaria, #ff0055);
+  box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-lua {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  color: var(--cor-primaria, #ff0055);
+}
+.atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-sol {
+  opacity: 0;
+  transform: scale(0.5) rotate(45deg);
+}
+
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico {
+  width: 110px;
+  height: 32px;
+}
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+  width: 26px;
+  height: 26px;
+}
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
+  width: 13px;
+  height: 13px;
+}
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
+  transform: translateX(78px);
+}
+.atalho-tema-global[data-tamanho="pequeno"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-size: 9px;
+}
+
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
+  width: 150px;
+  height: 44px;
+}
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+  width: 38px;
+  height: 38px;
+}
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-icone {
+  width: 19px;
+  height: 19px;
+}
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
+  transform: translateX(106px);
+}
+.atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+  font-size: 11px;
+}
+
+.barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
+  align-self: center;
+  margin: auto auto 16px;
+}
+
+.barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"][data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
+  width: 150px;
+  height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atalho-tema-estilo-padrao-classico .neon-toggle-trilha,
+  .atalho-tema-estilo-padrao-classico .neon-toggle-lado,
+  .atalho-tema-estilo-padrao-classico .neon-toggle-slider,
+  .atalho-tema-estilo-padrao-classico .neon-toggle-icone {
+    transition: none !important;
+  }
+}
