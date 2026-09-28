@@ -48,9 +48,11 @@
   justify-content: center;
   width: 50%;
   min-width: 0;
+  padding: 0 4px;
   box-sizing: border-box;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -61,7 +63,8 @@
   display: block;
   max-width: 100%;
   min-width: 0;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  box-sizing: border-box;
   font-family: inherit;
   font-size: 10px;
   font-weight: 800;
@@ -180,7 +183,7 @@
 }
 
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico {
-  --classico-largura: 150px;
+  --classico-largura: 165px;
   --classico-altura: 44px;
   --classico-slider: 38px;
 }
@@ -189,7 +192,7 @@
   height: 19px;
 }
 .atalho-tema-global[data-tamanho="grande"].atalho-tema-estilo-padrao-classico .neon-toggle-texto {
-  font-size: 11px;
+  font-size: 9.5px;
 }
 
 .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico {
@@ -294,5 +297,27 @@
   .atalho-tema-estilo-padrao-classico .neon-toggle-slider,
   .atalho-tema-estilo-padrao-classico .neon-toggle-icone {
     transition: none !important;
+  }
+}
+
+
+/* ─── TELAS MUITO PEQUENAS: SOMENTE ÍCONE ────────────────────────────────── */
+@media (max-width: 480px) {
+  .atalho-tema-estilo-padrao-classico .neon-toggle-texto {
+    display: none;
+  }
+
+  .atalho-tema-estilo-padrao-classico .neon-toggle-trilha {
+    justify-content: center;
+  }
+
+  .atalho-tema-estilo-padrao-classico .neon-toggle-slider {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider,
+  .atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-slider {
+    transform: translateX(-50%);
   }
 }
