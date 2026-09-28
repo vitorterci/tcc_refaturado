@@ -139,14 +139,14 @@ CREATE TABLE `jogos` (
 --
 
 INSERT INTO `jogos` (`id`, `slug`, `nome`, `descricao`, `imagem`, `genero`, `avaliacao`, `categoria`, `gratuito`, `disponivel`, `desenvolvedora`, `tamanho`, `classificacao`, `data_atualizacao`) VALUES
-(1, 'cyberpunk-2077', 'Cyberpunk 2077', 'RPG de ação em mundo aberto ambientado em Night City.', 'gogfake/assets/img/cyberpunk-2077.svg', 'RPG / Ação', 9.1, 'popular', 0, 1, 'CD Projekt Red', '70 GB', '18', '2026-08-27 11:04:51'),
-(2, 'the-witcher-3', 'The Witcher 3: Wild Hunt', 'Uma aventura épica de fantasia em um mundo aberto repleto de escolhas.', 'gogfake/assets/img/the-witcher-3.svg', 'RPG / Fantasia', 9.5, 'popular', 0, 1, 'CD Projekt Red', '50 GB', '16', '2026-08-27 11:04:51'),
-(3, 'baldurs-gate-3', 'Baldur\'s Gate 3', 'RPG narrativo baseado em Dungeons & Dragons com liberdade de decisões.', 'gogfake/assets/img/baldurs-gate-3.svg', 'RPG', 9.7, 'popular', 0, 1, 'Larian Studios', '150 GB', '16', '2026-08-27 11:04:51'),
-(4, 'elden-ring', 'Elden Ring', 'Uma jornada de fantasia sombria em um vasto mundo aberto.', 'gogfake/assets/img/elden-ring.svg', 'RPG / Ação', 9.4, 'popular', 0, 1, 'FromSoftware', '60 GB', '16', '2026-08-27 11:04:51'),
-(5, 'hogwarts-legacy', 'Hogwarts Legacy', 'Explore Hogwarts e descubra sua própria história no mundo bruxo.', 'gogfake/assets/img/hogwarts-legacy.svg', 'Ação / Aventura', 8.8, 'lancamento', 0, 1, 'Avalanche Software', '85 GB', '12', '2026-08-27 11:04:51'),
-(6, 'resident-evil-4', 'Resident Evil 4', 'Remake de uma missão de resgate em uma vila tomada pelo terror.', 'gogfake/assets/img/resident-evil-4.svg', 'Terror / Ação', 9.0, 'promocao', 0, 1, 'Capcom', '67 GB', '18', '2026-08-27 11:04:51'),
-(7, 'stardew-valley', 'Stardew Valley', 'Construa uma nova vida em uma fazenda cercada por uma comunidade acolhedora.', 'gogfake/assets/img/stardew-valley.svg', 'Simulação / RPG', 9.2, 'popular', 0, 1, 'ConcernedApe', '1 GB', 'L', '2026-08-27 11:04:51'),
-(8, 'among-us', 'Among Us', 'Descubra o impostor em partidas cooperativas de investigação e estratégia.', 'gogfake/assets/img/among-us.svg', 'Ação / Social', 8.1, 'popular', 0, 1, 'Innersloth', '250 MB', 'L', '2026-08-27 11:04:51');
+(1, 'cyberpunk-2077', 'Cyberpunk 2077', 'RPG de ação em mundo aberto ambientado em Night City.', 'gogfake/img/cyberpunk-2077.svg', 'RPG / Ação', 9.1, 'popular', 0, 1, 'CD Projekt Red', '70 GB', '18', '2026-08-27 11:04:51'),
+(2, 'the-witcher-3', 'The Witcher 3: Wild Hunt', 'Uma aventura épica de fantasia em um mundo aberto repleto de escolhas.', 'gogfake/img/the-witcher-3.svg', 'RPG / Fantasia', 9.5, 'popular', 0, 1, 'CD Projekt Red', '50 GB', '16', '2026-08-27 11:04:51'),
+(3, 'baldurs-gate-3', 'Baldur\'s Gate 3', 'RPG narrativo baseado em Dungeons & Dragons com liberdade de decisões.', 'gogfake/img/baldurs-gate-3.svg', 'RPG', 9.7, 'popular', 0, 1, 'Larian Studios', '150 GB', '16', '2026-08-27 11:04:51'),
+(4, 'elden-ring', 'Elden Ring', 'Uma jornada de fantasia sombria em um vasto mundo aberto.', 'gogfake/img/elden-ring.svg', 'RPG / Ação', 9.4, 'popular', 0, 1, 'FromSoftware', '60 GB', '16', '2026-08-27 11:04:51'),
+(5, 'hogwarts-legacy', 'Hogwarts Legacy', 'Explore Hogwarts e descubra sua própria história no mundo bruxo.', 'gogfake/img/hogwarts-legacy.svg', 'Ação / Aventura', 8.8, 'lancamento', 0, 1, 'Avalanche Software', '85 GB', '12', '2026-08-27 11:04:51'),
+(6, 'resident-evil-4', 'Resident Evil 4', 'Remake de uma missão de resgate em uma vila tomada pelo terror.', 'gogfake/img/resident-evil-4.svg', 'Terror / Ação', 9.0, 'promocao', 0, 1, 'Capcom', '67 GB', '18', '2026-08-27 11:04:51'),
+(7, 'stardew-valley', 'Stardew Valley', 'Construa uma nova vida em uma fazenda cercada por uma comunidade acolhedora.', 'gogfake/img/stardew-valley.svg', 'Simulação / RPG', 9.2, 'popular', 0, 1, 'ConcernedApe', '1 GB', 'L', '2026-08-27 11:04:51'),
+(8, 'among-us', 'Among Us', 'Descubra o impostor em partidas cooperativas de investigação e estratégia.', 'gogfake/img/among-us.svg', 'Ação / Social', 8.1, 'popular', 0, 1, 'Innersloth', '250 MB', 'L', '2026-08-27 11:04:51');
 
 -- --------------------------------------------------------
 

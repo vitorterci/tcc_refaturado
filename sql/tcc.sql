@@ -35,8 +35,10 @@ CREATE TABLE `feedback` (
   `usuario_id` int(10) UNSIGNED DEFAULT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `tipo_feedback` enum('sugestao','reclamacao','elogio','duvida') NOT NULL DEFAULT 'sugestao',
   `mensagem` text NOT NULL,
-  `status` enum('novo','lido','respondido') NOT NULL DEFAULT 'novo',
+  `avaliacao` int(11) NOT NULL DEFAULT 5,
+  `status` enum('pendente','novo','lido','respondido') NOT NULL DEFAULT 'pendente',
   `data_envio` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -88,11 +90,16 @@ CREATE TABLE `jogos` (
   `slug` varchar(180) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `img` varchar(255) DEFAULT NULL,
+  `categoria` varchar(100) DEFAULT NULL,
   `plataforma` varchar(255) DEFAULT NULL,
   `genero` varchar(255) DEFAULT NULL,
   `ano` int(11) DEFAULT NULL,
   `etaria` varchar(10) DEFAULT NULL,
   `status` enum('ativo','inativo') NOT NULL DEFAULT 'ativo',
+  `avaliacao_gamplay` decimal(3,1) NOT NULL DEFAULT 0.0,
+  `avaliacao_graficos` decimal(3,1) NOT NULL DEFAULT 0.0,
+  `avaliacao_historia` decimal(3,1) NOT NULL DEFAULT 0.0,
+  `data_lancamento` date DEFAULT NULL,
   `data_cadastro` datetime NOT NULL DEFAULT current_timestamp(),
   `data_atualizacao` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -159,10 +166,16 @@ CREATE TABLE `precos` (
   `id` int(10) UNSIGNED NOT NULL,
   `jogo_id` int(10) UNSIGNED NOT NULL,
   `loja` varchar(100) NOT NULL,
+  `plataforma` varchar(100) DEFAULT NULL,
   `preco` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `preco_antigo` decimal(10,2) DEFAULT NULL,
   `desconto` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `desconto_percentual` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `moeda` char(3) NOT NULL DEFAULT 'BRL',
   `disponibilidade` enum('disponivel','indisponivel') NOT NULL DEFAULT 'disponivel',
   `url` varchar(255) DEFAULT NULL,
+  `url_oferta` varchar(500) DEFAULT NULL,
+  `disponivel` tinyint(1) NOT NULL DEFAULT 1,
   `data_atualizacao` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -193,7 +206,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `email`, `senha`, `role`, `ativo`, `foto_perfil`, `preferencias_cor`, `preferencias_animacoes`, `data_cadastro`, `data_atualizacao`) VALUES
-(1, '1', '1', '123@gmail.com', '$2y$10$Zbji9u8VFowXIm3aVA0SgOo6NtqIZeL/ZqbPW7FEyu9Vjw9W6n9IK', 'usuario', 1, 'assets/uploads/perfil/usuario_1_1db960969bab959c38dad325.png', NULL, 0, '2026-09-18 16:13:20', '2026-09-18 16:26:53');
+(1, '1', '1', '123@gmail.com', '$2y$10$Zbji9u8VFowXIm3aVA0SgOo6NtqIZeL/ZqbPW7FEyu9Vjw9W6n9IK', 'admin', 1, 'assets/uploads/perfil/usuario_1_1db960969bab959c38dad325.png', NULL, 0, '2026-09-18 16:13:20', '2026-09-18 16:26:53');
 
 -- --------------------------------------------------------
 

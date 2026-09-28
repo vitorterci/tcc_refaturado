@@ -21,7 +21,7 @@ $ofertas = array_values(array_filter($jogos, fn($j) => (float)$j['desconto'] > 0
             <a href="index.html"
                class="site-footer__logo"
                aria-label="Game Search - Início">
-                <img src="/tcc/assets/img/logo.png" alt="Game Search">
+                <img src="/tcc/img/logo.png" alt="Game Search">
             </a>
 
             <p class="site-footer__slogan">

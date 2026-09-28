@@ -98,9 +98,9 @@ if (!$conexao || $conexao->connect_error) {
             $stmt = $this->pdo->query("SELECT COUNT(*) FROM jogos");
             if ($stmt->fetchColumn() == 0) {
                 $this->pdo->exec("INSERT INTO jogos (id, slug, nome, descricao, preco, img, categoria, plataforma, genero, etaria, ano, status, avaliacao_gameplay, avaliacao_graficos, avaliacao_historia) VALUES
-                (1, 'cyber-nexus-2077', 'Cyber Nexus 2077', 'Cyber Nexus 2077 é um RPG de ação e aventura em mundo aberto ambientado na megalópole futurista de Neo Tokyo.', 199.90, '../assets/img/andrey.png', 'rpg', 'PC / PS5 / Xbox', 'Ação / Sci-Fi', '18', 2024, 'disponivel', 9.2, 9.5, 8.8),
-                (2, 'gnomo-quest', 'Gnome Quest: Aventura na Floresta', 'Uma jornada encantadora pelos bosques mágicos do reino dos gnomos.', 89.90, '../assets/img/gnomo.png', 'aventura', 'PC / Switch', 'Plataforma / Puzzle', 'L', 2023, 'disponivel', 8.5, 8.0, 9.0),
-                (3, 'pixel-legends', 'Pixel Legends Arena', 'Batalhas épicas em arenas clássicas no estilo pixel art.', 49.90, '../assets/img/paulo.png', 'ação', 'PC / Mobile', 'Arcade / Luta', '10', 2024, 'disponivel', 9.0, 7.8, 7.5)");
+                (1, 'cyber-nexus-2077', 'Cyber Nexus 2077', 'Cyber Nexus 2077 é um RPG de ação e aventura em mundo aberto ambientado na megalópole futurista de Neo Tokyo.', 199.90, '../img/andrey.png', 'rpg', 'PC / PS5 / Xbox', 'Ação / Sci-Fi', '18', 2024, 'disponivel', 9.2, 9.5, 8.8),
+                (2, 'gnomo-quest', 'Gnome Quest: Aventura na Floresta', 'Uma jornada encantadora pelos bosques mágicos do reino dos gnomos.', 89.90, '../img/gnomo.png', 'aventura', 'PC / Switch', 'Plataforma / Puzzle', 'L', 2023, 'disponivel', 8.5, 8.0, 9.0),
+                (3, 'pixel-legends', 'Pixel Legends Arena', 'Batalhas épicas em arenas clássicas no estilo pixel art.', 49.90, '../img/paulo.png', 'ação', 'PC / Mobile', 'Arcade / Luta', '10', 2024, 'disponivel', 9.0, 7.8, 7.5)");
             }
         }
 
