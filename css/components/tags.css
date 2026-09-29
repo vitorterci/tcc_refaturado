@@ -10,7 +10,7 @@
 .link-tag:focus {
   background: rgba(var(--cor-primaria-rgb, 46, 0, 230), 0.25);
   border-color: var(--cor-primaria);
-  color: #ffffff;
+  color: var(--cor-texto);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
@@ -20,10 +20,10 @@
   font-size: var(--fs-xs);
   font-weight: 600;
   color: #ffffff; /* Contraste máximo para legibilidade */
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--cor-texto) 10%, transparent);
   padding: 3px 10px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--cor-borda);
   display: inline-flex;
   align-items: center;
   gap: 5px;
