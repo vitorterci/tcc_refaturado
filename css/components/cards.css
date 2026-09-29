@@ -63,11 +63,11 @@
   flex-direction: column;
   justify-content: center;
   /* Efeito vidro / Glassmorphism semitransparente marcante */
-  background: rgba(5, 10, 15, 0.97);
+  background: color-mix(in srgb, var(--cor-card) 94%, var(--cor-fundo));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--cor-borda);
   border-left: 1px solid rgba(var(--cor-primaria-rgb, 46, 0, 230), 0.6);
   box-shadow:
     15px 0 35px rgba(0, 0, 0, 0.5),
@@ -96,7 +96,7 @@
 .card-jogo-descricao {
   font-family: var(--font-corpo);
   font-size: var(--fs-sm);
-  color: rgba(255, 255, 255, 0.92); /* Contraste aprimorado para legibilidade */
+  color: var(--cor-texto); /* Segue o tema ativo */
   line-height: 1.5;
   margin: 0 0 10px 0;
   display: -webkit-box;
