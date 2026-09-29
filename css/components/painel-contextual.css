@@ -2,7 +2,7 @@
 .painel-contextual {
   position: fixed;
   width: 320px;
-  background: rgba(10, 14, 26, 0.95);
+  background: color-mix(in srgb, var(--cor-card) 94%, var(--cor-fundo));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--cor-primaria);
@@ -30,7 +30,7 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--cor-texto) 8%, transparent);
   border: none;
   color: var(--cor-texto);
   width: 32px;
@@ -68,7 +68,7 @@
 .painel-contextual__descricao {
   font-family: var(--font-corpo);
   font-size: var(--fs-xs);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--cor-texto-muted);
   line-height: 1.5;
   margin-bottom: 16px;
 }
@@ -86,11 +86,11 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 .painel-contextual__informacoes dt {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--cor-texto-muted);
 }
 
 .painel-contextual__informacoes dd {
