@@ -117,13 +117,13 @@
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider {
   transform: translateX(var(--classico-deslocamento));
   background: #ffffff;
-  border: 1.5px solid var(--cor-primaria, #ff0055);
-  box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
+  border: 1.5px solid var(--cor-primaria);
+  box-shadow: 0 0 8px var(--cor-primaria);
 }
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-sol {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  color: var(--cor-primaria, #ff0055);
+  color: var(--cor-primaria);
 }
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .icone-lua {
   opacity: 0;
@@ -147,13 +147,13 @@
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .neon-toggle-slider {
   transform: translateX(0);
   background: #1a1a26;
-  border: 1.5px solid var(--cor-primaria, #ff0055);
-  box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
+  border: 1.5px solid var(--cor-primaria);
+  box-shadow: 0 0 8px var(--cor-primaria);
 }
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-lua {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  color: var(--cor-primaria, #ff0055);
+  color: var(--cor-primaria);
 }
 .atalho-tema-estilo-padrao-classico[data-tema-efetivo="escuro"] .icone-sol {
   opacity: 0;
@@ -282,7 +282,7 @@
     transform: translateX(-50%);
     transition: none;
     border: none;
-    box-shadow: 0 0 8px var(--cor-primaria, #ff0055);
+    box-shadow: 0 0 8px var(--cor-primaria);
   }
 
   body.sidebar-fechada .barra-lateral > .atalho-tema-global[data-posicao="barra-lateral-inferior"].atalho-tema-estilo-padrao-classico[data-tema-efetivo="claro"] .neon-toggle-slider,
