@@ -243,7 +243,7 @@ function jogoEstaEmBreve(jogo) {
     return status.includes('breve') || status.includes('pre lancamento') || (dataLancamento && dataLancamento > new Date());
 }
 
-const criarMarkupCardHome = (jogo, indice) => window.criarMarkupCard(jogo, indice, { contextual: true, prefixoLinks: 'pages/', caminhoFallback: 'assets/img/naoencontrada.png' });
+const criarMarkupCardHome = (jogo, indice) => window.criarMarkupCard(jogo, indice, { contextual: true, prefixoLinks: 'pages/', caminhoFallback: 'img/naoencontrada.png' });
 // ── Renderização das galerias e dos cards ───────────────────────────────────
 function renderizarJogos(lista) {
     const containerJogos = galeriaCategorias || gradeJogos;
