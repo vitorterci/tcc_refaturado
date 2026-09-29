@@ -8,7 +8,7 @@
 
 const Usuario = (() => {
 
-    const API = '../../php/api/user.php';
+    const API = '../php/api/user.php';
 
     let dadosUsuario = null;
 
