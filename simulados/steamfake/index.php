@@ -4,7 +4,7 @@ $pagina = 'inicio';
 $busca = trim((string)($_GET['busca'] ?? ''));
 $jogos = steamfake_pagina_jogos($busca ? ['busca' => $busca] : []);
 $ofertas = array_values(array_filter($jogos, fn($j) => (float)$j['desconto'] > 0));
-?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SteamFake — mundos digitais</title><link rel="stylesheet" href="assets/css/steamfake.css"></head><body><?php require __DIR__ . '/partials-header.php'; ?><main class="wrap">
+?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SteamFake — mundos digitais</title><link rel="stylesheet" href="css/steamfake.css"></head><body><?php require __DIR__ . '/partials-header.php'; ?><main class="wrap">
 <section class="hero"><div class="hero-content"><div class="eyebrow">Catálogo digital independente</div><h1>Seu próximo mundo começa aqui.</h1><p>Descubra aventuras, estratégias e experiências memoráveis com preços simulados para o ecossistema GameSearch.</p><a class="button" href="#jogos">Explorar catálogo →</a></div></section>
 <section class="section" id="jogos"><div class="section-heading"><div><div class="eyebrow">Curadoria SteamFake</div><h2><?= $busca ? 'Resultados para “'.steamfake_e($busca).'”' : 'Jogos em destaque' ?></h2></div><a class="link" href="ofertas.php">Ver todas as ofertas ↗</a></div><div class="grid"><?php foreach (array_slice($jogos, 0, 8) as $jogo) echo steamfake_card($jogo); ?></div></section>
 <section class="section" data-section="ofertas"><div class="section-heading"><div><div class="eyebrow">Economize mais</div><h2>Ofertas da semana</h2></div><a class="link" href="ofertas.php">Abrir ofertas ↗</a></div><div class="grid" data-grid><?php foreach (array_slice($ofertas, 0, 4) as $jogo) echo steamfake_card($jogo); ?></div></section>
@@ -110,7 +110,7 @@ $ofertas = array_values(array_filter($jogos, fn($j) => (float)$j['desconto'] > 0
     </div>
 </footer>
 
-<script src="assets/js/steamfake.js"></script>
+<script src="js/steamfake.js"></script>
 <script>
 document.getElementById('btnVoltarTopo')?.addEventListener('click', () => {
     window.scrollTo({

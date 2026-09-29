@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/inc.php'; $pagina = 'ofertas'; $ofertas = steamfake_pagina_jogos(['ofertas'=>true]); ?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ofertas — SteamFake</title><link rel="stylesheet" href="assets/css/steamfake.css"></head><body><?php require __DIR__ . '/partials-header.php'; ?><main class="wrap"><section class="page-top"><div class="eyebrow">Descontos simulados</div><h1>Ofertas que valem o play.</h1><p>Preços promocionais locais para testar a integração do GameSearch com uma fonte externa de preços.</p></section><section class="section"><div class="filters"><span class="filter active"><?= count($ofertas) ?> ofertas disponíveis</span><span class="filter">PC</span><span class="filter">Até 50% OFF</span><span class="filter">Mais populares</span></div><div class="grid"><?php foreach ($ofertas as $jogo) echo steamfake_card($jogo); ?></div></section></main><?php require __DIR__ . '/partials-footer.php'; ?><footer class="site-footer">
+<?php require_once __DIR__ . '/inc.php'; $pagina = 'ofertas'; $ofertas = steamfake_pagina_jogos(['ofertas'=>true]); ?><!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ofertas — SteamFake</title><link rel="stylesheet" href="css/steamfake.css"></head><body><?php require __DIR__ . '/partials-header.php'; ?><main class="wrap"><section class="page-top"><div class="eyebrow">Descontos simulados</div><h1>Ofertas que valem o play.</h1><p>Preços promocionais locais para testar a integração do GameSearch com uma fonte externa de preços.</p></section><section class="section"><div class="filters"><span class="filter active"><?= count($ofertas) ?> ofertas disponíveis</span><span class="filter">PC</span><span class="filter">Até 50% OFF</span><span class="filter">Mais populares</span></div><div class="grid"><?php foreach ($ofertas as $jogo) echo steamfake_card($jogo); ?></div></section></main><?php require __DIR__ . '/partials-footer.php'; ?><footer class="site-footer">
     <div class="site-footer__glow"></div>
 
     <div class="site-footer__container">
@@ -8,7 +8,7 @@
             <a href="index.html"
                class="site-footer__logo"
                aria-label="Game Search - Início">
-                <img src="assets/img/logo.png" alt="Game Search">
+                <img src="img/logo.png" alt="Game Search">
             </a>
 
             <p class="site-footer__slogan">

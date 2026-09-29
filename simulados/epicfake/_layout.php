@@ -13,7 +13,7 @@ function epicfakeCabecalho(string $titulo, string $pagina = 'inicio', string $sl
     <meta name="theme-color" content="#101014">
     <meta name="description" content="EpicFake — uma vitrine local de jogos digitais para comparação de preços no GameSearch.">
     <title><?= $tituloSeguro ?> — EpicFake</title>
-    <link rel="stylesheet" href="assets/css/epicfake.css">
+    <link rel="stylesheet" href="css/epicfake.css">
 </head>
 <body data-pagina="<?= $paginaSegura ?>" data-slug="<?= $slugSeguro ?>">
     <div class="ef-site-shell">
@@ -60,7 +60,7 @@ function epicfakeRodape(): void
       
     </div>
     <div class="ef-toast" role="status" aria-live="polite" data-toast-area></div>
-    <script src="assets/js/epicfake.js" defer></script>
+    <script src="js/epicfake.js" defer></script>
 
 </body>
 </html>

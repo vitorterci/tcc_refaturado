@@ -24,7 +24,7 @@ function moeda($valor): string
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $jogo ? h($jogo['nome']) . ' — GOGFake' : 'Jogo não encontrado — GOGFake' ?></title>
-    <link rel="stylesheet" href="assets/css/gogfake.css">
+    <link rel="stylesheet" href="css/gogfake.css">
 </head>
 
 <body>

@@ -206,7 +206,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `email`, `senha`, `role`, `ativo`, `foto_perfil`, `preferencias_cor`, `preferencias_animacoes`, `data_cadastro`, `data_atualizacao`) VALUES
-(1, '1', '1', '123@gmail.com', '$2y$10$Zbji9u8VFowXIm3aVA0SgOo6NtqIZeL/ZqbPW7FEyu9Vjw9W6n9IK', 'admin', 1, 'assets/uploads/perfil/usuario_1_1db960969bab959c38dad325.png', NULL, 0, '2026-09-18 16:13:20', '2026-09-18 16:26:53');
+(1, '1', '1', '123@gmail.com', '$2y$10$Zbji9u8VFowXIm3aVA0SgOo6NtqIZeL/ZqbPW7FEyu9Vjw9W6n9IK', 'admin', 1, 'uploads/perfil/usuario_1_1db960969bab959c38dad325.png', NULL, 0, '2026-09-18 16:13:20', '2026-09-18 16:26:53');
 
 -- --------------------------------------------------------
 
