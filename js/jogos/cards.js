@@ -54,7 +54,7 @@
     function criarMarkupCard(jogo, indice = 0, opcoes = {}) {
         const paginaBase = opcoes.paginaBase ?? '';
         const prefixoLinks = opcoes.prefixoLinks ?? paginaBase;
-        const caminhoFallback = opcoes.caminhoFallback ?? `${paginaBase}assets/img/naoencontrada.png`;
+        const caminhoFallback = opcoes.caminhoFallback ?? `${paginaBase}img/naoencontrada.png`;
         const contextual = Boolean(opcoes.contextual);
         const incluirMenu = opcoes.incluirMenu ?? contextual;
         const preco = obterInformacoesPreco(jogo);
