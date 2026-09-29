@@ -24,11 +24,11 @@ window.obterCaminhoImagem = function (imagem, slug) {
 
     // Normaliza o caminho recebido:
     // - remove prefixos relativos acidentais (./, ../)
-    // - corrige resquícios do padrão legado "assets/img/games/X" → "games/X"
+    // - corrige resquícios do padrão legado "img/games/X" → "games/X"
     let caminho = valor
         .replace(/^(?:\.\.\/|\.\/)+/, '')
         .replace(/^assets\/img\/games\//i, 'games/')
-        .replace(/^assets\/img\//i, 'assets/img/');
+        .replace(/^assets\/img\//i, 'img/');
 
     // Pasta oficial de imagens de jogos: `games/`.
     if (caminho.startsWith('games/')) {
@@ -41,8 +41,8 @@ window.obterCaminhoImagem = function (imagem, slug) {
         return `${prefixo}games/${caminho}`;
     }
 
-    // Outros caminhos em `assets/` são preservados para compatibilidade.
-    if (caminho.startsWith('assets/')) {
+    // Outros caminhos em `` são preservados para compatibilidade.
+    if (caminho.startsWith('')) {
         return `${prefixo}${caminho}`;
     }
 

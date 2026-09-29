@@ -86,7 +86,7 @@
             return window.obterCaminhoImagem(item?.imagem, item?.slug);
         }
         const base = window.location.pathname.includes('/pages/') ? '../' : '';
-        return `${base}assets/img/naoencontrada.png`;
+        return `${base}img/naoencontrada.png`;
     };
 
     const escapar = (valor) => String(valor ?? '').replace(/[&<>'"]/g, (c) => ({

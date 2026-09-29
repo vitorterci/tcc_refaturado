@@ -25,7 +25,7 @@ function inicializarFooter() {
         <div class="site-footer__inner">
             <div class="site-footer__brand">
                 <div class="site-footer__logo">
-                    <img src="${prefixo}assets/img/logo.png" alt="Game Search" loading="lazy">
+                    <img src="${prefixo}img/logo.png" alt="Game Search" loading="lazy">
                 </div>
                 <p>Encontre, compare e descubra os melhores preços dos seus jogos favoritos em um só lugar.</p>
             </div>

@@ -48,13 +48,12 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pages/pagina.css" />
     <link rel="stylesheet" href="../css/components/historico.css" />
+    <link rel="stylesheet" href="../css/components/comentarios.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-
-      
       /* ── Layout de Detalhes ── */
 
       .detalhes-jogo {
@@ -748,6 +747,41 @@
             </div>
           </div>
         </section>
+
+        <!-- ─── Comentários ─── -->
+        <section class="secao-comentarios" aria-labelledby="comentarios-titulo">
+          <h3 id="comentarios-titulo">
+            <i class="fas fa-comments"></i> Comentários
+            <span class="comentarios-total" id="comentarios-total"></span>
+          </h3>
+
+          <p class="comentarios-erro" id="comentarios-erro" hidden></p>
+
+          <div class="comentarios-aviso" id="comentarios-aviso" hidden></div>
+
+          <form class="comentario-form" id="comentario-form" hidden>
+            <textarea
+              id="comentario-texto"
+              name="comentario"
+              maxlength="1000"
+              placeholder="Escreva seu comentário sobre este jogo..."
+              aria-label="Escreva seu comentário"
+              required
+            ></textarea>
+            <div class="acoes-jogo">
+              <button type="submit" class="btn-primario">
+                <i class="fas fa-paper-plane"></i> Publicar
+              </button>
+            </div>
+          </form>
+
+          <div class="comentarios-lista" id="comentarios-lista" aria-live="polite">
+            <div class="loading">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Carregando comentários...</p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
 
@@ -765,12 +799,12 @@
     </button>
 
     <script src="../js/global.js"></script>
-        <script src="../js/core/historico.js"></script>
-
+    <script src="../js/core/historico.js"></script>
     <script src="../js/navegacao/sidebar.js"></script>
     <script src="../js/navegacao/navegacao.js"></script>
     <script src="../js/precos/precos.js"></script>
     <script src="../js/detalhes-jogo.js"></script>
+    <script src="../js/comentarios.js"></script>
     <!-- PixelBlast Background Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="../js/PixelBlast.js"></script>
