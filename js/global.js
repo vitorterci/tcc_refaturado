@@ -13,7 +13,7 @@ window.obterCaminhoImagem = function (imagem, slug) {
         prefixo = '../';
     }
 
-    const fallback = `${prefixo}assets/img/naoencontrada.png`;
+    const fallback = `${prefixo}img/naoencontrada.png`;
     const valor = String(imagem || '').trim();
 
     // Sem imagem cadastrada: usa fallback.
