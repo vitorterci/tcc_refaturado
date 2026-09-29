@@ -6,4 +6,4 @@ O menu de gênero foi aberto e uma opção foi selecionada com sucesso: o menu f
 
 O endpoint PHP não foi executado no servidor estático local; por isso a página exibiu o estado de erro previsto com a ação `Tentar novamente`. A validação direta do JavaScript servido sem cache confirmou que a versão atual limpa o contador quando não há resultados e oculta a paginação no estado de erro. O texto residual observado em uma captura foi identificado como cache antigo do navegador, pois não existe mais no arquivo atual da Biblioteca nem nas atribuições atuais do contador.
 
-A checagem sintática com `node --check` foi concluída com sucesso para `assets/js/filtros/filtros.js`, `assets/js/home.js` e `assets/js/pages/biblioteca.js`. A validação com `php -l` não foi possível porque o binário PHP não está instalado no sandbox.
+A checagem sintática com `node --check` foi concluída com sucesso para `js/filtros/filtros.js`, `js/home.js` e `js/pages/biblioteca.js`. A validação com `php -l` não foi possível porque o binário PHP não está instalado no sandbox.

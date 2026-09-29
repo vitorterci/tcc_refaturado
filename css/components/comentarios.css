@@ -1,0 +1,242 @@
+/* ───────────────────────────────────────────────
+   Comentários por Jogo — Game Search
+   Segue variáveis já definidas em global.css
+   ─────────────────────────────────────────────── */
+
+.secao-comentarios {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.secao-comentarios h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--cor-texto);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.secao-comentarios h3 i {
+  color: var(--cor-texto-destaque);
+  font-size: 0.9em;
+}
+
+.comentarios-total {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 2px 8px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  color: var(--cor-texto-muted);
+  font-family: var(--font-corpo);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.comentarios-erro {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border: 1px solid #ef4444;
+  border-radius: var(--border-radius-sm);
+  background: rgba(239, 68, 68, 0.08);
+  color: #fca5a5;
+  font-family: var(--font-corpo);
+  font-size: var(--fs-sm);
+}
+
+.comentarios-aviso {
+  padding: 14px 18px;
+  background: rgba(8, 12, 24, 0.82);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--border-radius);
+  color: var(--cor-texto);
+  font-family: var(--font-corpo);
+  font-size: var(--fs-sm);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.comentarios-aviso a {
+  color: var(--cor-texto-destaque);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.comentarios-aviso a:hover {
+  text-decoration: underline;
+}
+
+.comentario-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+background: color-mix(in srgb, var(--cor-fundo) 80%, transparent);  border: 1px solid var(--cor-borda);
+  border-radius: var(--border-radius);
+  margin-bottom: 16px;
+}
+
+.comentario-form textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  padding: 12px 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--border-radius-sm);
+  background: var(--cor-lateral);
+  color: var(--cor-texto);
+  font-family: var(--font-corpo);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  outline: none;
+  transition:
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+.comentario-form textarea:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+.comentarios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comentario {
+  padding: 14px 18px;
+background: color-mix(in srgb, var(--cor-fundo) 80%, transparent);  border: 1px solid var(--cor-borda);
+  border-radius: var(--border-radius);
+  color: var(--cor-texto);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  transition:
+    border-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+}
+
+.comentario:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateX(2px);
+}
+
+.comentario-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comentario-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--cor-borda);
+  flex-shrink: 0;
+}
+
+.comentario-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.comentario-autor {
+  font-family: var(--font-titulo);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-texto);
+}
+
+.comentario-data {
+  font-family: var(--font-corpo);
+  font-size: var(--fs-xs);
+  color: var(--cor-texto-muted);
+}
+
+.comentario-texto {
+  margin: 0;
+  font-family: var(--font-corpo);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  word-break: break-word;
+}
+
+.comentario-acoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-acao {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--border-radius-xl);
+  background: transparent;
+  color: var(--cor-texto-muted);
+  font-family: var(--font-corpo);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-acao:hover {
+  color: var(--cor-texto);
+  border-color: var(--cor-primaria);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.btn-acao-perigo:hover {
+  color: #fca5a5;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.comentarios-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 16px;
+  background: var(--cor-fundo);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--border-radius);
+  color: var(--cor-texto-muted);
+  font-family: var(--font-corpo);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.comentarios-vazio i {
+  font-size: 1.8rem;
+  color: var(--cor-texto-destaque);
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .comentario {
+    padding: 12px 14px;
+  }
+  .comentario-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .secao-comentarios h3 {
+    font-size: var(--fs-md);
+  }
+}

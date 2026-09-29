@@ -1,11 +1,11 @@
 ## Inspeção visual — 2026-09-21
 
-A página `pages/Apresentação.html` corresponde ao screenshot enviado. A renderização imediata mostra o `#splash-screen` cobrindo a página com `assets/img/logo.png`, explicando o grande logo visível durante a captura. O CSS da apresentação também contém seletores inválidos (`.fundo-hero:` e `.content-section:not(.hero-moderna):`), além de `<br>` redundantes no hero e regras duplicadas ao final do arquivo.
+A página `pages/Apresentação.html` corresponde ao screenshot enviado. A renderização imediata mostra o `#splash-screen` cobrindo a página com `img/logo.png`, explicando o grande logo visível durante a captura. O CSS da apresentação também contém seletores inválidos (`.fundo-hero:` e `.content-section:not(.hero-moderna):`), além de `<br>` redundantes no hero e regras duplicadas ao final do arquivo.
 
 O screenshot do usuário mostra o hero principal em escala muito pequena, com título, descrição e botões comprimidos no canto superior. A correção deve preservar a identidade visual escura, remover a dependência de quebras manuais de linha, garantir uma grade hero responsiva e evitar que a splash screen permaneça durante a navegação.
 ## Causa raiz
 
-A página referenciava `../css/Apresentação.css`, mas o arquivo real se chama `assets/css/apresentação.css`. Em Linux, a diferença entre `A` e `a` causa 404; com o CSS específico ausente, os logos da página ficaram sem dimensionamento e o hero não recebeu seu layout.
+A página referenciava `../css/Apresentação.css`, mas o arquivo real se chama `css/apresentação.css`. Em Linux, a diferença entre `A` e `a` causa 404; com o CSS específico ausente, os logos da página ficaram sem dimensionamento e o hero não recebeu seu layout.
 
 ## Correções aplicadas
 
