@@ -618,9 +618,9 @@
   position: absolute;
   bottom: var(--space-2);
   left: var(--space-2);
-  color: #fff;
+  color: var(--cor-texto-sobre-destaque);
   font: 700 var(--fs-lg) var(--font-titulo);
-  text-shadow: 0 2px 8px #000;
+  text-shadow: 0 2px 8px color-mix(in srgb, var(--cor-fundo) 85%, transparent);
 }
 
 /* ── Sobre o projeto ────────────────────────────────────────────────────── */
