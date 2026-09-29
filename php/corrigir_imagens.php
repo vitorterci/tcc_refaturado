@@ -28,7 +28,7 @@ while ($row = $result->fetch_assoc()) {
     if (empty($caminho)) {
         $novoCaminho = '../games/naoencontrada.png';
     }
-    // Se não começa com '../games/' nem com 'assets/' nem com 'http'
+    // Se não começa com '../games/' nem com '' nem com 'http'
     elseif (!preg_match('/^(games\/|assets\/|http)/', $caminho)) {
         // Extrair o nome do arquivo
         $nomeArquivo = basename($caminho);
@@ -38,8 +38,8 @@ while ($row = $result->fetch_assoc()) {
             if (file_exists(__DIR__ . '/../' . $caminhoTeste)) {
                 $novoCaminho = $caminhoTeste;
             } else {
-                // Verificar se existe em assets/img/
-                $caminhoTesteAssets = 'assets/img/' . $nomeArquivo;
+                // Verificar se existe em img/
+                $caminhoTesteAssets = 'img/' . $nomeArquivo;
                 if (file_exists(__DIR__ . '/../' . $caminhoTesteAssets)) {
                     $novoCaminho = $caminhoTesteAssets;
                 } else {
@@ -57,8 +57,8 @@ while ($row = $result->fetch_assoc()) {
             $novoCaminho = '../games/naoencontrada.png';
         }
     }
-    // Se está em assets/ mas o arquivo não existe
-    elseif (strpos($caminho, 'assets/') === 0) {
+    // Se está em  mas o arquivo não existe
+    elseif (strpos($caminho, '') === 0) {
         $caminhoCompleto = __DIR__ . '/../' . $caminho;
         if (!file_exists($caminhoCompleto)) {
             // Tenta encontrar em ../games/

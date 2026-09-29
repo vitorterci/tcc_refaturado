@@ -321,7 +321,7 @@ function sincronizarSessao($usuario) {
 }
 
 function caminhoFotoSeguro($caminho) {
-    $prefixo = 'assets/uploads/perfil/';
+    $prefixo = 'uploads/perfil/';
     if (!is_string($caminho) || $caminho === '') {
         return null;
     }
@@ -577,7 +577,7 @@ if ($acao === 'upload_photo') {
     if (!move_uploaded_file($arquivo['tmp_name'], $destino)) responder(['success' => false, 'message' => 'Não foi possível salvar a imagem.'], 500);
 
     $atual = obterUsuario($conexao, $usuarioId);
-    $caminho = 'assets/uploads/perfil/' . $nomeArquivo;
+    $caminho = 'uploads/perfil/' . $nomeArquivo;
     $stmt = $conexao->prepare('UPDATE usuarios SET foto_perfil = ? WHERE id = ?');
     $stmt->bind_param('si', $caminho, $usuarioId);
     if (!$stmt->execute()) {
