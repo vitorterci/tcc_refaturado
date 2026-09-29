@@ -10,7 +10,7 @@
 .carousel-track-container {
   border-radius: var(--border-radius);
   overflow: hidden;
-  background: #08081a;
+  background: var(--cor-card);
   box-shadow:
     0 0 0 1px var(--cor-borda),
     0 20px 50px rgba(0, 0, 0, 0.7),
@@ -34,7 +34,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #000;
+  background: var(--cor-fundo);
 }
 
 .carousel-img-wrap img {
@@ -73,7 +73,7 @@
   width: 32px;
   border-radius: 2px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--cor-borda-forte);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -84,7 +84,7 @@
 
 .carousel-indicator.ativo {
   width: 52px;
-  background-color: rgba(46, 0, 230, 0.25);
+  background-color: color-mix(in srgb, var(--cor-primaria) 25%, transparent);
 }
 
 .carousel-indicator.ativo::after {
