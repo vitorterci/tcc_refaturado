@@ -100,8 +100,8 @@
 }
 
 .formulario__campo {
-  background-color: #f5f5f5;
-  border: 2px solid #e0e0e0;
+  background-color: var(--cor-card);
+  border: 2px solid var(--cor-borda);
   padding: 12px 15px 12px 45px;
   margin: 0;
   width: 100%;
@@ -120,7 +120,7 @@
 }
 
 .formulario__campo::placeholder {
-  color: #999;
+  color: var(--cor-texto-muted);
 }
 
 .formulario__botao {
@@ -425,7 +425,7 @@
   top: calc(100% + 10px);
   left: 0;
   /* Efeito vidro / Glassmorphism marcante e semitransparente */
-  background: rgba(13, 17, 32, 0.65);
+  background: color-mix(in srgb, var(--cor-card) 90%, var(--cor-fundo));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 16px;
@@ -438,7 +438,7 @@
     0 25px 50px rgba(0, 0, 0, 0.75),
     inset 0 0 20px rgba(var(--cor-primaria-rgb, 46, 0, 230), 0.2);
   min-width: 440px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--cor-borda);
   border-top: 1px solid rgba(var(--cor-primaria-rgb, 46, 0, 230), 0.6);
   animation: fadeIn 0.18s ease;
 }
@@ -552,7 +552,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: rgba(46, 0, 230, 0.15);
+  background-color: color-mix(in srgb, var(--cor-primaria) 15%, transparent);
   border: 1px solid var(--cor-borda);
   border-radius: var(--border-radius-sm);
   color: var(--cor-texto-destaque);
