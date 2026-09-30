@@ -277,7 +277,7 @@
       const artigo = btn.closest('.comentario');
 
       if (btn.dataset.acao === 'editar') editar(id, artigo);
-      if (btn.dataset.acao === 'excluir') excluir(id, artigo, btn);
+      if (btn.dataset.acao === 'excluir') excluir(id);
     });
 
     const ta = el.textarea();
