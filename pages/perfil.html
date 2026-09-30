@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="../css/PixelBlast.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="../css/components/lixeira-destrutiva.css" />
+<link rel="stylesheet" href="../css/components/lixeira-animada.css" />
 <style>
     .secao-perfil {
         width: 100%;
@@ -1078,9 +1078,8 @@ background: var(--cor-card, var(--cor-lateral));        border: 1px solid var(--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="../js/PixelBlast.js"></script>
 <script src="../js/global.js"></script>
-<script src="../js/components/lixeira-destrutiva.js"></script>
-
-    <script src="../js/navegacao/sidebar.js"></script>
+    <script src="../js/core/lixeira-animada.js"></script>
+<script src="../js/navegacao/sidebar.js"></script>
     <script src="../js/navegacao/navegacao.js"></script>
 
 
@@ -2009,59 +2008,37 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-   elementos.meusJogosLista.addEventListener('click', async function (evento) {
-    const botao = evento.target.closest('.meu-jogo-remover');
-    const card = evento.target.closest('.meu-jogo-card');
-    if (!botao || !card) return;
-
-    const jogoId = Number(card.dataset.jogoId);
-
-    // Fallback sem animação
-    if (!window.LixeiraDestrutiva) {
-        if (!confirm('Remover este jogo dos Meus Jogos?')) return;
+    elementos.meusJogosLista.addEventListener('click', async function (evento) {
+        const botao = evento.target.closest('.meu-jogo-remover');
+        const card = evento.target.closest('.meu-jogo-card');
+        if (!botao || !card) return;
+        const jogoId = Number(card.dataset.jogoId);
+        if (botao.classList.contains('is-busy')) return;
         try {
-            await alterarJogo('remover_jogo', jogoId);
+            await window.LixeiraAnimada.executar(botao, async () => {
+                await alterarJogo('remover_jogo', jogoId);
+            });
         } catch (erro) {
             alert(erro.message || 'Não foi possível remover o jogo.');
+            await carregarMeusJogos();
         }
-        return;
-    }
-
-    const lixeira = new window.LixeiraDestrutiva(botao, {
-        target: card,
-        confirmMessage: 'Remover este jogo dos Meus Jogos?',
-        inline: true,
-        text: 'Remover',
-        onDelete: async () => {
-            await alterarJogo('remover_jogo', jogoId);
-        },
-        onError: (erro) => {
-            alert(erro.message || 'Não foi possível remover o jogo.');
-            carregarMeusJogos();
-        },
-        onSuccess: () => {
-            const stat = document.getElementById('statJogos');
-            if (stat) {
-                const atual = Number(stat.textContent) || 0;
-                stat.textContent = String(Math.max(0, atual - 1));
-            }
-        },
     });
-
-    await lixeira.executar();
-});
 
     elementos.minhaListaConteudo.addEventListener('click', async function (evento) {
         const card = evento.target.closest('.minha-lista-card');
         if (!card) return;
         const jogoId = Number(card.dataset.jogoId);
-        if (evento.target.closest('.lista-remover')) {
-            if (!confirm('Remover este jogo da Minha Lista?')) return;
+        const botaoRemover = evento.target.closest('.lista-remover');
+        if (botaoRemover) {
+            if (botaoRemover.classList.contains('is-busy')) return;
             try {
-                await alterarJogo('remover_lista', jogoId);
+                await window.LixeiraAnimada.executar(botaoRemover, async () => {
+                    await alterarJogo('remover_lista', jogoId);
+                });
                 await carregarMinhaLista();
             } catch (erro) {
                 alert(erro.message || 'Não foi possível remover o jogo.');
+                await carregarMinhaLista();
             }
             return;
         }
@@ -2075,7 +2052,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     notificar_preco: card.querySelector('.lista-notificar-preco').checked
                 };
                 const resposta = await fetch(API + '?acao=atualizar_lista', {
-                    method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+                    method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
                 });
                 const dados = await resposta.json();
                 if (!resposta.ok || !dados.success) throw new Error(dados.message || 'Não foi possível salvar o acompanhamento.');
