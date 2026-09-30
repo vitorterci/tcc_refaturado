@@ -217,3 +217,55 @@
   }
   .btn-excluir-animado .label { max-width: 64px; }
 }
+
+/* ─── Animação de exclusão: aplicada somente ao botão de excluir ─── */
+.btn-acao.btn-excluir-animado {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  height: 28px;
+  padding: 0 12px;
+  overflow: visible;
+  color: var(--cor-texto-muted);
+}
+.btn-acao.btn-excluir-animado .content { display:inline-flex; align-items:center; gap:6px; transition:gap .3s ease; }
+.btn-acao.btn-excluir-animado .label { white-space:nowrap; max-width:80px; overflow:hidden; transition:opacity .2s ease, max-width .3s ease, transform .25s ease; }
+.btn-acao.btn-excluir-animado .trash { position:relative; width:13px; height:15px; flex:none; }
+.btn-acao.btn-excluir-animado .trash svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.btn-acao.btn-excluir-animado .trash .lid { transform-origin:2px 5px; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+.btn-acao.btn-excluir-animado:hover:not(.is-busy) .lid { transform:rotate(-14deg) translateY(-1px); }
+.btn-acao.btn-excluir-animado .trash .body-fill { fill:currentColor; opacity:.15; }
+.btn-acao.btn-excluir-animado .paper {
+  position:absolute; left:50%; top:0; width:8px; height:10px; margin-left:-4px;
+  border-radius:2px; background:#ef4444; opacity:0; transform:translateY(-22px);
+  z-index:1; box-shadow:0 0 6px rgba(239,68,68,.65); pointer-events:none;
+}
+.btn-acao.btn-excluir-animado .status {
+  position:absolute; left:50%; bottom:-18px; width:12px; height:12px; margin-left:-6px;
+  border-radius:50%; background:#ef4444; transform:scale(0); opacity:0;
+  display:grid; place-items:center; box-shadow:0 0 8px rgba(239,68,68,.65);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), opacity .2s ease;
+}
+.btn-acao.btn-excluir-animado .status svg { width:8px; height:8px; fill:none; stroke:#fff; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:16; stroke-dashoffset:16; transition:stroke-dashoffset .3s ease .05s; }
+.btn-acao.btn-excluir-animado.is-busy { cursor:default; transform:none; }
+.btn-acao.btn-excluir-animado.is-shrink { min-width:28px; width:28px; padding:0; }
+.btn-acao.btn-excluir-animado.is-shrink .label { opacity:0; max-width:0; transform:translateX(4px); }
+.btn-acao.btn-excluir-animado.is-shrink .content { gap:0; }
+.btn-acao.btn-excluir-animado.is-open .lid { transform:rotate(-24deg) translate(-2px,-3px); }
+.btn-acao.btn-excluir-animado.is-drop .paper { opacity:1; animation:gs-comentario-drop 1s cubic-bezier(.5,0,.75,.6) forwards; }
+@keyframes gs-comentario-drop {
+  0% { transform:translateY(-22px); opacity:1; }
+  70% { transform:translateY(-2px); opacity:1; }
+  100% { transform:translateY(6px) scaleY(.6); opacity:0; }
+}
+.btn-acao.btn-excluir-animado.is-close .lid { transform:none; }
+.btn-acao.btn-excluir-animado.is-dot .status { transform:scale(1); opacity:1; }
+.btn-acao.btn-excluir-animado.is-check .status svg { stroke-dashoffset:0; }
+.btn-acao.btn-excluir-animado:focus-visible { outline:2px solid #ef4444; outline-offset:3px; }
+@media (prefers-reduced-motion: reduce) {
+  .btn-acao.btn-excluir-animado,
+  .btn-acao.btn-excluir-animado * { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+  .btn-acao.btn-excluir-animado.is-drop .paper { animation:none; opacity:0; }
+}
