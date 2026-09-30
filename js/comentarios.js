@@ -316,7 +316,6 @@
   const cancelarTimers = (timers) => timers.forEach((timer) => clearTimeout(timer));
 
   const excluir = async (id, btn, artigo) => {
-    if (!window.confirm('Excluir este comentário?')) return;
     if (!btn || !artigo || btn.classList.contains('is-busy')) return;
 
     const timers = iniciarAnimacaoExclusao(btn);
