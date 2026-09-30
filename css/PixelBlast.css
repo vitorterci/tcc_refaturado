@@ -21,8 +21,3 @@
   height: 100% !important;
 }
 
-/* Mantém o verde neon como detalhe sem dominar as superfícies claras. */
-html.tema-claro .pixel-blast-canvas,
-body.tema-claro .pixel-blast-canvas {
-  opacity: 1.42;
-}
