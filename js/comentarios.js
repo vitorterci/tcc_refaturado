@@ -191,6 +191,7 @@
       }
 
       renderizar(d.comentarios || []);
+      prepararBotoesExclusao();
 
       const aviso = el.aviso();
       const form = el.form();
