@@ -139,6 +139,40 @@
       .join('');
   };
 
+  const prepararBotoesExclusao = () => {
+    const botoes = el.lista()?.querySelectorAll('button[data-acao="excluir"]') || [];
+
+    botoes.forEach((btn) => {
+      if (btn.classList.contains('btn-excluir-animado')) return;
+
+      btn.classList.remove('btn-acao', 'btn-acao-perigo');
+      btn.classList.add('btn-excluir-animado');
+      btn.setAttribute('aria-label', 'Excluir comentário');
+      btn.setAttribute('title', 'Excluir comentário');
+      btn.setAttribute('aria-live', 'polite');
+
+      btn.innerHTML = `
+        <span class="paper" aria-hidden="true"></span>
+        <span class="content">
+          <span class="trash" aria-hidden="true">
+            <svg viewBox="0 0 20 24" fill="none" stroke="currentColor"
+                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path class="body-fill"
+                    d="M3.5 8h13l-1 13.2a1.5 1.5 0 0 1-1.5 1.3H6a1.5 1.5 0 0 1-1.5-1.3z"/>
+              <g class="lid">
+                <path d="M1.5 5h17M7.5 5V3.2A1.2 1.2 0 0 1 8.7 2h2.6a1.2 1.2 0 0 1 1.2 1.2V5"/>
+              </g>
+              <path d="M8 11.5v7M12 11.5v7" opacity=".55"/>
+            </svg>
+          </span>
+          <span class="label">Excluir</span>
+        </span>
+        <span class="status" aria-hidden="true">
+          <svg viewBox="0 0 10 10"><path d="M1.8 5.2 4.2 7.6 8.4 2.6"/></svg>
+        </span>`;
+    });
+  };
+
   const carregar = async () => {
     const jogoId = await resolverJogoId();
     if (!jogoId) {
@@ -248,8 +282,47 @@
     }
   };
 
-  const excluir = async (id) => {
+  const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const classesAnimacaoExclusao = [
+    'is-busy', 'is-shrink', 'is-open', 'is-drop',
+    'is-close', 'is-dot', 'is-check', 'is-out',
+  ];
+
+  const limparAnimacaoExclusao = (btn) => {
+    classesAnimacaoExclusao.forEach((classe) => btn.classList.remove(classe));
+    btn.disabled = false;
+    btn.setAttribute('aria-label', 'Excluir comentário');
+  };
+
+  const iniciarAnimacaoExclusao = (btn) => {
+    const timeline = [
+      ['is-busy', 0],
+      ['is-shrink', 0],
+      ['is-open', 300],
+      ['is-drop', 420],
+      ['is-close', 1500],
+      ['is-dot', 1600],
+      ['is-check', 2000],
+      ['is-out', 3000],
+    ];
+
+    return timeline.map(([classe, ms]) => setTimeout(() => {
+      if (classe === 'is-close') btn.classList.remove('is-open');
+      btn.classList.add(classe);
+    }, ms));
+  };
+
+  const cancelarTimers = (timers) => timers.forEach((timer) => clearTimeout(timer));
+
+  const excluir = async (id, btn, artigo) => {
     if (!window.confirm('Excluir este comentário?')) return;
+    if (!btn || !artigo || btn.classList.contains('is-busy')) return;
+
+    const timers = iniciarAnimacaoExclusao(btn);
+    artigo.classList.add('is-being-deleted');
+    btn.disabled = true;
+    btn.setAttribute('aria-label', 'Excluindo comentário, aguarde');
 
     try {
       const r = await fetch(`${api}?id=${id}`, {
@@ -257,11 +330,18 @@
         credentials: 'include',
       });
       const d = await r.json();
+
       if (!r.ok || !d.success) {
         throw new Error(d.message || 'Erro ao excluir.');
       }
+
+      await esperar(3000);
+      cancelarTimers(timers);
       await carregar();
     } catch (e) {
+      cancelarTimers(timers);
+      artigo.classList.remove('is-being-deleted');
+      limparAnimacaoExclusao(btn);
       mostrarErro(e.message || 'Erro ao excluir comentário.');
     }
   };
@@ -277,7 +357,7 @@
       const artigo = btn.closest('.comentario');
 
       if (btn.dataset.acao === 'editar') editar(id, artigo);
-      if (btn.dataset.acao === 'excluir') excluir(id);
+      if (btn.dataset.acao === 'excluir') excluir(id, btn, artigo);
     });
 
     const ta = el.textarea();
