@@ -1,7 +1,7 @@
 /* ─── ESTILOS DO COMPONENTE DE LOGIN E CADASTRO ────────────────────────────── */
 
 .corpo-login {
-  /* Identidade própria: login/cadastro não herda as superfícies do tema global. */
+  /* Identidade própria: autenticação não herda superfícies do tema global. */
   --login-fundo: #0d0d1f;
   --login-superficie: #ffffff;
   --login-campo: #f7f8fc;
@@ -16,7 +16,11 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--login-fundo) 0%, var(--login-overlay-final) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--login-fundo) 0%,
+    var(--login-overlay-final) 100%
+  );
 }
 
 .layout-principal {
@@ -156,7 +160,7 @@
   border-color: var(--login-primaria-hover);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(75, 108, 183, 0.28);
+  box-shadow: var(--shadow-glow-hover);
 }
 
 .formulario__botao:active {
@@ -212,8 +216,8 @@
 
 .formulario__botao--mobile:hover {
   color: var(--cor-texto-sobre-destaque-hover, var(--cor-texto-sobre-destaque));
-  background-color: var(--login-primaria-hover);
-  border-color: var(--login-primaria-hover);
+  background-color: var(--cor-primaria-hover);
+  border-color: var(--cor-primaria-hover);
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow-hover);
@@ -236,11 +240,7 @@
 }
 
 .autenticacao__sobreposicao {
-  background: linear-gradient(
-    to right,
-    #4b6cb7,
-    color-mix(in srgb, var(--cor-primaria) 25%, #1a1a4a)
-  );
+  background: linear-gradient(to right, #4b6cb7, #1a1a4a);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -373,7 +373,7 @@
 }
 
 .breadcrumb a:hover {
-  color: var(--login-link);
+  color: var(--cor-texto-destaque);
 }
 
 .breadcrumb i {
@@ -381,7 +381,7 @@
 }
 
 .breadcrumb span {
-  color: var(--login-texto);
+  color: var(--cor-texto);
 }
 
 /* ─── FILTROS ───────────────────────────────────────────────────────────────── */
@@ -426,9 +426,9 @@
 
 .botao-filtro-principal:hover,
 .botao-filtro-principal.ativo {
-  background-color: var(--login-primaria);
+  background-color: var(--cor-primaria);
   border-color: var(--cor-primaria);
-  color: #ffffff;
+  color: var(--cor-texto-sobre-destaque);
   box-shadow: var(--shadow-glow);
 }
 
@@ -669,9 +669,12 @@
   }
 
   .formulario__botao--mobile:hover {
-    color: #ffffff;
+    color: var(
+      --cor-texto-sobre-destaque-hover,
+      var(--cor-texto-sobre-destaque)
+    );
     background-color: var(--cor-primaria-hover);
-    border-color: var(--login-primaria-hover);
+    border-color: var(--cor-primaria-hover);
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow-hover);
