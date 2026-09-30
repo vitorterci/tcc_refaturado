@@ -1,10 +1,22 @@
 /* ─── ESTILOS DO COMPONENTE DE LOGIN E CADASTRO ────────────────────────────── */
 
 .corpo-login {
+  /* Identidade própria: login/cadastro não herda as superfícies do tema global. */
+  --login-fundo: #0d0d1f;
+  --login-superficie: #ffffff;
+  --login-campo: #f7f8fc;
+  --login-borda: #d7dce8;
+  --login-texto: #1f2937;
+  --login-muted: #64748b;
+  --login-primaria: #4b6cb7;
+  --login-primaria-hover: #3d5da3;
+  --login-link: #3730a3;
+  --login-overlay-final: #1a1a4a;
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--cor-fundo) 0%, #1a1a4a 100%);
+  background: linear-gradient(135deg, var(--login-fundo) 0%, var(--login-overlay-final) 100%);
 }
 
 .layout-principal {
@@ -18,7 +30,7 @@
   width: 850px;
   max-width: 100%;
   height: 550px;
-  background-color: var(--cor-texto);
+  background-color: var(--login-superficie);
   border-radius: var(--border-radius-xl);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -71,7 +83,7 @@
 
 /* Estilização dos Formulários */
 .formulario {
-  background-color: var(--cor-texto);
+  background-color: var(--login-superficie);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +98,7 @@
   font-family: var(--font-titulo);
   font-weight: 700;
   margin: 0 0 15px 0;
-  color: var(--cor-fundo);
+  color: var(--login-texto);
   font-size: 28px;
   width: 100%;
 }
@@ -100,8 +112,8 @@
 }
 
 .formulario__campo {
-  background-color: var(--cor-card);
-  border: 2px solid var(--cor-borda);
+  background-color: var(--login-campo);
+  border: 2px solid var(--login-borda);
   padding: 12px 15px 12px 45px;
   margin: 0;
   width: 100%;
@@ -114,20 +126,20 @@
 }
 
 .formulario__campo:focus {
-  border-color: var(--cor-primaria);
-  background-color: var(--cor-texto);
+  border-color: var(--login-primaria);
+  background-color: var(--login-superficie);
   box-shadow: 0 0 8px rgba(75, 108, 183, 0.1);
 }
 
 .formulario__campo::placeholder {
-  color: var(--cor-texto-muted);
+  color: var(--login-muted);
 }
 
 .formulario__botao {
   border-radius: var(--border-radius-xl);
-  border: 2px solid var(--cor-primaria);
-  background-color: var(--cor-primaria);
-  color: var(--cor-texto-sobre-destaque);
+  border: 2px solid var(--login-primaria);
+  background-color: var(--login-primaria);
+  color: #ffffff;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
@@ -140,11 +152,11 @@
 }
 
 .formulario__botao:hover {
-  background-color: var(--cor-primaria-hover);
-  border-color: var(--cor-primaria-hover);
-  color: var(--cor-texto-sobre-destaque-hover, var(--cor-texto-sobre-destaque));
+  background-color: var(--login-primaria-hover);
+  border-color: var(--login-primaria-hover);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-hover);
+  box-shadow: 0 8px 24px rgba(75, 108, 183, 0.28);
 }
 
 .formulario__botao:active {
@@ -153,7 +165,7 @@
 }
 
 .formulario__botao:focus-visible {
-  outline: 3px solid var(--cor-primaria);
+  outline: 3px solid var(--login-primaria);
   outline-offset: 3px;
 }
 
@@ -168,7 +180,7 @@
 }
 
 .formulario__link {
-  color: var(--cor-link-fundo-claro);
+  color: var(--login-link);
   text-decoration: none;
   font-size: 12px;
   margin-top: 0;
@@ -183,7 +195,7 @@
 
 .formulario__botao--mobile {
   display: block;
-  border: 2px solid var(--cor-primaria);
+  border: 2px solid var(--login-primaria);
   margin-top: 12px;
   text-decoration: none;
   cursor: pointer;
@@ -200,8 +212,8 @@
 
 .formulario__botao--mobile:hover {
   color: var(--cor-texto-sobre-destaque-hover, var(--cor-texto-sobre-destaque));
-  background-color: var(--cor-primaria-hover);
-  border-color: var(--cor-primaria-hover);
+  background-color: var(--login-primaria-hover);
+  border-color: var(--login-primaria-hover);
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow-hover);
@@ -232,7 +244,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
-  color: var(--cor-texto);
+  color: #ffffff;
   position: relative;
   left: -100%;
   height: 100%;
@@ -361,7 +373,7 @@
 }
 
 .breadcrumb a:hover {
-  color: var(--cor-texto-destaque);
+  color: var(--login-link);
 }
 
 .breadcrumb i {
@@ -369,7 +381,7 @@
 }
 
 .breadcrumb span {
-  color: var(--cor-texto);
+  color: var(--login-texto);
 }
 
 /* ─── FILTROS ───────────────────────────────────────────────────────────────── */
@@ -414,9 +426,9 @@
 
 .botao-filtro-principal:hover,
 .botao-filtro-principal.ativo {
-  background-color: var(--cor-primaria);
+  background-color: var(--login-primaria);
   border-color: var(--cor-primaria);
-  color: var(--cor-texto-sobre-destaque);
+  color: #ffffff;
   box-shadow: var(--shadow-glow);
 }
 
@@ -657,12 +669,9 @@
   }
 
   .formulario__botao--mobile:hover {
-    color: var(
-      --cor-texto-sobre-destaque-hover,
-      var(--cor-texto-sobre-destaque)
-    );
+    color: #ffffff;
     background-color: var(--cor-primaria-hover);
-    border-color: var(--cor-primaria-hover);
+    border-color: var(--login-primaria-hover);
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow-hover);
@@ -721,70 +730,4 @@
   .rodape {
     padding: 32px 16px 16px;
   }
-}
-
-
-/* ─── Correções pontuais do modo claro ─────────────────────────────────────── */
-html.tema-claro .corpo-login,
-body.tema-claro .corpo-login {
-  background: var(--cor-fundo);
-}
-
-html.tema-claro .autenticacao,
-body.tema-claro .autenticacao,
-html.tema-claro .formulario,
-body.tema-claro .formulario {
-  background-color: var(--cor-lateral);
-  color: var(--cor-texto);
-}
-
-html.tema-claro .formulario__titulo,
-body.tema-claro .formulario__titulo {
-  color: var(--cor-texto);
-}
-
-html.tema-claro .formulario__campo,
-body.tema-claro .formulario__campo {
-  background-color: var(--cor-card);
-  border-color: var(--cor-borda-forte);
-  color: var(--cor-texto);
-}
-
-html.tema-claro .formulario__campo:focus,
-body.tema-claro .formulario__campo:focus {
-  background-color: var(--cor-card);
-}
-
-html.tema-claro .formulario__campo::placeholder,
-body.tema-claro .formulario__campo::placeholder {
-  color: var(--cor-texto-muted);
-}
-
-html.tema-claro ,
-body.tema-claro .formulario__botao--fantasma {
- border-color: #ffffff;
-    color: #ffffff;
-}
-
-html.tema-claro .formulario__botao--fantasma:hover,
-body.tema-claro .formulario__botao--fantasma:hover {
-  background-color: color-mix(in srgb, var(--cor-primaria) 10%, transparent);
-  border-color: var(--cor-primaria-hover);
-}
-
-html.tema-claro .autenticacao__sobreposicao,
-body.tema-claro .autenticacao__sobreposicao {
-  background: linear-gradient(
-    to right,
-    var(--cor-primaria),
-    color-mix(in srgb, var(--cor-primaria) 55%, var(--cor-lateral))
-  );
-  color: #ffffff;
-}
-
-html.tema-claro .menu-flutuante,
-body.tema-claro .menu-flutuante {
-  background: var(--cor-dropdown);
-  border-color: var(--cor-borda-forte);
-  box-shadow: var(--shadow-card);
 }
