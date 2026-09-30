@@ -16,6 +16,8 @@
 @import url("./components/painel-contextual.css");
 @import url("./components/precos.css");
 @import url("./components/tags.css");
+/* Fundo personalizado — elemento global + UI da página de Configurações. */
+@import url("./components/fundo-personalizado.css");
 @import url("./layout/estrutura.css");
 @import url("./layout/footer.css");
 @import url("./layout/header.css");

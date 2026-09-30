@@ -53,6 +53,8 @@ window.obterCaminhoImagem = function (imagem, slug) {
     "core/atalho-tema.js",
     "core/contraste.js",
     "core/animacoes.js",
+    // Fundo personalizado (local ao navegador — localStorage + IndexedDB).
+    "core/fundo-personalizado.js",
     "busca/busca.js",
     "censura.js",
     "footer.js",

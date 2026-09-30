@@ -1909,6 +1909,230 @@
             </div>
           </div>
 
+          <!-- Fundo personalizado -->
+          <div class="painel-config fundo-personalizado-painel" id="painel-fundo">
+            <div class="painel-header">
+              <i class="fas fa-image"></i>
+              <h2>Fundo personalizado</h2>
+            </div>
+            <div class="painel-corpo">
+              <div class="fundo-config-bloco">
+                <div class="aparencia-bloco-heading">
+                  <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"
+                    ><i class="fas fa-palette"></i
+                  ></span>
+                  <div>
+                    <span class="opcao-titulo">Modo de fundo</span>
+                    <span class="opcao-descricao"
+                      >A configuração fica salva apenas neste navegador/dispositivo.
+                      Não sincroniza automaticamente entre dispositivos.</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="fundo-modos"
+                  role="tablist"
+                  aria-label="Modo de fundo"
+                >
+                  <button
+                    type="button"
+                    class="fundo-modo-btn ativo"
+                    data-modo="padrao"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    <i class="fas fa-ban"></i><span>Padrão</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="fundo-modo-btn"
+                    data-modo="cor"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    <i class="fas fa-square"></i><span>Cor sólida</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="fundo-modo-btn"
+                    data-modo="gradiente"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    <i class="fas fa-circle-half-stroke"></i
+                    ><span>Gradiente</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="fundo-modo-btn"
+                    data-modo="imagem"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    <i class="fas fa-image"></i><span>Imagem</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="fundo-config-bloco">
+                <div class="fundo-controles" data-controle="cor">
+                  <div class="fundo-linha">
+                    <div class="fundo-campo">
+                      <label for="fundoCorSolida">Cor de fundo</label>
+                      <input
+                        type="color"
+                        id="fundoCorSolida"
+                        value="#0d0d1f"
+                        aria-label="Escolher cor sólida do fundo"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="fundo-controles" data-controle="gradiente">
+                  <div class="fundo-linha">
+                    <div class="fundo-campo">
+                      <label for="fundoGradCor1">Cor 1</label>
+                      <input type="color" id="fundoGradCor1" value="#2e00e6" />
+                    </div>
+                    <div class="fundo-campo">
+                      <label for="fundoGradCor2">Cor 2</label>
+                      <input type="color" id="fundoGradCor2" value="#ec4899" />
+                    </div>
+                    <div class="fundo-campo" style="flex: 2; min-width: 200px">
+                      <label for="fundoGradAngulo"
+                        >Ângulo:
+                        <span id="fundoGradAnguloValor">135°</span></label
+                      >
+                      <input
+                        type="range"
+                        id="fundoGradAngulo"
+                        min="0"
+                        max="360"
+                        value="135"
+                        aria-label="Ângulo do gradiente"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="fundo-presets"
+                    id="fundoPresets"
+                    aria-label="Presets de gradiente"
+                  >
+                    <button
+                      type="button"
+                      class="fundo-preset"
+                      data-c1="#2e00e6"
+                      data-c2="#ec4899"
+                      style="
+                        background: linear-gradient(135deg, #2e00e6, #ec4899);
+                      "
+                    >
+                      <span>Roxo / Rosa</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="fundo-preset"
+                      data-c1="#2563eb"
+                      data-c2="#22d3ee"
+                      style="
+                        background: linear-gradient(135deg, #2563eb, #22d3ee);
+                      "
+                    >
+                      <span>Azul / Ciano</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="fundo-preset"
+                      data-c1="#4c1d95"
+                      data-c2="#2563eb"
+                      style="
+                        background: linear-gradient(135deg, #4c1d95, #2563eb);
+                      "
+                    >
+                      <span>Roxo / Azul</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="fundo-preset"
+                      data-c1="#10b981"
+                      data-c2="#2563eb"
+                      style="
+                        background: linear-gradient(135deg, #10b981, #2563eb);
+                      "
+                    >
+                      <span>Verde / Azul</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="fundo-preset"
+                      data-c1="#0d0d1f"
+                      data-c2="#4c1d95"
+                      style="
+                        background: linear-gradient(135deg, #0d0d1f, #4c1d95);
+                      "
+                    >
+                      <span>Escuro / Roxo</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="fundo-controles" data-controle="imagem">
+                  <div class="fundo-linha">
+                    <div
+                      class="fundo-campo"
+                      style="flex: 2; min-width: 220px"
+                    >
+                      <label for="fundoImagemInput"
+                        >Imagem (JPG, PNG, WebP ou GIF — máximo 5 MB)</label
+                      >
+                      <input
+                        type="file"
+                        id="fundoImagemInput"
+                        accept="image/jpeg,image/png,image/webp,image/gif"
+                      />
+                    </div>
+                    <div class="fundo-campo">
+                      <label for="fundoImagemPosicao">Posição</label>
+                      <select id="fundoImagemPosicao">
+                        <option value="center">Centro</option>
+                        <option value="center top">Centro superior</option>
+                        <option value="center bottom">Centro inferior</option>
+                        <option value="left center">Esquerda</option>
+                        <option value="right center">Direita</option>
+                      </select>
+                    </div>
+                    <div class="fundo-campo">
+                      <label for="fundoImagemTamanho">Tamanho</label>
+                      <select id="fundoImagemTamanho">
+                        <option value="cover">Cobrir</option>
+                        <option value="contain">Conter</option>
+                        <option value="auto">Original/auto</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fundo-config-bloco">
+                <div
+                  class="fundo-preview"
+                  id="fundoPreview"
+                  aria-label="Prévia do fundo personalizado"
+                ></div>
+                <div class="fundo-acoes">
+                  <button
+                    type="button"
+                    class="btn-perigo"
+                    id="fundoRestaurar"
+                  >
+                    <i class="fas fa-undo"></i> Restaurar padrão
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Censura e Faixa Etária -->
           <div class="painel-config" id="painel-censura">
             <div class="painel-header">
@@ -3199,6 +3423,170 @@ document.addEventListener("DOMContentLoaded", () => {
   salvarAtalho();
 }, { once: true });
 </script>
+
+<script>
+// ── FUNDO PERSONALIZADO — CONTROLES DA PÁGINA ──────────────────────────────
+// A persistência é 100% local (localStorage + IndexedDB), não sincroniza
+// entre dispositivos e não grava nada no MySQL nem no servidor.
+document.addEventListener("DOMContentLoaded", () => {
+  const FP = window.FundoPersonalizado;
+  if (!FP) return;
+
+  const modos = document.querySelectorAll(".fundo-modo-btn");
+  const controles = document.querySelectorAll(".fundo-controles");
+  const corInput = document.getElementById("fundoCorSolida");
+  const grad1 = document.getElementById("fundoGradCor1");
+  const grad2 = document.getElementById("fundoGradCor2");
+  const gradAng = document.getElementById("fundoGradAngulo");
+  const gradAngVal = document.getElementById("fundoGradAnguloValor");
+  const presets = document.querySelectorAll(".fundo-preset");
+  const imgInput = document.getElementById("fundoImagemInput");
+  const imgPos = document.getElementById("fundoImagemPosicao");
+  const imgTam = document.getElementById("fundoImagemTamanho");
+  const btnRestaurar = document.getElementById("fundoRestaurar");
+  const preview = document.getElementById("fundoPreview");
+
+  const cfg = FP.obterConfiguracao();
+
+  // Estado inicial dos inputs com base na configuração persistida.
+  if (corInput) corInput.value = cfg.cor || "#0d0d1f";
+  if (grad1) grad1.value = cfg.gradienteCor1 || "#2e00e6";
+  if (grad2) grad2.value = cfg.gradienteCor2 || "#ec4899";
+  if (gradAng) {
+    gradAng.value = cfg.gradienteAngulo ?? 135;
+    if (gradAngVal) gradAngVal.textContent = `${gradAng.value}°`;
+  }
+  if (imgPos) imgPos.value = cfg.imagemPosicao || "center";
+  if (imgTam) imgTam.value = cfg.imagemTamanho || "cover";
+
+  function atualizarModosUI(modo) {
+    modos.forEach((b) => {
+      const ativo = b.dataset.modo === modo;
+      b.classList.toggle("ativo", ativo);
+      b.setAttribute("aria-selected", ativo ? "true" : "false");
+    });
+    controles.forEach((c) => {
+      c.classList.toggle("ativo", c.dataset.controle === modo);
+    });
+  }
+
+  function atualizarPreview() {
+    if (!preview) return;
+    const c = FP.obterConfiguracao();
+    preview.style.background = "";
+    preview.style.backgroundImage = "";
+    preview.style.backgroundPosition = "";
+    preview.style.backgroundSize = "";
+    preview.style.backgroundRepeat = "";
+
+    if (c.modo === "padrao") {
+      preview.style.background = "var(--cor-lateral)";
+    } else if (c.modo === "cor") {
+      preview.style.background = c.cor;
+    } else if (c.modo === "gradiente") {
+      preview.style.background = `linear-gradient(${c.gradienteAngulo}deg, ${c.gradienteCor1}, ${c.gradienteCor2})`;
+    } else if (c.modo === "imagem") {
+      const fundoEl = document.getElementById("gs-fundo-personalizado");
+      if (fundoEl) {
+        preview.style.backgroundColor = "#0d0d1f";
+        preview.style.backgroundImage = fundoEl.style.backgroundImage || "";
+        preview.style.backgroundPosition =
+          fundoEl.style.backgroundPosition || "center";
+        preview.style.backgroundSize = fundoEl.style.backgroundSize || "cover";
+        preview.style.backgroundRepeat = "no-repeat";
+      }
+    }
+  }
+
+  atualizarModosUI(cfg.modo || "padrao");
+  atualizarPreview();
+
+  modos.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modo = btn.dataset.modo;
+      FP.definirModo(modo);
+      atualizarModosUI(modo);
+      atualizarPreview();
+    });
+  });
+
+  if (corInput) {
+    corInput.addEventListener("input", () => {
+      FP.definirCor(corInput.value);
+      atualizarModosUI("cor");
+      atualizarPreview();
+    });
+  }
+
+  const aplicarGradiente = () => {
+    if (!grad1 || !grad2 || !gradAng) return;
+    FP.definirGradiente(
+      grad1.value,
+      grad2.value,
+      parseInt(gradAng.value, 10),
+    );
+    atualizarModosUI("gradiente");
+    atualizarPreview();
+  };
+
+  grad1?.addEventListener("input", aplicarGradiente);
+  grad2?.addEventListener("input", aplicarGradiente);
+  gradAng?.addEventListener("input", () => {
+    if (gradAngVal) gradAngVal.textContent = `${gradAng.value}°`;
+    aplicarGradiente();
+  });
+
+  presets.forEach((p) => {
+    p.addEventListener("click", () => {
+      if (!grad1 || !grad2) return;
+      grad1.value = p.dataset.c1;
+      grad2.value = p.dataset.c2;
+      aplicarGradiente();
+    });
+  });
+
+  imgInput?.addEventListener("change", async () => {
+    const file = imgInput.files?.[0];
+    if (!file) return;
+    const res = await FP.definirImagem(file, imgPos.value, imgTam.value);
+    if (!res || !res.ok) {
+      alert(res?.erro || "Erro ao processar imagem.");
+      imgInput.value = "";
+      return;
+    }
+    atualizarModosUI("imagem");
+    atualizarPreview();
+  });
+
+  imgPos?.addEventListener("change", () => {
+    FP.definirPosicaoImagem(imgPos.value);
+    atualizarPreview();
+  });
+
+  imgTam?.addEventListener("change", () => {
+    FP.definirTamanhoImagem(imgTam.value);
+    atualizarPreview();
+  });
+
+  btnRestaurar?.addEventListener("click", () => {
+    FP.restaurarPadrao();
+    atualizarModosUI("padrao");
+    atualizarPreview();
+    const c = FP.obterConfiguracao();
+    if (corInput) corInput.value = c.cor;
+    if (grad1) grad1.value = c.gradienteCor1;
+    if (grad2) grad2.value = c.gradienteCor2;
+    if (gradAng) {
+      gradAng.value = c.gradienteAngulo;
+      if (gradAngVal) gradAngVal.textContent = `${c.gradienteAngulo}°`;
+    }
+    if (imgInput) imgInput.value = "";
+    if (imgPos) imgPos.value = c.imagemPosicao;
+    if (imgTam) imgTam.value = c.imagemTamanho;
+  });
+});
+</script>
+
     <!-- PixelBlast Background Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="../js/PixelBlast.js"></script>
