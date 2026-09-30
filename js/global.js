@@ -53,7 +53,6 @@ window.obterCaminhoImagem = function (imagem, slug) {
     "core/atalho-tema.js",
     "core/contraste.js",
     "core/animacoes.js",
-    "components/lixeira-destrutiva.js",
     "busca/busca.js",
     "censura.js",
     "footer.js",
