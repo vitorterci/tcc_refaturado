@@ -180,7 +180,7 @@
 
 .formulario__botao--fantasma:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border-color: var(--cor-texto-sobre-destaque, #ffffff);
+  border-color: #ffffff;
 }
 
 .formulario__link {
@@ -215,9 +215,9 @@
 }
 
 .formulario__botao--mobile:hover {
-  color: var(--cor-texto-sobre-destaque-hover, var(--cor-texto-sobre-destaque));
-  background-color: var(--cor-primaria-hover);
-  border-color: var(--cor-primaria-hover);
+  color: #ffffff;
+  background-color: var(--login-primaria-hover);
+  border-color: var(--login-primaria-hover);
   text-decoration: none;
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow-hover);
@@ -651,9 +651,9 @@
 
   .formulario__botao--mobile {
     display: block;
-    background-color: var(--cor-primaria);
-    color: var(--cor-texto-sobre-destaque);
-    border: 2px solid var(--cor-primaria);
+    background-color: var(--login-primaria);
+    color: #ffffff;
+    border: 2px solid var(--login-primaria);
     margin-top: 12px;
     text-decoration: none;
     cursor: pointer;
@@ -669,12 +669,9 @@
   }
 
   .formulario__botao--mobile:hover {
-    color: var(
-      --cor-texto-sobre-destaque-hover,
-      var(--cor-texto-sobre-destaque)
-    );
-    background-color: var(--cor-primaria-hover);
-    border-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    background-color: var(--login-primaria-hover);
+    border-color: var(--login-primaria-hover);
     text-decoration: none;
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow-hover);
