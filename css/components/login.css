@@ -116,7 +116,7 @@
 }
 
 .formulario__campo {
-  background-color: var(--login-campo);
+  background-color:#ececed;
   border: 2px solid var(--login-borda);
   padding: 12px 15px 12px 45px;
   margin: 0;
@@ -199,11 +199,13 @@
 
 .formulario__botao--mobile {
   display: block;
+  color: #ececed;
   border: 2px solid var(--login-primaria);
+  background:var(--login-primaria);
   margin-top: 12px;
   text-decoration: none;
   cursor: pointer;
-  font-family: var(--font-corpo);
+  font-family: var(#fff);
   font-size: 12px;
   font-weight: 600;
   transition: all 0.3s ease;

@@ -882,3 +882,6 @@
     animation: none;
   }
 }
+#gs-fundo-personalizado {
+  display: none !important;
+}
