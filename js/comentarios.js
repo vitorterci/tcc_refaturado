@@ -282,19 +282,6 @@
     }
   };
 
-  const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-  const classesAnimacaoExclusao = [
-    'is-busy', 'is-shrink', 'is-open', 'is-drop',
-    'is-close', 'is-dot', 'is-check', 'is-out',
-  ];
-
-  const limparAnimacaoExclusao = (btn) => {
-    classesAnimacaoExclusao.forEach((classe) => btn.classList.remove(classe));
-    btn.disabled = false;
-    btn.setAttribute('aria-label', 'Excluir comentário');
-  };
-
   const classesAnimacaoExclusao = [
     'is-busy',
     'is-shrink',
