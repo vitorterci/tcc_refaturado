@@ -295,33 +295,70 @@
     btn.setAttribute('aria-label', 'Excluir comentário');
   };
 
-  const iniciarAnimacaoExclusao = (btn) => {
-    const timeline = [
-      ['is-busy', 0],
-      ['is-shrink', 0],
-      ['is-open', 300],
-      ['is-drop', 420],
-      ['is-close', 1500],
-      ['is-dot', 1600],
-      ['is-check', 2000],
-      ['is-out', 3000],
-    ];
+  const classesAnimacaoExclusao = [
+    'is-busy',
+    'is-shrink',
+    'is-open',
+    'is-drop',
+    'is-close',
+    'is-dot',
+    'is-check',
+    'is-out',
+  ];
 
-    return timeline.map(([classe, ms]) => setTimeout(() => {
-      if (classe === 'is-close') btn.classList.remove('is-open');
-      btn.classList.add(classe);
-    }, ms));
+  const esperar = (ms) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const limparAnimacaoExclusao = (btn) => {
+    classesAnimacaoExclusao.forEach((classe) =>
+      btn.classList.remove(classe)
+    );
+    btn.disabled = false;
+    btn.setAttribute('aria-label', 'Excluir comentário');
   };
 
-  const cancelarTimers = (timers) => timers.forEach((timer) => clearTimeout(timer));
+  const iniciarAnimacaoExclusao = async (btn) => {
+    /*
+     * Primeiro aplica o estado visual e entrega um frame ao navegador.
+     * Isso evita que a requisição DELETE seja percebida apenas como
+     * "botão travado por alguns segundos".
+     */
+    btn.classList.add('is-busy', 'is-shrink');
+
+    await new Promise((resolve) =>
+      requestAnimationFrame(() =>
+        requestAnimationFrame(resolve)
+      )
+    );
+
+    btn.classList.add('is-open');
+    await esperar(120);
+    btn.classList.add('is-drop');
+    await esperar(1080);
+    btn.classList.remove('is-open');
+    btn.classList.add('is-close');
+    await esperar(100);
+    btn.classList.add('is-dot');
+    await esperar(400);
+    btn.classList.add('is-check');
+
+    return 2200;
+  };
 
   const excluir = async (id, btn, artigo) => {
     if (!btn || !artigo || btn.classList.contains('is-busy')) return;
 
-    const timers = iniciarAnimacaoExclusao(btn);
     artigo.classList.add('is-being-deleted');
     btn.disabled = true;
     btn.setAttribute('aria-label', 'Excluindo comentário, aguarde');
+
+    const inicio = performance.now();
+
+    /*
+     * A animação começa imediatamente. O DELETE roda em paralelo,
+     * sem bloquear a primeira etapa visual.
+     */
+    const animacao = iniciarAnimacaoExclusao(btn);
 
     try {
       const r = await fetch(`${api}?id=${id}`, {
@@ -334,11 +371,14 @@
         throw new Error(d.message || 'Erro ao excluir.');
       }
 
-      await esperar(3000);
-      cancelarTimers(timers);
+      const duracao = await animacao;
+      const restante = Math.max(0, duracao - (performance.now() - inicio));
+      if (restante) await esperar(restante);
+
+      btn.classList.add('is-out');
+      await esperar(250);
       await carregar();
     } catch (e) {
-      cancelarTimers(timers);
       artigo.classList.remove('is-being-deleted');
       limparAnimacaoExclusao(btn);
       mostrarErro(e.message || 'Erro ao excluir comentário.');
