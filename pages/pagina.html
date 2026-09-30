@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="base-path" content="../" />
+     <link rel="stylesheet" href="../css/components/comentarios.css" />
+    <link rel="stylesheet" href="../css/components/lixeira-destrutiva.css" />
+    
     <style>
       html.pagina-protegida-verificando body {
         visibility: hidden;
@@ -775,7 +778,11 @@
             </div>
           </form>
 
-          <div class="comentarios-lista" id="comentarios-lista" aria-live="polite">
+          <div
+            class="comentarios-lista"
+            id="comentarios-lista"
+            aria-live="polite"
+          >
             <div class="loading">
               <i class="fas fa-spinner fa-spin"></i>
               <p>Carregando comentários...</p>
@@ -804,8 +811,9 @@
     <script src="../js/navegacao/navegacao.js"></script>
     <script src="../js/precos/precos.js"></script>
     <script src="../js/detalhes-jogo.js"></script>
+    <script src="js/components/animacao-exclusao.js" defer></script>
     <script src="../js/comentarios.js"></script>
-    <!-- PixelBlast Background Dependencies -->
+   <!-- PixelBlast Background Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="../js/PixelBlast.js"></script>
   </body>
