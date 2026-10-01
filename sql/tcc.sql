@@ -462,3 +462,485 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+USE tcc;
+
+INSERT INTO jogos
+(
+    nome,
+    slug,
+    descricao,
+    img,
+    categoria,
+    plataforma,
+    genero,
+    ano,
+    etaria,
+    status,
+    avaliacao_gamplay,
+    avaliacao_graficos,
+    avaliacao_historia,
+    data_lancamento
+)
+VALUES
+
+(
+    'Alan Wake 2',
+    'alan-wake-2',
+    'Survival horror narrativo da Remedy Entertainment que acompanha o escritor Alan Wake e a agente do FBI Saga Anderson em uma investigação sobrenatural.',
+    'games/alan-wake-2.webp',
+    'Survival Horror',
+    'PC, PS5, Xbox Series',
+    'Survival Horror',
+    2023,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-10-27'
+),
+
+(
+    'Baldur''s Gate 3',
+    'baldurs-gate-3',
+    'RPG baseado no universo de Dungeons & Dragons, com exploração, combate por turnos, escolhas narrativas e grande liberdade de criação de personagens.',
+    'games/baldurs-gate-3.webp',
+    'CRPG',
+    'PC, PS5, Xbox Series',
+    'CRPG',
+    2023,
+    '14',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-08-03'
+),
+
+(
+    'Bloodborne',
+    'bloodborne',
+    'Action RPG ambientado na cidade gótica de Yharnam, onde o jogador assume o papel de um Caçador durante uma misteriosa noite de caça.',
+    'games/bloodborne.webp',
+    'Action RPG',
+    'PS4',
+    'Action RPG',
+    2015,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2015-03-24'
+),
+
+(
+    'Celeste',
+    'celeste',
+    'Plataforma de precisão que acompanha Madeline durante sua escalada da Montanha Celeste, combinando desafios de movimentação com uma narrativa pessoal.',
+    'games/celeste.webp',
+    'Platformer',
+    'PC, PS4, Xbox One, Switch',
+    'Platformer',
+    2018,
+    '10',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2018-01-25'
+),
+
+(
+    'Cuphead',
+    'cuphead',
+    'Run and gun inspirado em animações dos anos 1930, conhecido por batalhas contra chefes, visual desenhado à mão e trilha sonora de jazz.',
+    'games/cuphead.webp',
+    'Run and Gun',
+    'PC, PS4, Xbox One, Switch',
+    'Run and Gun',
+    2017,
+    'L',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2017-09-29'
+),
+
+(
+    'Cyberpunk 2077',
+    'cyberpunk-2077',
+    'RPG de ação em mundo aberto ambientado em Night City, onde o mercenário V busca construir sua própria história em uma sociedade dominada por tecnologia e megacorporações.',
+    'games/cyberpunk-2077.webp',
+    'Action RPG',
+    'PC, PS5, Xbox Series, PS4, Xbox One',
+    'Action RPG',
+    2020,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2020-12-10'
+),
+
+(
+    'Dark Souls III',
+    'dark-souls-3',
+    'Action RPG da FromSoftware ambientado no decadente reino de Lothric, com combate desafiador, exploração e narrativa construída através do mundo do jogo.',
+    'games/dark-souls-3.webp',
+    'Action RPG',
+    'PC, PS4, Xbox One',
+    'Soulslike',
+    2016,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2016-03-24'
+),
+
+(
+    'Elden Ring',
+    'elden-ring',
+    'Action RPG de mundo aberto desenvolvido pela FromSoftware, ambientado nas Terras Intermédias e focado em exploração, combate e construção livre de personagem.',
+    'games/elden-ring.webp',
+    'Action RPG',
+    'PC, PS4, PS5, Xbox One, Xbox Series',
+    'Soulslike',
+    2022,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2022-02-25'
+),
+
+(
+    'Final Fantasy XVI',
+    'final-fantasy-xvi',
+    'RPG de ação da série Final Fantasy ambientado em Valisthea, acompanhando Clive Rosfield em uma história marcada pelos Dominantes e pelos Eikons.',
+    'games/final-fantasy-xvi.webp',
+    'Action RPG',
+    'PS5, PC',
+    'Action RPG',
+    2023,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-06-22'
+),
+
+(
+    'Ghost of Tsushima',
+    'ghost-of-tsushima',
+    'Aventura de ação em mundo aberto ambientada na ilha de Tsushima durante a invasão mongol, combinando combate com espada, arco e furtividade.',
+    'games/ghost-of-tsushima.webp',
+    'Action Adventure',
+    'PS4, PS5, PC',
+    'Action Adventure',
+    2020,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2020-07-17'
+),
+
+(
+    'God of War Ragnarök',
+    'god-of-war-ragnarok',
+    'Aventura de ação que acompanha Kratos e Atreus durante os acontecimentos que antecedem o Ragnarök nos Nove Reinos da mitologia nórdica.',
+    'games/god-of-war-ragnarok.webp',
+    'Action Adventure',
+    'PS4, PS5, PC',
+    'Action Adventure',
+    2022,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2022-11-09'
+),
+
+(
+    'Grand Theft Auto V',
+    'gta-v',
+    'Jogo de ação em mundo aberto ambientado em Los Santos, acompanhando três protagonistas envolvidos em crimes, perseguições e grandes golpes.',
+    'games/gta-v.webp',
+    'Sandbox',
+    'PC, PS4, PS5, Xbox One, Xbox Series',
+    'Sandbox',
+    2013,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2013-09-17'
+),
+
+(
+    'Hades',
+    'hades',
+    'Roguelike de ação da Supergiant Games no qual Zagreus tenta escapar do submundo enfrentando inimigos e chefes enquanto descobre novas partes da história.',
+    'games/hades.webp',
+    'Roguelike',
+    'PC, PS4, PS5, Xbox One, Xbox Series, Switch',
+    'Roguelike',
+    2020,
+    '12',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2020-09-17'
+),
+
+(
+    'Hollow Knight',
+    'hollow-knight',
+    'Metroidvania de ação ambientado no reino subterrâneo de Hallownest, combinando exploração, combate, chefes e descoberta de habilidades.',
+    'games/hollow-knight.webp',
+    'Metroidvania',
+    'PC, PS4, Xbox One, Switch',
+    'Metroidvania',
+    2017,
+    '10',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2017-02-24'
+),
+
+(
+    'Horizon Forbidden West',
+    'horizon-forbidden-west',
+    'Aventura de ação em mundo aberto que acompanha Aloy em uma jornada por uma região pós-apocalíptica dominada por máquinas.',
+    'games/horizon-forbidden-west.webp',
+    'Action Adventure',
+    'PS4, PS5, PC',
+    'Action Adventure',
+    2022,
+    '14',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2022-02-18'
+),
+
+(
+    'It Takes Two',
+    'it-takes-two',
+    'Aventura cooperativa criada especificamente para dois jogadores, combinando plataforma, quebra-cabeças, ação e diferentes mecânicas ao longo da jornada.',
+    'games/it-takes-two.webp',
+    'Co-op Adventure',
+    'PC, PS4, PS5, Xbox One, Xbox Series, Switch',
+    'Co-op Adventure',
+    2021,
+    '10',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2021-03-25'
+),
+
+(
+    'Minecraft',
+    'minecraft',
+    'Jogo sandbox baseado em exploração, coleta de recursos, construção e sobrevivência em mundos gerados proceduralmente.',
+    'games/minecraft.webp',
+    'Sandbox',
+    'PC, PS4, PS5, Xbox One, Xbox Series, Switch, Mobile',
+    'Sandbox',
+    2011,
+    'L',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2011-11-18'
+),
+
+(
+    'NieR: Automata',
+    'nier-automata',
+    'RPG de ação ambientado em uma Terra devastada por máquinas, acompanhando os androides 2B, 9S e A2.',
+    'games/nier-automata.webp',
+    'Action RPG',
+    'PC, PS4, Xbox One',
+    'Action RPG',
+    2017,
+    '14',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2017-02-23'
+),
+
+(
+    'Ori and the Will of the Wisps',
+    'ori-and-the-will-of-the-wisps',
+    'Aventura de plataforma e exploração em estilo Metroidvania, com combate, habilidades de movimentação e um mundo interconectado.',
+    'games/ori-and-the-will-of-the-wisps.webp',
+    'Metroidvania',
+    'PC, Xbox One, Xbox Series, Switch',
+    'Metroidvania',
+    2020,
+    'L',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2020-03-11'
+),
+
+(
+    'Persona 5 Royal',
+    'persona-5-royal',
+    'JRPG que combina vida escolar, relacionamentos e exploração de masmorras, acompanhando os Phantom Thieves em uma história sobrenatural.',
+    'games/persona-5-royal.webp',
+    'JRPG',
+    'PS4, PS5, Xbox One, Xbox Series, Switch, PC',
+    'JRPG',
+    2019,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2019-10-31'
+),
+
+(
+    'Red Dead Redemption 2',
+    'red-dead-redemption-2',
+    'Aventura de ação em mundo aberto ambientada no Velho Oeste, acompanhando Arthur Morgan e a gangue Van der Linde.',
+    'games/red-dead-redemption-2.webp',
+    'Action Adventure',
+    'PC, PS4, Xbox One',
+    'Action Adventure',
+    2018,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2018-10-26'
+),
+
+(
+    'Resident Evil 4',
+    'resident-evil-4-remake',
+    'Remake do survival horror de ação em que Leon S. Kennedy é enviado para uma região rural da Europa em uma missão para resgatar Ashley Graham.',
+    'games/resident-evil-4-remake.webp',
+    'Survival Horror',
+    'PC, PS4, PS5, Xbox Series',
+    'Survival Horror',
+    2023,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-03-24'
+),
+
+(
+    'Sekiro: Shadows Die Twice',
+    'sekiro',
+    'Action RPG de ação desenvolvido pela FromSoftware, centrado em combate com espada, furtividade e habilidades de um shinobi.',
+    'games/sekiro.webp',
+    'Action RPG',
+    'PC, PS4, Xbox One',
+    'Soulslike',
+    2019,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2019-03-22'
+),
+
+(
+    'Marvel''s Spider-Man 2',
+    'spider-man-2',
+    'Aventura de ação em mundo aberto que coloca Peter Parker e Miles Morales contra novas ameaças em Nova York.',
+    'games/spider-man-2.webp',
+    'Action Adventure',
+    'PS5, PC',
+    'Action Adventure',
+    2023,
+    '12',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-10-20'
+),
+
+(
+    'Stardew Valley',
+    'stardew-valley',
+    'Simulação de fazenda com exploração, agricultura, pesca, criação de animais, relacionamentos e descoberta de uma comunidade rural.',
+    'games/stardew-valley.webp',
+    'Simulation',
+    'PC, PS4, Xbox One, Switch, Mobile',
+    'Simulation',
+    2016,
+    'L',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2016-02-26'
+),
+
+(
+    'Starfield',
+    'starfield',
+    'RPG espacial da Bethesda ambientado em um universo futurista de exploração, descoberta, combate espacial e personalização de personagens.',
+    'games/starfield.webp',
+    'CRPG',
+    'PC, Xbox Series',
+    'CRPG',
+    2023,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-09-06'
+),
+
+(
+    'Terraria',
+    'terraria',
+    'Sandbox de aventura em 2D focado em exploração, mineração, construção, criação de equipamentos e combate contra inimigos e chefes.',
+    'games/terraria.webp',
+    'Sandbox',
+    'PC, PS4, Xbox One, Switch, Mobile',
+    'Sandbox',
+    2011,
+    '12',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2011-05-16'
+),
+
+(
+    'The Last of Us Part II',
+    'the-last-of-us-part-ii',
+    'Aventura de ação narrativa ambientada em um mundo pós-apocalíptico, acompanhando Ellie em uma jornada marcada por conflitos e sobrevivência.',
+    'games/the-last-of-us-part-ii.webp',
+    'Action Adventure',
+    'PS4, PS5',
+    'Action Adventure',
+    2020,
+    '18',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2020-06-19'
+),
+
+(
+    'The Legend of Zelda: Tears of the Kingdom',
+    'the-legend-of-zelda-totk',
+    'Aventura de ação em mundo aberto que expande Hyrule para ilhas celestes e regiões subterrâneas, com novas habilidades de exploração e construção.',
+    'games/the-legend-of-zelda-totk.webp',
+    'Action Adventure',
+    'Nintendo Switch',
+    'Action Adventure',
+    2023,
+    '10',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2023-05-12'
+),
+
+(
+    'The Witcher 3: Wild Hunt',
+    'the-witcher-3',
+    'RPG de mundo aberto baseado na série literária de Andrzej Sapkowski, acompanhando Geralt de Rívia em uma busca por Ciri.',
+    'games/the-witcher-3.webp',
+    'Action RPG',
+    'PC, PS4, PS5, Xbox One, Xbox Series, Switch',
+    'Action RPG',
+    2015,
+    '16',
+    'ativo',
+    0.0, 0.0, 0.0,
+    '2015-05-19'
+)
+
+ON DUPLICATE KEY UPDATE
+    nome = VALUES(nome),
+    descricao = VALUES(descricao),
+    img = VALUES(img),
+    categoria = VALUES(categoria),
+    plataforma = VALUES(plataforma),
+    genero = VALUES(genero),
+    ano = VALUES(ano),
+    etaria = VALUES(etaria),
+    status = VALUES(status),
+    data_lancamento = VALUES(data_lancamento);
