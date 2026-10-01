@@ -4,6 +4,7 @@
 
 .secao-filtros {
   width: 100%;
+  min-width: 100%;
   max-width: 100%;
   padding: 0 230px;
   margin-bottom: 32px;
@@ -16,7 +17,7 @@
   padding: 10px 16px;
   border-radius: var(--border-radius-xl);
   display: flex;
-  gap: 10px;
+  gap: 35px;
   align-items: center;
   position: relative;
   border: 1px solid var(--cor-borda);

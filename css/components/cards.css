@@ -1,12 +1,14 @@
 /* Cards de jogos extraídos de global.css — Game Search */
 
 .card-jogo {
+  
   display: flex;
   flex-direction: row;
   align-items: stretch;
   aspect-ratio: auto;
-  min-height: 220px;
-  max-height: 320px;
+  min-height: 300px;
+  max-height: 400px;
+  
   overflow: hidden;
   transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -55,9 +57,9 @@
   top: 0;
   left: 100%; /* Flutua para a direita do card */
   width: 240px; /* Largura ajustada para painel flutuante */
-  height: calc(100% + 2px) !important;
+  height: calc(100% + 5px) !important;
   top: -1px !important;
-  padding: 20px;
+  padding: 10px;
   overflow: hidden;
   display: none;
   flex-direction: column;

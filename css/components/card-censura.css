@@ -24,7 +24,7 @@
   border-radius: var(--border-radius, 12px) !important;
   color: #fff !important;
   border: 2px dashed rgba(239, 68, 68, 0.6) !important;
-  z-index: 50 !important;
+  z-index: 1 !important;
   transition: opacity 0.25s ease;
 }
 

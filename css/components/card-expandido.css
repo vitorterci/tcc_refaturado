@@ -3,7 +3,8 @@
 .card-jogo.open {
   grid-column: span 1; /* Mantém o espaço original no grid */
   z-index: 50; /* Garante que fique acima dos outros cards */
-  overflow: visible !important; /* Permite que o menu flutuante apareça fora do card */
+  overflow: visible !important;/* Permite que o menu flutuante apareça fora do card */
+
 }
 /* ── Card Expandido (Overlay via Clone — não afeta o fluxo do grid) ──────
    Estratégia: o card original NUNCA sai do grid e NUNCA muda de
@@ -15,6 +16,7 @@
    enquanto o clone existe. Isso garante zero reflow no container. */
 /* Card original: mantém espaço reservado no grid, porém invisível */
 .card-jogo-clone {
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -37,6 +39,7 @@
     0 20px 60px rgba(46, 0, 230, 0.5),
     var(--shadow-glow-hover);
   border-color: var(--cor-primaria);
+  border:10px;
   border-width: 2px;
   flex-direction: row;
 }
@@ -136,7 +139,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 20;
+  z-index: 1;
   transition:
     transform 0.2s ease,
     background 0.2s ease;

@@ -2,93 +2,7 @@
 
 /* ── Filtros ── */
 
-.secao-filtros {
-  width: 100%;
-  max-width: 100%;
-  padding: 0 230px;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 100;
-}
 
-.barra-filtro {
-  background-color: var(--cor-lateral);
-  padding: 10px 16px;
-  border-radius: var(--border-radius-xl);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  position: relative;
-  border: 1px solid var(--cor-borda);
-}
-
-.botao-filtro-principal {
-  background-color: var(--cor-tag);
-  color: var(--cor-texto);
-  border: 1px solid transparent;
-  padding: 8px 18px;
-  border-radius: var(--border-radius-lg);
-  cursor: pointer;
-  font-family: var(--font-corpo);
-  font-weight: 700;
-  font-size: var(--fs-xs);
-  letter-spacing: 0.06em;
-  text-transform: lowercase;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  transition: all var(--transition-speed) ease;
-}
-
-.botao-filtro-principal:hover,
-.botao-filtro-principal.ativo {
-  background-color: var(--cor-primaria);
-  border-color: var(--cor-primaria);
-  color: var(--cor-texto-sobre-destaque);
-  box-shadow: var(--shadow-glow);
-}
-
-.menu-flutuante {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  background-color: var(--cor-dropdown);
-  padding: 14px;
-  border-radius: var(--border-radius);
-  display: none;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  z-index: 300;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
-  min-width: 440px;
-  border: 1px solid var(--cor-borda-forte);
-  animation: fadeIn 0.18s ease;
-}
-
-.menu-flutuante.show {
-  display: grid;
-}
-
-.opcao-filtro {
-  background-color: var(--cor-tag);
-  color: var(--cor-texto);
-  border: 1px solid transparent;
-  padding: 9px 12px;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  font-family: var(--font-corpo);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: all var(--transition-fast) ease;
-}
-
-.opcao-filtro:hover,
-.opcao-filtro.selecionada {
-  background-color: var(--cor-primaria);
-  border-color: var(--cor-primaria);
-  color: var(--cor-texto-sobre-destaque);
-}
 /* ─── HEADER DOS MENUS FLUTUANTES COM BOTÃO RESET ──────────────────────────── */
 
 .menu-header {
@@ -238,13 +152,4 @@
   .opcao-filtro { padding: 6px 8px; font-size: 0.55rem; }
 }
 
-/* Os menus de filtro continuam fora do fluxo e sempre acima da grade. */
-.secao-filtros,
-.barra-filtro {
-  position: relative;
-}
 
-.menu-flutuante {
-  position: absolute;
-  z-index: 4100;
-}

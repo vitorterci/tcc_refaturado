@@ -2,7 +2,7 @@
 .grade-jogos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 20px;
+  gap: 25px;
   width: 100%;
   max-width: 1000px;
 }
@@ -16,7 +16,7 @@
 .grid-3col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 25px;
   width: 100%;
 }
 

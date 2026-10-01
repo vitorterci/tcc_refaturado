@@ -32,6 +32,8 @@
 }
 
 .coluna-info {
+  background: rgb(26 26 46);
+  padding:30px ;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
@@ -71,7 +73,9 @@
 }
 
 .secao-avaliacoes {
+  background: rgb(53 56 66);
     display: flex;
+    padding: 20px;
     flex-direction: column;
     gap: var(--space-2);
 }
@@ -389,7 +393,6 @@ body.tema-claro .coluna-info,
 html.tema-claro .secao-avaliacoes,
 body.tema-claro .secao-avaliacoes {
   background: var(--cor-card);
-  border: 20px solid rgba(255, 255, 255, 0);
   box-shadow: var(--shadow-card);
 }
 

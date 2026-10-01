@@ -1,7 +1,7 @@
 /* Regras específicas desta página migradas do global.css. */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--cor-lateral);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--cor-borda);
