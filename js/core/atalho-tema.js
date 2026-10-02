@@ -30,7 +30,9 @@
         { nome: 'Eggman',     arquivo: 'eggman.gif' },
         { nome: 'Game Boy',   arquivo: 'gameboy.gif' },
         { nome: 'Moeda',      arquivo: 'moeda.gif' },
-        { nome: 'Video Games', arquivo: 'Video Games...gif' }
+        { nome: 'Andrey',     arquivo: 'andrey.gif' },
+        { nome: 'Gnomo', arquivo:'gnomo.gif'},
+       { nome: 'Vitor', arquivo:'vitor.gif'}
     ];
 
     // ─── CONFIGURAÇÃO INDIVIDUAL POR ESTILO/PERSONAGEM ────────────────────

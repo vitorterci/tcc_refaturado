@@ -534,7 +534,7 @@
         border: 1px solid var(--cor-borda-forte);
       }
 
-      .toggle-slider:: {
+      .toggle-slider::before {
         content: "";
         position: absolute;
         width: 16px;
@@ -553,7 +553,7 @@
         box-shadow: var(--shadow-glow);
       }
 
-      .toggle input:checked+.toggle-slider:: {
+      .toggle input:checked + .toggle-slider::before {
         transform: translateX(20px) translateY(-50%);
         background-color: var(--cor-texto);
       }
@@ -1909,7 +1909,7 @@
             </div>
           </div>
 
-          <!-- Fundo personalizado -->
+          <!-- Fundo personalizado (NOVO — dropdown flutuante) -->
           <div class="painel-config fundo-personalizado-painel" id="painel-fundo">
             <div class="painel-header">
               <i class="fas fa-image"></i>
@@ -1917,209 +1917,244 @@
             </div>
             <div class="painel-corpo">
               <div class="fundo-config-bloco">
-                <div class="aparencia-bloco-heading">
-                  <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"
-                    ><i class="fas fa-palette"></i
-                  ></span>
-                  <div>
-                    <span class="opcao-titulo">Modo de fundo</span>
-                    <span class="opcao-descricao"
-                      >A configuração fica salva apenas neste navegador/dispositivo.
-                      Não sincroniza automaticamente entre dispositivos.</span
-                    >
-                  </div>
-                </div>
-                <div
-                  class="fundo-modos"
-                  role="tablist"
-                  aria-label="Modo de fundo"
-                >
-                  <button
-                    type="button"
-                    class="fundo-modo-btn ativo"
-                    data-modo="padrao"
-                    role="tab"
-                    aria-selected="true"
-                  >
-                    <i class="fas fa-ban"></i><span>Padrão</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="fundo-modo-btn"
-                    data-modo="cor"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    <i class="fas fa-square"></i><span>Cor sólida</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="fundo-modo-btn"
-                    data-modo="gradiente"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    <i class="fas fa-circle-half-stroke"></i
-                    ><span>Gradiente</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="fundo-modo-btn"
-                    data-modo="imagem"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    <i class="fas fa-image"></i><span>Imagem</span>
-                  </button>
-                </div>
-              </div>
+                <p class="fundo-nota-local">
+                  A configuração fica salva apenas neste navegador/dispositivo.
+                  Não sincroniza automaticamente entre dispositivos.
+                </p>
 
-              <div class="fundo-config-bloco">
-                <div class="fundo-controles" data-controle="cor">
-                  <div class="fundo-linha">
-                    <div class="fundo-campo">
-                      <label for="fundoCorSolida">Cor de fundo</label>
-                      <input
-                        type="color"
-                        id="fundoCorSolida"
-                        value="#0d0d1f"
-                        aria-label="Escolher cor sólida do fundo"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <div class="fundo-layout">
+                  <!-- Coluna esquerda: dropdown "Modo de fundo" -->
+                  <div class="fundo-seletor-modo">
+                    <button
+                      type="button"
+                      class="fundo-modo-toggle"
+                      id="fundoModoToggle"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                      aria-controls="fundoModoMenu"
+                    >
+                      <span class="fundo-modo-toggle-icon" aria-hidden="true">
+                        <i class="fas fa-sliders-h"></i>
+                      </span>
+                      <span class="fundo-modo-toggle-label">Modo de fundo</span>
+                      <i
+                        class="fas fa-chevron-down fundo-modo-toggle-chevron"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
 
-                <div class="fundo-controles" data-controle="gradiente">
-                  <div class="fundo-linha">
-                    <div class="fundo-campo">
-                      <label for="fundoGradCor1">Cor 1</label>
-                      <input type="color" id="fundoGradCor1" value="#2e00e6" />
-                    </div>
-                    <div class="fundo-campo">
-                      <label for="fundoGradCor2">Cor 2</label>
-                      <input type="color" id="fundoGradCor2" value="#ec4899" />
-                    </div>
-                    <div class="fundo-campo" style="flex: 2; min-width: 200px">
-                      <label for="fundoGradAngulo"
-                        >Ângulo:
-                        <span id="fundoGradAnguloValor">135°</span></label
-                      >
-                      <input
-                        type="range"
-                        id="fundoGradAngulo"
-                        min="0"
-                        max="360"
-                        value="135"
-                        aria-label="Ângulo do gradiente"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="fundo-presets"
-                    id="fundoPresets"
-                    aria-label="Presets de gradiente"
-                  >
-                    <button
-                      type="button"
-                      class="fundo-preset"
-                      data-c1="#2e00e6"
-                      data-c2="#ec4899"
-                      style="
-                        background: linear-gradient(135deg, #2e00e6, #ec4899);
-                      "
-                    >
-                      <span>Roxo / Rosa</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="fundo-preset"
-                      data-c1="#2563eb"
-                      data-c2="#22d3ee"
-                      style="
-                        background: linear-gradient(135deg, #2563eb, #22d3ee);
-                      "
-                    >
-                      <span>Azul / Ciano</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="fundo-preset"
-                      data-c1="#4c1d95"
-                      data-c2="#2563eb"
-                      style="
-                        background: linear-gradient(135deg, #4c1d95, #2563eb);
-                      "
-                    >
-                      <span>Roxo / Azul</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="fundo-preset"
-                      data-c1="#10b981"
-                      data-c2="#2563eb"
-                      style="
-                        background: linear-gradient(135deg, #10b981, #2563eb);
-                      "
-                    >
-                      <span>Verde / Azul</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="fundo-preset"
-                      data-c1="#0d0d1f"
-                      data-c2="#4c1d95"
-                      style="
-                        background: linear-gradient(135deg, #0d0d1f, #4c1d95);
-                      "
-                    >
-                      <span>Escuro / Roxo</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="fundo-controles" data-controle="imagem">
-                  <div class="fundo-linha">
                     <div
-                      class="fundo-campo"
-                      style="flex: 2; min-width: 220px"
+                      class="fundo-modo-menu"
+                      id="fundoModoMenu"
+                      role="listbox"
+                      aria-label="Modo de fundo"
                     >
-                      <label for="fundoImagemInput"
-                        >Imagem (JPG, PNG, WebP ou GIF — máximo 5 MB)</label
+                      <button
+                        type="button"
+                        class="fundo-modo-opcao ativo"
+                        data-modo="padrao"
+                        role="option"
+                        aria-selected="true"
                       >
-                      <input
-                        type="file"
-                        id="fundoImagemInput"
-                        accept="image/jpeg,image/png,image/webp,image/gif"
-                      />
+                        <span class="fundo-modo-opcao-icon" aria-hidden="true"
+                          ><i class="fas fa-ban"></i
+                        ></span>
+                        <span class="fundo-modo-opcao-label">Padrão</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="fundo-modo-opcao"
+                        data-modo="cor"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <span class="fundo-modo-opcao-icon" aria-hidden="true"
+                          ><i class="fas fa-square"></i
+                        ></span>
+                        <span class="fundo-modo-opcao-label">Cor sólida</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="fundo-modo-opcao"
+                        data-modo="gradiente"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <span class="fundo-modo-opcao-icon" aria-hidden="true"
+                          ><i class="fas fa-circle-half-stroke"></i
+                        ></span>
+                        <span class="fundo-modo-opcao-label">Gradiente</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="fundo-modo-opcao"
+                        data-modo="imagem"
+                        role="option"
+                        aria-selected="false"
+                      >
+                        <span class="fundo-modo-opcao-icon" aria-hidden="true"
+                          ><i class="fas fa-image"></i
+                        ></span>
+                        <span class="fundo-modo-opcao-label">Imagem</span>
+                      </button>
                     </div>
-                    <div class="fundo-campo">
-                      <label for="fundoImagemPosicao">Posição</label>
-                      <select id="fundoImagemPosicao">
-                        <option value="center">Centro</option>
-                        <option value="center top">Centro superior</option>
-                        <option value="center bottom">Centro inferior</option>
-                        <option value="left center">Esquerda</option>
-                        <option value="right center">Direita</option>
-                      </select>
+                  </div>
+
+                  <!-- Coluna direita: controles do modo selecionado -->
+                  <div class="fundo-controles-wrapper">
+                    <div class="fundo-controles" data-controle="cor">
+                      <div class="fundo-linha">
+                        <div class="fundo-campo">
+                          <label for="fundoCorSolida">Cor de fundo</label>
+                          <input
+                            type="color"
+                            id="fundoCorSolida"
+                            value="#0d0d1f"
+                            aria-label="Escolher cor sólida do fundo"
+                          />
+                        </div>
+                      </div>
                     </div>
-                    <div class="fundo-campo">
-                      <label for="fundoImagemTamanho">Tamanho</label>
-                      <select id="fundoImagemTamanho">
-                        <option value="cover">Cobrir</option>
-                        <option value="contain">Conter</option>
-                        <option value="auto">Original/auto</option>
-                      </select>
+
+                    <div class="fundo-controles" data-controle="gradiente">
+                      <div class="fundo-linha">
+                        <div class="fundo-campo">
+                          <label for="fundoGradCor1">Cor 1</label>
+                          <input
+                            type="color"
+                            id="fundoGradCor1"
+                            value="#2e00e6"
+                          />
+                        </div>
+                        <div class="fundo-campo">
+                          <label for="fundoGradCor2">Cor 2</label>
+                          <input
+                            type="color"
+                            id="fundoGradCor2"
+                            value="#ec4899"
+                          />
+                        </div>
+                        <div
+                          class="fundo-campo"
+                          style="flex: 2; min-width: 200px"
+                        >
+                          <label for="fundoGradAngulo"
+                            >Ângulo:
+                            <span id="fundoGradAnguloValor">135°</span></label
+                          >
+                          <input
+                            type="range"
+                            id="fundoGradAngulo"
+                            min="0"
+                            max="360"
+                            value="135"
+                            aria-label="Ângulo do gradiente"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="fundo-presets"
+                        id="fundoPresets"
+                        aria-label="Presets de gradiente"
+                      >
+                        <button
+                          type="button"
+                          class="fundo-preset"
+                          data-c1="#2e00e6"
+                          data-c2="#ec4899"
+                          style="
+                            background: linear-gradient(135deg, #2e00e6, #ec4899);
+                          "
+                        >
+                          <span>Roxo / Rosa</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="fundo-preset"
+                          data-c1="#2563eb"
+                          data-c2="#22d3ee"
+                          style="
+                            background: linear-gradient(135deg, #2563eb, #22d3ee);
+                          "
+                        >
+                          <span>Azul / Ciano</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="fundo-preset"
+                          data-c1="#4c1d95"
+                          data-c2="#2563eb"
+                          style="
+                            background: linear-gradient(135deg, #4c1d95, #2563eb);
+                          "
+                        >
+                          <span>Roxo / Azul</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="fundo-preset"
+                          data-c1="#10b981"
+                          data-c2="#2563eb"
+                          style="
+                            background: linear-gradient(135deg, #10b981, #2563eb);
+                          "
+                        >
+                          <span>Verde / Azul</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="fundo-preset"
+                          data-c1="#0d0d1f"
+                          data-c2="#4c1d95"
+                          style="
+                            background: linear-gradient(135deg, #0d0d1f, #4c1d95);
+                          "
+                        >
+                          <span>Escuro / Roxo</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="fundo-controles" data-controle="imagem">
+                      <div class="fundo-linha">
+                        <div
+                          class="fundo-campo"
+                          style="flex: 2; min-width: 220px"
+                        >
+                          <label for="fundoImagemInput"
+                            >Imagem (JPG, PNG, WebP ou GIF — máximo 5 MB)</label
+                          >
+                          <input
+                            type="file"
+                            id="fundoImagemInput"
+                            accept="image/jpeg,image/png,image/webp,image/gif"
+                          />
+                        </div>
+                        <div class="fundo-campo">
+                          <label for="fundoImagemPosicao">Posição</label>
+                          <select id="fundoImagemPosicao">
+                            <option value="center">Centro</option>
+                            <option value="center top">Centro superior</option>
+                            <option value="center bottom">Centro inferior</option>
+                            <option value="left center">Esquerda</option>
+                            <option value="right center">Direita</option>
+                          </select>
+                        </div>
+                        <div class="fundo-campo">
+                          <label for="fundoImagemTamanho">Tamanho</label>
+                          <select id="fundoImagemTamanho">
+                            <option value="cover">Cobrir</option>
+                            <option value="contain">Conter</option>
+                            <option value="auto">Original/auto</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="fundo-config-bloco">
-                <div
-                  class="fundo-preview"
-                  id="fundoPreview"
-                  aria-label="Prévia do fundo personalizado"
-                ></div>
+              <div class="fundo-config-bloco fundo-acoes-bloco">
                 <div class="fundo-acoes">
                   <button
                     type="button"
@@ -3183,8 +3218,6 @@
           arrastandoCirculo = false;
         });
 
-        // Seletor de cores nativo inline na seção de Aparência (sem overlay ou modal)
-
         // ── Sliders de Saturação e Luminosidade ──
         if (elements.rangeSat) {
           elements.rangeSat.addEventListener("input", (e) => {
@@ -3425,15 +3458,21 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-// ── FUNDO PERSONALIZADO — CONTROLES DA PÁGINA ──────────────────────────────
-// A persistência é 100% local (localStorage + IndexedDB), não sincroniza
-// entre dispositivos e não grava nada no MySQL nem no servidor.
+// ── FUNDO PERSONALIZADO — MENU FLUTUANTE "MODO DE FUNDO" ────────────────────
+// A persistência continua 100% local (localStorage + IndexedDB).
+// Esta camada cuida apenas da UI: abrir/fechar dropdown, marcar opção ativa
+// e mostrar somente os controles do modo selecionado.
 document.addEventListener("DOMContentLoaded", () => {
   const FP = window.FundoPersonalizado;
   if (!FP) return;
 
-  const modos = document.querySelectorAll(".fundo-modo-btn");
+  // Dropdown
+  const toggle = document.getElementById("fundoModoToggle");
+  const menu = document.getElementById("fundoModoMenu");
+  const opcoes = document.querySelectorAll(".fundo-modo-opcao");
   const controles = document.querySelectorAll(".fundo-controles");
+
+  // Controles específicos
   const corInput = document.getElementById("fundoCorSolida");
   const grad1 = document.getElementById("fundoGradCor1");
   const grad2 = document.getElementById("fundoGradCor2");
@@ -3444,11 +3483,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgPos = document.getElementById("fundoImagemPosicao");
   const imgTam = document.getElementById("fundoImagemTamanho");
   const btnRestaurar = document.getElementById("fundoRestaurar");
-  const preview = document.getElementById("fundoPreview");
 
   const cfg = FP.obterConfiguracao();
 
-  // Estado inicial dos inputs com base na configuração persistida.
+  // ── Estado inicial dos inputs ──
   if (corInput) corInput.value = cfg.cor || "#0d0d1f";
   if (grad1) grad1.value = cfg.gradienteCor1 || "#2e00e6";
   if (grad2) grad2.value = cfg.gradienteCor2 || "#ec4899";
@@ -3459,76 +3497,101 @@ document.addEventListener("DOMContentLoaded", () => {
   if (imgPos) imgPos.value = cfg.imagemPosicao || "center";
   if (imgTam) imgTam.value = cfg.imagemTamanho || "cover";
 
+  // ── Estado visual do seletor ──
   function atualizarModosUI(modo) {
-    modos.forEach((b) => {
-      const ativo = b.dataset.modo === modo;
-      b.classList.toggle("ativo", ativo);
-      b.setAttribute("aria-selected", ativo ? "true" : "false");
+    opcoes.forEach((btn) => {
+      const ativo = btn.dataset.modo === modo;
+      btn.classList.toggle("ativo", ativo);
+      btn.setAttribute("aria-selected", ativo ? "true" : "false");
     });
     controles.forEach((c) => {
       c.classList.toggle("ativo", c.dataset.controle === modo);
     });
   }
 
-  function atualizarPreview() {
-    if (!preview) return;
-    const c = FP.obterConfiguracao();
-    preview.style.background = "";
-    preview.style.backgroundImage = "";
-    preview.style.backgroundPosition = "";
-    preview.style.backgroundSize = "";
-    preview.style.backgroundRepeat = "";
-
-    if (c.modo === "padrao") {
-      preview.style.background = "var(--cor-lateral)";
-    } else if (c.modo === "cor") {
-      preview.style.background = c.cor;
-    } else if (c.modo === "gradiente") {
-      preview.style.background = `linear-gradient(${c.gradienteAngulo}deg, ${c.gradienteCor1}, ${c.gradienteCor2})`;
-    } else if (c.modo === "imagem") {
-      const fundoEl = document.getElementById("gs-fundo-personalizado");
-      if (fundoEl) {
-        preview.style.backgroundColor = "#0d0d1f";
-        preview.style.backgroundImage = fundoEl.style.backgroundImage || "";
-        preview.style.backgroundPosition =
-          fundoEl.style.backgroundPosition || "center";
-        preview.style.backgroundSize = fundoEl.style.backgroundSize || "cover";
-        preview.style.backgroundRepeat = "no-repeat";
-      }
-    }
+  // ── Abrir / fechar menu ──
+  function abrirMenu() {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "true");
+    menu.classList.add("aberto");
   }
 
-  atualizarModosUI(cfg.modo || "padrao");
-  atualizarPreview();
+  function fecharMenu() {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "false");
+    menu.classList.remove("aberto");
+  }
 
-  modos.forEach((btn) => {
+  toggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const aberto = toggle.getAttribute("aria-expanded") === "true";
+    aberto ? fecharMenu() : abrirMenu();
+  });
+
+  // Clique fora fecha
+  document.addEventListener("click", (e) => {
+    if (!menu || !toggle) return;
+    if (menu.contains(e.target) || toggle.contains(e.target)) return;
+    fecharMenu();
+  });
+
+  // Esc fecha
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") fecharMenu();
+  });
+
+  // Navegação por teclado dentro do menu
+  menu?.addEventListener("keydown", (e) => {
+    const itens = Array.from(menu.querySelectorAll(".fundo-modo-opcao"));
+    const idx = itens.indexOf(document.activeElement);
+    if (e.key === "Escape") {
+      e.preventDefault();
+      fecharMenu();
+      toggle?.focus();
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      itens[(idx + 1) % itens.length]?.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      itens[(idx - 1 + itens.length) % itens.length]?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      itens[0]?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      itens[itens.length - 1]?.focus();
+    }
+  });
+
+  // ── Seleção de modo ──
+  opcoes.forEach((btn) => {
     btn.addEventListener("click", () => {
       const modo = btn.dataset.modo;
       FP.definirModo(modo);
       atualizarModosUI(modo);
-      atualizarPreview();
+      fecharMenu();
+      toggle?.focus();
     });
   });
 
-  if (corInput) {
-    corInput.addEventListener("input", () => {
-      FP.definirCor(corInput.value);
-      atualizarModosUI("cor");
-      atualizarPreview();
-    });
-  }
+  // ── Estado inicial ──
+  atualizarModosUI(cfg.modo || "padrao");
+  fecharMenu();
 
+  // ── Cor sólida ──
+  corInput?.addEventListener("input", () => {
+    FP.definirCor(corInput.value);
+    atualizarModosUI("cor");
+  });
+
+  // ── Gradiente ──
   const aplicarGradiente = () => {
     if (!grad1 || !grad2 || !gradAng) return;
-    FP.definirGradiente(
-      grad1.value,
-      grad2.value,
-      parseInt(gradAng.value, 10),
-    );
+    FP.definirGradiente(grad1.value, grad2.value, parseInt(gradAng.value, 10));
     atualizarModosUI("gradiente");
-    atualizarPreview();
   };
-
   grad1?.addEventListener("input", aplicarGradiente);
   grad2?.addEventListener("input", aplicarGradiente);
   gradAng?.addEventListener("input", () => {
@@ -3545,6 +3608,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ── Imagem ──
   imgInput?.addEventListener("change", async () => {
     const file = imgInput.files?.[0];
     if (!file) return;
@@ -3555,23 +3619,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     atualizarModosUI("imagem");
-    atualizarPreview();
   });
 
   imgPos?.addEventListener("change", () => {
     FP.definirPosicaoImagem(imgPos.value);
-    atualizarPreview();
   });
 
   imgTam?.addEventListener("change", () => {
     FP.definirTamanhoImagem(imgTam.value);
-    atualizarPreview();
   });
 
+  // ── Restaurar padrão ──
   btnRestaurar?.addEventListener("click", () => {
     FP.restaurarPadrao();
     atualizarModosUI("padrao");
-    atualizarPreview();
     const c = FP.obterConfiguracao();
     if (corInput) corInput.value = c.cor;
     if (grad1) grad1.value = c.gradienteCor1;

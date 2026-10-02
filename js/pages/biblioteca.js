@@ -1,6 +1,6 @@
 /* ─── BIBLIOTECA — LISTAGEM, CARDS E PAGINAÇÃO ─────────────────────────────── */
 
-const ITENS_POR_PAGINA = 12;
+const ITENS_POR_PAGINA = 10;
 let paginaAtual = 1;
 let totalPaginas = 1;
 

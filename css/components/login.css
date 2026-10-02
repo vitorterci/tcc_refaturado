@@ -102,7 +102,7 @@
   font-family: var(--font-titulo);
   font-weight: 700;
   margin: 0 0 15px 0;
-  color: var(--login-texto);
+  color: #0d0d1f;
   font-size: 28px;
   width: 100%;
 }
@@ -116,6 +116,7 @@
 }
 
 .formulario__campo {
+  color:#0d0d1f;
   background-color:#ececed;
   border: 2px solid var(--login-borda);
   padding: 12px 15px 12px 45px;
