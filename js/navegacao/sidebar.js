@@ -95,4 +95,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* ── Botão Voltar (independente da sidebar) ──────────────────────────────
+     * Criado dinamicamente apenas em páginas que possuem o hamburger da
+     * sidebar. Não modifica o hamburger, a sidebar, o menu nem a lógica de
+     * abertura/fechamento/persistência. É apenas um novo controle visual
+     * posicionado logo abaixo do hamburger, com navegação de retorno segura.
+     */
+    if (hamburgerBtn && !document.getElementById('backBtn')) {
+        const backBtn = document.createElement('button');
+        backBtn.id = 'backBtn';
+        backBtn.type = 'button';
+        backBtn.className = 'back-btn';
+        backBtn.setAttribute('aria-label', 'Voltar');
+        backBtn.setAttribute('title', 'Voltar');
+        backBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+        hamburgerBtn.insertAdjacentElement('afterend', backBtn);
+
+        backBtn.addEventListener('click', () => {
+            // Verifica se a página anterior pertence ao próprio projeto.
+            let mesmaOrigem = false;
+            if (document.referrer) {
+                try {
+                    mesmaOrigem = new URL(document.referrer).origin === window.location.origin;
+                } catch (_) {
+                    mesmaOrigem = false;
+                }
+            }
+
+            // Só executa history.back() quando há navegação interna válida.
+            if (mesmaOrigem && window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+
+            // Fallback interno: respeita a estrutura raiz/ e /pages/.
+            const emPages = /\/pages\//i.test(window.location.pathname);
+            window.location.href = emPages ? '../index.html' : 'index.html';
+        });
+    }
 });
