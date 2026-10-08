@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Painel Administrativo - Index
  * Game Search - TCC
@@ -8,6 +9,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,15 +32,18 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
             margin-bottom: 34px;
         }
 
+        .a {}
+
         .stat-card,
         .admin-card {
             min-width: 0;
+            text-decoration: none;
             background: var(--cor-lateral);
             border: 1px solid var(--cor-borda);
             border-radius: var(--border-radius);
             transition: transform var(--transition-speed) ease,
-                        border-color var(--transition-speed) ease,
-                        box-shadow var(--transition-speed) ease;
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
         }
 
         .stat-card {
@@ -128,6 +133,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
         }
 
         @media (max-width: 900px) {
+
             .dashboard-stats,
             .admin-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -135,6 +141,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
         }
 
         @media (max-width: 560px) {
+
             .dashboard-stats,
             .admin-grid {
                 grid-template-columns: 1fr;
@@ -153,7 +160,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                 justify-content: space-between;
             }
         }
-        
+
         .admin-header {
             display: flex;
             justify-content: space-between;
@@ -164,7 +171,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
             flex-wrap: wrap;
             gap: 12px;
         }
-        
+
         .admin-header h1 {
             min-width: 0;
             margin: 0;
@@ -186,7 +193,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
             color: var(--cor-texto-muted);
             font-family: var(--font-corpo);
         }
-        
+
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -198,16 +205,16 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
             color: var(--cor-texto-muted);
             margin-bottom: 20px;
         }
-        
+
         .breadcrumb a {
             color: var(--cor-texto-muted);
             text-decoration: none;
         }
-        
+
         .breadcrumb a:hover {
             color: var(--cor-texto-destaque);
         }
-        
+
         .breadcrumb i {
             font-size: 0.6rem;
         }
@@ -223,14 +230,15 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
         }
     </style>
 </head>
+
 <body>
     <div class="layout-principal">
-        
+
         <!-- Sidebar -->
         <aside class="barra-lateral" id="sidebarDrawer">
-             <div class="sidebar-logo">
+            <div class="sidebar-logo">
                 <a href="../../index.html" aria-label="Ir para a página inicial">
-                <img src="../../img/logo2.png" alt="Game Search"></a>
+                    <img src="../../img/logo2.png" alt="Game Search"></a>
             </div>
             <div class="sidebar-secao">
                 <h3 class="sidebar-titulo">Administração</h3>
@@ -243,7 +251,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                     </ul>
                 </nav>
             </div>
-            
+
             <div class="sidebar-secao">
                 <h3 class="sidebar-titulo">Navegação</h3>
                 <nav class="menu-navegacao">
@@ -255,9 +263,9 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                 </nav>
             </div>
         </aside>
-        
+
         <div class="drawer-overlay" id="drawerOverlay"></div>
-        
+
         <!-- Conteúdo -->
         <main class="conteudo-principal">
             <header class="barra-superior">
@@ -266,7 +274,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                     <input type="text" placeholder="BUSCAR" class="campo-busca" autocomplete="off">
                 </div>
             </header>
-            
+
             <nav class="breadcrumb" aria-label="Navegação">
                 <a href="../../index.html"><i class="fas fa-home"></i> Início</a>
                 <i class="fas fa-chevron-right"></i>
@@ -274,12 +282,12 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                 <i class="fas fa-chevron-right"></i>
                 <span>Dashboard</span>
             </nav>
-            
-                <div class="admin-header">
-                    <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
-                    <div class="admin-header-acoes">
+
+            <div class="admin-header">
+                <h1><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
+                <div class="admin-header-acoes">
                     <span>
-                        <i class="fas fa-user-shield"></i> 
+                        <i class="fas fa-user-shield"></i>
                         <?php echo htmlspecialchars($_SESSION['usuario_nome'] ?? 'Administrador'); ?>
                     </span>
                     <button type="button" class="btn-secundario" data-logout style="padding: 6px 16px; font-size: var(--fs-xs);">
@@ -287,7 +295,7 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                     </button>
                 </div>
             </div>
-            
+
             <?php
             // Buscar estatísticas
             $stats = [
@@ -295,53 +303,53 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
                 'usuarios' => 0,
                 'feedbacks' => 0
             ];
-            
+
             try {
                 // Contar jogos
                 $result = $conexao->query("SELECT COUNT(*) as total FROM jogos");
                 if ($row = $result->fetch_assoc()) {
                     $stats['jogos'] = $row['total'];
                 }
-                
+
                 // Contar usuários
                 $result = $conexao->query("SELECT COUNT(*) as total FROM usuarios");
                 if ($row = $result->fetch_assoc()) {
                     $stats['usuarios'] = $row['total'];
                 }
-                
+
                 // Contar feedbacks
                 $result = $conexao->query("SELECT COUNT(*) as total FROM feedback");
                 if ($row = $result->fetch_assoc()) {
                     $stats['feedbacks'] = $row['total'];
                 }
-                
             } catch (Exception $e) {
                 error_log("Erro ao buscar estatísticas: " . $e->getMessage());
             }
             ?>
-            
+
             <div class="dashboard-stats">
-                <div class="stat-card">
-                    <i class="fas fa-gamepad"></i>
+                <a href="jogos.php" class="stat-card"> <i class="fas fa-gamepad"></i>
                     <div class="numero"><?php echo $stats['jogos']; ?></div>
                     <div class="label">Jogos</div>
-                </div>
-                <div class="stat-card">
+                </a>
+                <a href="usuarios.php" class="stat-card">
                     <i class="fas fa-users"></i>
                     <div class="numero"><?php echo $stats['usuarios']; ?></div>
                     <div class="label">Usuários</div>
-                </div>
-                <div class="stat-card">
+                </a>
+
+                <a href="feedback.php" class="stat-card">
                     <i class="fas fa-envelope"></i>
                     <div class="numero"><?php echo $stats['feedbacks']; ?></div>
                     <div class="label">Feedbacks</div>
-                </div>
+                </a>
+
             </div>
-            
+
             <h2 class="admin-section-title">
                 <i class="fas fa-cog"></i> Gerenciamento
             </h2>
-            
+
             <div class="admin-grid">
                 <a href="jogos.php" class="admin-card">
                     <i class="fas fa-gamepad"></i>
@@ -361,11 +369,11 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
             </div>
         </main>
     </div>
-    
+
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
     </button>
-    
+
     <script src="../../js/global.js"></script>
     <script src="../../js/navegacao/sidebar.js"></script>
     <script src="../../js/navegacao/navegacao.js"></script>
@@ -373,4 +381,5 @@ require_once __DIR__ . '/../../php/admin/auth_admin.php';
     <script src="../../js/PixelBlast.js"></script>
 
 </body>
+
 </html>

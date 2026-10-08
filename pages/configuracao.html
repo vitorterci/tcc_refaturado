@@ -34,11 +34,10 @@
                   ><i class="fas fa-home"></i><span>Início</span></a
                 >
               </li>
-                 <li>
+              <li>
                 <a href="Apresentação.html"
-                                 ><i class="fas fa-layer-group"></i><span>Apresentação</span></a
-
-               
+                  ><i class="fas fa-layer-group"></i
+                  ><span>Apresentação</span></a
                 >
               </li>
             </ul>
@@ -617,51 +616,71 @@
                 </div>
               </div>
 
-<div class="atalho-tema-config" aria-labelledby="atalhoTemaTitulo">
-  <div class="aparencia-bloco-heading">
-    <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"><i class="fas fa-toggle-on"></i></span>
-    <div>
-      <span class="opcao-titulo" id="atalhoTemaTitulo">Atalho de tema</span>
-      <span class="opcao-descricao">Personalize o acesso rápido ao tema em todas as páginas.</span>
-    </div>
-    <label class="atalho-tema-toggle" for="atalhoTemaAtivo">
-      <input id="atalhoTemaAtivo" type="checkbox" />
-      <span>Ativado</span>
-    </label>
-  </div>
-  <div class="atalho-tema-config-grid">
-    <label>Estilo
-      <select id="atalhoTemaEstilo">
-        <option value="cristal-magico">Cristal Mágico</option>
-        <option value="circular">Circular</option>
-        <option value="sol-lua">Sol/Lua</option>
-        <option value="gif">GIF</option>
-        <option value="minimalista">Minimalista</option>
-        <option value="padrao-classico">Padrão/Clássico</option>
-      </select>
-    </label>
-    <label>Posição
-      <select id="atalhoTemaPosicao">
-        <option value="superior-direito">Superior direito</option>
-        <option value="inferior-direito">Inferior direito</option>
-        <option value="inferior-esquerdo">Inferior esquerdo</option>
-        <option value="barra-lateral-inferior">Barra lateral — inferior</option>
-      </select>
-    </label>
-    <label>Tamanho
-      <select id="atalhoTemaTamanho">
-        <option value="pequeno">Pequeno</option>
-        <option value="medio">Médio</option>
-        <option value="grande">Grande</option>
-      </select>
-    </label>
-  </div>
-</div>
+              <div
+                class="atalho-tema-config"
+                aria-labelledby="atalhoTemaTitulo"
+              >
+                <div class="aparencia-bloco-heading">
+                  <span class="aparencia-bloco-icon aparencia-bloco-icon-muted"
+                    ><i class="fas fa-toggle-on"></i
+                  ></span>
+                  <div>
+                    <span class="opcao-titulo" id="atalhoTemaTitulo"
+                      >Atalho de tema</span
+                    >
+                    <span class="opcao-descricao"
+                      >Personalize o acesso rápido ao tema em todas as
+                      páginas.</span
+                    >
+                  </div>
+                  <label class="atalho-tema-toggle" for="atalhoTemaAtivo">
+                    <input id="atalhoTemaAtivo" type="checkbox" />
+                    <span>Ativado</span>
+                  </label>
+                </div>
+                <div class="atalho-tema-config-grid">
+                  <label
+                    >Estilo
+                    <select id="atalhoTemaEstilo">
+                      <option value="cristal-magico">Cristal Mágico</option>
+                      <option value="circular">Circular</option>
+                      <option value="sol-lua">Sol/Lua</option>
+                      <option value="gif">GIF</option>
+                      <option value="minimalista">Minimalista</option>
+                      <option value="padrao-classico">Padrão/Clássico</option>
+                    </select>
+                  </label>
+                  <label
+                    >Posição
+                    <select id="atalhoTemaPosicao">
+                      <option value="superior-direito">Superior direito</option>
+                      <option value="inferior-direito">Inferior direito</option>
+                      <option value="inferior-esquerdo">
+                        Inferior esquerdo
+                      </option>
+                      <option value="barra-lateral-inferior">
+                        Barra lateral — inferior
+                      </option>
+                    </select>
+                  </label>
+                  <label
+                    >Tamanho
+                    <select id="atalhoTemaTamanho">
+                      <option value="pequeno">Pequeno</option>
+                      <option value="medio">Médio</option>
+                      <option value="grande">Grande</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Fundo personalizado (NOVO — dropdown flutuante) -->
-          <div class="painel-config fundo-personalizado-painel" id="painel-fundo">
+          <div
+            class="painel-config fundo-personalizado-painel"
+            id="painel-fundo"
+          >
             <div class="painel-header">
               <i class="fas fa-image"></i>
               <h2>Fundo personalizado</h2>
@@ -756,10 +775,11 @@
                     <div class="fundo-controles" data-controle="cor">
                       <div class="fundo-linha">
                         <div class="fundo-campo">
-                          <label for="fundoCorSolida">Cor de fundo</label>
+                          <label for="fundoCorSolida" style="margin-left: 80%">Cor de fundo</label>
                           <input
                             type="color"
                             id="fundoCorSolida"
+                            class="fundo-cor-circular"
                             value="#0d0d1f"
                             aria-label="Escolher cor sólida do fundo"
                           />
@@ -768,27 +788,8 @@
                     </div>
 
                     <div class="fundo-controles" data-controle="gradiente">
-                      <div class="fundo-linha">
-                        <div class="fundo-campo">
-                          <label for="fundoGradCor1">Cor 1</label>
-                          <input
-                            type="color"
-                            id="fundoGradCor1"
-                            value="#2e00e6"
-                          />
-                        </div>
-                        <div class="fundo-campo">
-                          <label for="fundoGradCor2">Cor 2</label>
-                          <input
-                            type="color"
-                            id="fundoGradCor2"
-                            value="#ec4899"
-                          />
-                        </div>
-                        <div
-                          class="fundo-campo"
-                          style="flex: 2; min-width: 200px"
-                        >
+                      <div class="fundo-linha fundo-linha-gradiente">
+                        <div class="fundo-campo fundo-campo-angulo">
                           <label for="fundoGradAngulo"
                             >Ângulo:
                             <span id="fundoGradAnguloValor">135°</span></label
@@ -802,67 +803,26 @@
                             aria-label="Ângulo do gradiente"
                           />
                         </div>
-                      </div>
-                      <div
-                        class="fundo-presets"
-                        id="fundoPresets"
-                        aria-label="Presets de gradiente"
-                      >
-                        <button
-                          type="button"
-                          class="fundo-preset"
-                          data-c1="#2e00e6"
-                          data-c2="#ec4899"
-                          style="
-                            background: linear-gradient(135deg, #2e00e6, #ec4899);
-                          "
-                        >
-                          <span>Roxo / Rosa</span>
-                        </button>
-                        <button
-                          type="button"
-                          class="fundo-preset"
-                          data-c1="#2563eb"
-                          data-c2="#22d3ee"
-                          style="
-                            background: linear-gradient(135deg, #2563eb, #22d3ee);
-                          "
-                        >
-                          <span>Azul / Ciano</span>
-                        </button>
-                        <button
-                          type="button"
-                          class="fundo-preset"
-                          data-c1="#4c1d95"
-                          data-c2="#2563eb"
-                          style="
-                            background: linear-gradient(135deg, #4c1d95, #2563eb);
-                          "
-                        >
-                          <span>Roxo / Azul</span>
-                        </button>
-                        <button
-                          type="button"
-                          class="fundo-preset"
-                          data-c1="#10b981"
-                          data-c2="#2563eb"
-                          style="
-                            background: linear-gradient(135deg, #10b981, #2563eb);
-                          "
-                        >
-                          <span>Verde / Azul</span>
-                        </button>
-                        <button
-                          type="button"
-                          class="fundo-preset"
-                          data-c1="#0d0d1f"
-                          data-c2="#4c1d95"
-                          style="
-                            background: linear-gradient(135deg, #0d0d1f, #4c1d95);
-                          "
-                        >
-                          <span>Escuro / Roxo</span>
-                        </button>
+                        <div class="fundo-cores-gradiente">
+                          <div class="fundo-campo fundo-campo-cor">
+                            <label for="fundoGradCor1">Cor 1</label>
+                            <input
+                              type="color"
+                              id="fundoGradCor1"
+                              class="fundo-cor-circular"
+                              value="#2e00e6"
+                            />
+                          </div>
+                          <div class="fundo-campo fundo-campo-cor">
+                            <label for="fundoGradCor2">Cor 2</label>
+                            <input
+                              type="color"
+                              id="fundoGradCor2"
+                              class="fundo-cor-circular"
+                              value="#ec4899"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -886,7 +846,9 @@
                           <select id="fundoImagemPosicao">
                             <option value="center">Centro</option>
                             <option value="center top">Centro superior</option>
-                            <option value="center bottom">Centro inferior</option>
+                            <option value="center bottom">
+                              Centro inferior
+                            </option>
                             <option value="left center">Esquerda</option>
                             <option value="right center">Direita</option>
                           </select>
@@ -907,11 +869,7 @@
 
               <div class="fundo-config-bloco fundo-acoes-bloco">
                 <div class="fundo-acoes">
-                  <button
-                    type="button"
-                    class="btn-perigo"
-                    id="fundoRestaurar"
-                  >
+                  <button type="button" class="btn-perigo" id="fundoRestaurar">
                     <i class="fas fa-undo"></i> Restaurar padrão
                   </button>
                 </div>
@@ -1284,6 +1242,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="../js/PixelBlast.js"></script>
     <script src="../js/pages/usuario.js"></script>
-
   </body>
 </html>

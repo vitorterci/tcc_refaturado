@@ -79,7 +79,7 @@
 
 .fundo-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 25px) minmax(0, 1fr);
   align-items: start;
   gap: 20px;
 }
@@ -98,10 +98,10 @@
   gap: 12px;
   width: 100%;
   padding: 11px 14px;
-  background: #131424;
+  background:var(--cor-borda);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 14px;
-  color: #e5e7eb;
+  color: var(--cor-texto);
   font-family: var(--font-corpo);
   font-size: 0.9rem;
   font-weight: 600;
@@ -114,7 +114,7 @@
 }
 
 .fundo-modo-toggle:hover {
-  background: #171a2e;
+  background: var(--cor-borda-forte);
   border-color: color-mix(in srgb, var(--cor-primaria) 55%, transparent);
 }
 
@@ -140,7 +140,7 @@
 .fundo-modo-toggle-label {
   flex: 1;
   text-align: left;
-  color: #f1f5f9;
+  color: var(--cor-texto);
 }
 
 .fundo-modo-toggle-chevron {
@@ -164,14 +164,13 @@
   flex-direction: column;
   gap: 2px;
   padding: 6px;
-  background: #131424;
+  background: var(--cor-dropdown);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 14px;
   box-shadow:
     0 20px 40px -14px rgba(0, 0, 0, 0.65),
     0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   opacity: 0;
-  transform: translateY(-6px);
   pointer-events: none;
   visibility: hidden;
   transition:
@@ -200,7 +199,7 @@
   background: transparent;
   border: none;
   border-radius: 10px;
-  color: #cbd5e1;
+  color: var(--cor-texto);
   font-family: var(--font-corpo);
   font-size: 0.86rem;
   font-weight: 500;
@@ -213,7 +212,7 @@
 
 .fundo-modo-opcao:hover {
   background: rgba(148, 163, 184, 0.08);
-  color: #f1f5f9;
+  color: var(--cor-texto-destaque);
 }
 
 .fundo-modo-opcao:focus-visible {
@@ -243,7 +242,7 @@
 
 .fundo-modo-opcao.ativo {
   background: color-mix(in srgb, var(--cor-primaria) 26%, transparent);
-  color: #ffffff;
+  color: var(--cor-texto-destaque);
 }
 
 .fundo-modo-opcao.ativo .fundo-modo-opcao-icon {
@@ -285,6 +284,7 @@
 }
 
 .fundo-campo label {
+      margin-left: 0%;
   color: var(--cor-texto-muted);
   font-family: var(--font-corpo);
   font-size: 0.78rem;
@@ -347,6 +347,16 @@
   border-color: var(--cor-primaria);
   box-shadow: 0 0 0 3px
     color-mix(in srgb, var(--cor-primaria) 18%, transparent);
+}
+
+/* Garante que o rótulo e o círculo fiquem lado a lado e alinhados verticalmente */
+[data-controle="cor"] .fundo-campo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
 }
 
 /* ── Presets de gradiente ────────────────────────────────────────────── */

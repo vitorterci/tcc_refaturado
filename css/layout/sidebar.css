@@ -530,3 +530,68 @@ body.sidebar-fechada .hamburger-btn {
     max-width: var(--classico-largura);
   }
 }
+
+/* ─── Botão Voltar (independente da sidebar) ────────────────────────────────
+ * Novo controle global posicionado logo abaixo do hamburger.
+ * Reaproveita a linguagem visual do .hamburger-btn (fundo, borda, cor,
+ * raio, tamanho, hover, foco) SEM alterar o hamburger existente.
+ * A posição horizontal acompanha exatamente as regras do hamburger em
+ * todos os estados (aberto/fechado) e breakpoints (desktop/tablet/mobile).
+ * A posição vertical fica logo abaixo do hamburger (16px + 44px + 8px).
+ */
+.back-btn {
+  display: flex;
+  position: fixed;
+  top: 68px; /* 16px (top do hamburger) + 44px (altura) + 8px (espaçamento) */
+  left: 16px;
+  z-index: 2500;
+  background: var(--cor-lateral);
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all var(--transition-speed) ease;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Acompanha exatamente o deslocamento horizontal do hamburger. */
+body:not(.sidebar-fechada) .back-btn {
+  left: calc(var(--sidebar-width) + 16px);
+}
+
+body.sidebar-fechada .back-btn {
+  left: calc(var(--sidebar-collapsed) + 16px);
+}
+
+@media (max-width: 1024px) {
+  body:not(.sidebar-fechada) .back-btn {
+    left: 16px;
+  }
+}
+
+.back-btn:hover {
+  background: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-destaque);
+  box-shadow: var(--shadow-glow);
+}
+
+.back-btn:focus-visible {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .back-btn {
+    top: 58px !important; /* 12px + 38px + 8px */
+    left: 12px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+  }
+}

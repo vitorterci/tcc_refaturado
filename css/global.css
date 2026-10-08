@@ -46,6 +46,9 @@ html {
   scrollbar-color: var(--cor-primaria) transparent;
   scrollbar-width: thin;
 }
+a {
+text-decoration: none;
+}
 
 html::-webkit-scrollbar {
   width: 8px;
