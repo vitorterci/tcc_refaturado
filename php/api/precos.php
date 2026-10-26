@@ -62,37 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 |--------------------------------------------------------------------------
 */
 
-try {
-    require_once __DIR__ . '/../config.php';
-    require_once __DIR__ . '/../../simulados/_tcc_catalogo.php';
-} catch (Throwable $e) {
-    responder([
-        'success' => false,
-        'sucesso' => false,
-        'error' => 'Erro ao carregar a configuração do banco de dados.',
-        'precos' => []
-    ], 500);
-}
-
-/*
-|--------------------------------------------------------------------------
-| CONEXÃO (apenas validação de ambiente)
-|--------------------------------------------------------------------------
-|
-| A conexão MySQL não é mais usada como fonte de ofertas.
-| Mantida apenas para validação de ambiente e compatibilidade.
-|
-*/
-
-$con = null;
-
-if (isset($conexao) && $conexao instanceof mysqli) {
-    $con = $conexao;
-} elseif (isset($conn) && $conn instanceof mysqli) {
-    $con = $conn;
-} elseif (isset($mysqli) && $mysqli instanceof mysqli) {
-    $con = $mysqli;
-}
+require_once __DIR__ . '/../../simulados/_tcc_catalogo.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -162,12 +132,12 @@ function normalizarDesconto($valor): float
 function obterJogoDoCatalogo(string $slug): ?array
 {
     $lojas = [
-        'SteamFake' => '/tcc/simulados/steamfake/produto.php?slug=',
-        'GOGFake' => '/tcc/simulados/gogfake/detalhes.php?slug=',
-        'EpicFake' => '/tcc/simulados/epicfake/jogo.php?slug=',
+        'SteamFake',
+        'GOGFake',
+        'EpicFake',
     ];
 
-    foreach ($lojas as $loja => $caminho) {
+    foreach ($lojas as $loja) {
         $jogos = tcc_catalogo_buscar($loja, ['slug' => $slug, 'ofertas' => true]);
         $jogo = $jogos[0] ?? null;
 
@@ -258,14 +228,14 @@ function obterJogoDoCatalogoPorNome(string $nome): ?array
 function obterPrecosDoJogo(string $slug): array
 {
     $precos = [];
-
-    $lojas = [
-        'SteamFake' => '/tcc/simulados/steamfake/produto.php?slug=',
-        'GOGFake' => '/tcc/simulados/gogfake/detalhes.php?slug=',
-        'EpicFake' => '/tcc/simulados/epicfake/jogo.php?slug=',
+    $baseUrl = tcc_catalogo_base_url();
+    $rotas = [
+        'SteamFake' => '/simulados/steamfake/produto.php',
+        'GOGFake' => '/simulados/gogfake/detalhes.php',
+        'EpicFake' => '/simulados/epicfake/jogo.php',
     ];
 
-    foreach ($lojas as $loja => $caminho) {
+    foreach ($rotas as $loja => $rota) {
         $jogos = tcc_catalogo_buscar($loja, ['slug' => $slug, 'ofertas' => true]);
         $jogo = $jogos[0] ?? null;
         if (!$jogo) continue;
@@ -285,7 +255,7 @@ function obterPrecosDoJogo(string $slug): array
             'preco' => $precoAtual,
             'preco_antigo' => $precoOriginal,
             'moeda' => 'BRL',
-            'url' => $caminho . rawurlencode($jogo['slug']),
+            'url' => $baseUrl . $rota . '?slug=' . rawurlencode((string)$jogo['slug']),
             'disponibilidade' => 'disponivel',
             'disponivel' => true,
             'desconto' => (int)$jogo['desconto'],
@@ -624,6 +594,10 @@ if ($slug !== '') {
 | JOGO NÃO ENCONTRADO
 |--------------------------------------------------------------------------
 */
+
+if (tcc_catalogo_indisponivel()) {
+    tcc_catalogo_responder_indisponivel('GameSearch');
+}
 
 if (!$jogo) {
 

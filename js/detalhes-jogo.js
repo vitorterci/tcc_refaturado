@@ -219,7 +219,7 @@
             const urlOriginal = String(oferta.url_oferta || oferta.url || '').trim();
             let urlValida = false;
             try {
-                const urlAnalisada = new URL(urlOriginal);
+                const urlAnalisada = new URL(urlOriginal, window.location.origin);
                 urlValida = ['https:', 'http:'].includes(urlAnalisada.protocol);
             } catch (erro) {
                 urlValida = false;
